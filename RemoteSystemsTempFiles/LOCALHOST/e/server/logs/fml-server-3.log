@@ -1,0 +1,1117 @@
+[20:59:27] [main/INFO] [FML/]: Forge Mod Loader version 7.10.114.1388 for Minecraft 1.7.10 loading
+[20:59:28] [main/INFO] [FML/]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.8.0_60, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jre1.8.0_60
+[20:59:30] [main/WARN] [FML/]: The following coremods do not have a @MCVersion annotation. They may cause problems if this is not the correct version of Minecraft for them.
+[20:59:30] [main/WARN] [FML/]: Missing @MCVersion: ic2.core.coremod.IC2core  thaumcraft.codechicken.core.launch.DepLoader  
+[20:59:30] [main/INFO] [LaunchWrapper/]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[20:59:30] [main/INFO] [LaunchWrapper/]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[20:59:30] [main/INFO] [LaunchWrapper/]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[20:59:30] [main/INFO] [LaunchWrapper/]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[20:59:30] [main/INFO] [LaunchWrapper/]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[20:59:33] [main/INFO] [LaunchWrapper/]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[20:59:33] [main/INFO] [LaunchWrapper/]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[20:59:33] [main/INFO] [IC2-core/]: Loaded library EJML-core-0.26.jar.
+[20:59:33] [main/INFO] [LaunchWrapper/]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[20:59:33] [main/INFO] [LaunchWrapper/]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[20:59:34] [main/INFO] [LaunchWrapper/]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[20:59:34] [main/INFO] [LaunchWrapper/]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[20:59:34] [main/INFO] [LaunchWrapper/]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[20:59:41] [Server thread/INFO] [MinecraftForge/]: Attempting early MinecraftForge initialization
+[20:59:41] [Server thread/INFO] [FML/]: MinecraftForge v10.13.3.1403 Initialized
+[20:59:41] [Server thread/INFO] [FML/]: Replaced 183 ore recipies
+[20:59:41] [Server thread/INFO] [FML/]: Preloading CrashReport classes
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.World$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.World$2
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.World$3
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.World$4
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.chunk.Chunk$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.crash.CrashReportCategory$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.crash.CrashReportCategory$2
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.crash.CrashReportCategory$3
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.entity.Entity$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.entity.Entity$2
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.entity.EntityTracker$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.gen.layer.GenLayer$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.gen.layer.GenLayer$2
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.entity.player.InventoryPlayer$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.gen.structure.MapGenStructure$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.gen.structure.MapGenStructure$2
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.gen.structure.MapGenStructure$3
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.server.MinecraftServer$3
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.server.MinecraftServer$4
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.server.MinecraftServer$5
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.nbt.NBTTagCompound$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.nbt.NBTTagCompound$2
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.network.NetHandlerPlayServer$2
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.network.NetworkSystem$3
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.tileentity.TileEntity$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.tileentity.TileEntity$2
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.tileentity.TileEntity$3
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.storage.WorldInfo$1
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.storage.WorldInfo$2
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.storage.WorldInfo$3
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.storage.WorldInfo$4
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.storage.WorldInfo$5
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.storage.WorldInfo$6
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.storage.WorldInfo$7
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.storage.WorldInfo$8
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.world.storage.WorldInfo$9
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.server.dedicated.DedicatedServer$3
+[20:59:41] [Server thread/INFO] [FML/]: 	net.minecraft.server.dedicated.DedicatedServer$4
+[20:59:41] [Server thread/INFO] [MinecraftForge/]: Completed early MinecraftForge initialization
+[20:59:41] [Server thread/INFO] [FML/]: Found 0 mods from the command line. Injecting into mod discoverer
+[20:59:41] [Server thread/INFO] [FML/]: Searching D:\games\我的世界\server\mods for mods
+[20:59:41] [Server thread/INFO] [FML/]: Also searching D:\games\我的世界\server\mods\1.7.10 for mods
+[20:59:45] [Server thread/INFO] [FML/]: Forge Mod Loader has identified 7 mods to load
+[20:59:45] [Server thread/INFO] [FML/FML]: Attempting connection with missing mods [mcp, FML, Forge, gregtech, IC2, Thaumcraft, Baubles] at CLIENT
+[20:59:45] [Server thread/INFO] [FML/FML]: Attempting connection with missing mods [mcp, FML, Forge, gregtech, IC2, Thaumcraft, Baubles] at SERVER
+[20:59:50] [Server thread/INFO] [FML/]: Processing ObjectHolder annotations
+[20:59:50] [Server thread/INFO] [FML/]: Found 341 ObjectHolder annotations
+[20:59:50] [Server thread/INFO] [FML/Forge]: Configured a dormant chunk cache size of 0
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for emptyCell
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for cellEmpty
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for cellWater
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for cellLava
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for cellOxygen
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for cellAir
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for emptyFuelCan
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for fuelCanEmpty
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for fuelCan
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for filledFuelCan
+[20:59:54] [Server thread/INFO] [/gregtech]: IC2 API: Call getItem failed for compressedPlantBall
+[20:59:59] [Server thread/INFO] [FML/]: Applying holder lookups
+[20:59:59] [Server thread/INFO] [FML/]: Holder lookups applied
+[21:00:00] [Server thread/INFO] [Minecraft/]: This server is running Cauldron-MCPC-Plus version KCauldron-1.7.10-2.1403.1.54 (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)
+[21:00:00] [Server thread/INFO] [/]: Server Ping Player Sample Count: 12
+[21:00:00] [Server thread/WARN] [FML/]: =============================================================
+[21:00:00] [Server thread/WARN] [FML/]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FML!
+[21:00:00] [Server thread/WARN] [FML/]: Offendor: org/spigotmc/RestartCommand.restart()V
+[21:00:00] [Server thread/WARN] [FML/]: Use FMLCommonHandler.exitJava instead
+[21:00:00] [Server thread/WARN] [FML/]: =============================================================
+[21:00:00] [Server thread/INFO] [Minecraft/]: Using 4 threads for Netty based IO
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 267 out of 267 recipes for shaped recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 76 out of 76 recipes for shapeless recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 5 out of 5 recipes for blast furnace recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 17 out of 17 recipes for block cutter recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 48 out of 48 recipes for compressor recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 12 out of 12 recipes for extractor recipes
+[21:00:01] [Server thread/WARN] [IC2.Recipe/IC2]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[1xtile.gravel@0] -> [1xitem.flint@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:713) [Loader.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:323) [FMLCommonHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:286) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:620) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_60]
+[21:00:01] [Server thread/WARN] [IC2.Recipe/IC2]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[8xitem.reeds@0] -> [1xic2.itemBiochaff@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:713) [Loader.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:323) [FMLCommonHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:286) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:620) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_60]
+[21:00:01] [Server thread/WARN] [IC2.Recipe/IC2]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[8xtile.pumpkin@0] -> [1xic2.itemBiochaff@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:713) [Loader.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:323) [FMLCommonHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:286) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:620) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_60]
+[21:00:01] [Server thread/WARN] [IC2.Recipe/IC2]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[8xitem.melon@0] -> [1xic2.itemBiochaff@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:713) [Loader.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:323) [FMLCommonHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:286) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:620) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_60]
+[21:00:01] [Server thread/WARN] [IC2.Recipe/IC2]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[1xtile.cloth@0] -> [2xitem.string@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:713) [Loader.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:323) [FMLCommonHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:286) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:620) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_60]
+[21:00:01] [Server thread/WARN] [IC2.Recipe/IC2]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[8xitem.wheat@0] -> [1xic2.itemBiochaff@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:713) [Loader.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:323) [FMLCommonHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:286) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:620) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_60]
+[21:00:01] [Server thread/WARN] [IC2.Recipe/IC2]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[1xtile.stonebrick@0] -> [1xtile.sand@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_60]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [minecraft_server.1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [minecraft_server.1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:713) [Loader.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:323) [FMLCommonHandler.class:KCauldron-1.7.10-2.1403.1.54]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:286) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:620) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_60]
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 57 out of 64 recipes for macerator recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 4 out of 4 recipes for metal former cutting recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 10 out of 10 recipes for metal former extruding recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 14 out of 14 recipes for metal former rolling recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 8 out of 8 recipes for ore washing recipes
+[21:00:01] [Server thread/INFO] [IC2.Recipe/IC2]: Successfully loaded 25 out of 25 recipes for thermal centrifuge recipes
+[21:00:11] [Server thread/INFO] [IC2.Uu/IC2]: Loading predefined UU world scan values, run /ic2 uu-world-scan <small|medium|large> to calibrate them for your world.
+[21:00:11] [Server thread/WARN] [IC2.Uu/IC2]: UU world-scan config: Can't find ItemStack for BuildCraft|Core:eternalSpring, ignoring the entry in line 88.
+[21:00:11] [Server thread/WARN] [IC2.Uu/IC2]: UU world-scan config: Can't find ItemStack for BuildCraft|Core:eternalSpring@1, ignoring the entry in line 109.
+[21:00:11] [Server thread/INFO] [IC2.General/IC2]: IC2 version 2.2.810-experimental loaded.
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Found potion array with a size of 32
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Extending Potion.potionTypes array to 40
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Initializing PotionFluxTaint with id 31
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Initializing PotionVisExhaust with id 32
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Initializing PotionInfectiousVisExhaust with id 33
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Initializing PotionUnnaturalHunger with id 34
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Initializing PotionWarpWard with id 35
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Initializing PotionDeathGaze with id 36
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Initializing PotionBlurredVision with id 37
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Initializing PotionSunScorned with id 38
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Initializing PotionThaumarhia with id 39
+[21:00:11] [Server thread/INFO] [THAUMCRAFT/Thaumcraft]: Adding entities to MFR safari net blacklist.
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Zombie] to spawn champion mobs at level [0]
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Spider] to spawn champion mobs at level [0]
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Blaze] to spawn champion mobs at level [0]
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Enderman] to spawn champion mobs at level [0]
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Skeleton] to spawn champion mobs at level [0]
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Witch] to spawn champion mobs at level [1]
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Thaumcraft.EldritchCrab] to spawn champion mobs at level [0]
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Thaumcraft.Taintacle] to spawn champion mobs at level [2]
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Thaumcraft.Wisp] to spawn champion mobs at level [1]
+[21:00:12] [Server thread/WARN] [THAUMCRAFT/Thaumcraft]: Whitelisting [Thaumcraft.InhabitedZombie] to spawn champion mobs at level [3]
+[21:00:13] [Server thread/INFO] [FML/gregtech]: If your Log stops here, you were too impatient. Wait a bit more next time, before killing Minecraft with the Task Manager.
+[21:00:27] [Server thread/INFO] [FML/gregtech]: Congratulations, you have been waiting long enough. Have a Cake.
+[21:00:27] [Server thread/INFO] [FML/]: Forge Mod Loader has successfully loaded 7 mods
+[21:00:27] [Server thread/INFO] [FML/]: Injecting existing block and item data into this server instance
+[21:00:27] [Server thread/INFO] [FML/]: Injecting new block and item data into this server instance.
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticDoubleSlabStone: 428 (init) -> 428 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockPortalEldritch: 412 (init) -> 412 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticSolid: 238 (init) -> 238 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockEldritch: 253 (init) -> 253 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockAlchemyFurnace: 250 (init) -> 250 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticSlabWood: 425 (init) -> 425 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStairsArcaneStone: 415 (init) -> 415 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticDoubleSlabWood: 427 (init) -> 427 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockEldritchNothing: 414 (init) -> 414 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockLootCrate: 430 (init) -> 430 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockcasings: 432 (init) -> 432 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockconcretes: 437 (init) -> 437 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockgranites: 436 (init) -> 436 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockJar: 251 (init) -> 251 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStairsEldritch: 424 (init) -> 424 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockTaint: 235 (init) -> 235 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMagicalLog: 232 (init) -> 232 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockArcaneFurnace: 409 (init) -> 409 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockArcaneDoor: 247 (init) -> 247 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticSlabStone: 426 (init) -> 426 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockChestHungry: 246 (init) -> 246 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockFluxGas: 228 (init) -> 228 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticOpaque: 237 (init) -> 237 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMirror: 244 (init) -> 244 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStairsGreatwood: 416 (init) -> 416 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockTube: 240 (init) -> 240 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockTable: 245 (init) -> 245 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockWarded: 410 (init) -> 410 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockcasings4: 435 (init) -> 435 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockcasings3: 434 (init) -> 434 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockFluxGoo: 227 (init) -> 227 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockLifter: 248 (init) -> 248 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMetalDevice: 241 (init) -> 241 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStairsSilverwood: 423 (init) -> 423 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockFluidPure: 229 (init) -> 229 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockFluidDeath: 230 (init) -> 230 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockLootUrn: 429 (init) -> 429 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockManaPod: 255 (init) -> 255 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockores: 438 (init) -> 438 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockcasings2: 433 (init) -> 433 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCandle: 252 (init) -> 252 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockAiry: 254 (init) -> 254 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockTaintFibres: 236 (init) -> 236 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCustomPlant: 234 (init) -> 234 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockWoodenDevice: 242 (init) -> 242 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStoneDevice: 243 (init) -> 243 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockHole: 411 (init) -> 411 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockmachines: 431 (init) -> 431 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCustomOre: 231 (init) -> 231 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMagicBox: 249 (init) -> 249 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockEssentiaReservoir: 413 (init) -> 413 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMagicalLeaves: 233 (init) -> 233 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCrystal: 239 (init) -> 239 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ArcaneDoorKey: 4350 (init) -> 4350 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBootsRobe: 4349 (init) -> 4349 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticSolid: 238 (init) -> 238 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBootsThaumium: 4328 (init) -> 4328 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemGirdleHover: 4369 (init) -> 4369 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.GregTech_FluidDisplay: 4414 (init) -> 4414 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockAlchemyFurnace: 250 (init) -> 250 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStairsArcaneStone: 415 (init) -> 415 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemResource: 4318 (init) -> 4318 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemSwordElemental: 4342 (init) -> 4342 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemSwordCrimson: 4405 (init) -> 4405 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemLeggingsRobe: 4348 (init) -> 4348 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.360k_NaK_Coolantcell: 4422 (init) -> 4422 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemPickVoid: 4385 (init) -> 4385 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockLootCrate: 430 (init) -> 430 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockconcretes: 437 (init) -> 437 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockgranites: 436 (init) -> 436 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockJar: 251 (init) -> 251 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHoeThaumium: 4333 (init) -> 4333 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBathSalts: 4372 (init) -> 4372 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemChestplateFortress: 4377 (init) -> 4377 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemLeggingsCultistRobe: 4397 (init) -> 4397 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStairsEldritch: 424 (init) -> 424 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockTaint: 235 (init) -> 235 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusExcavation: 4310 (init) -> 4310 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMagicalLog: 232 (init) -> 232 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:WandCap: 4302 (init) -> 4302 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemLeggingsThaumium: 4327 (init) -> 4327 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockArcaneDoor: 247 (init) -> 247 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockChestHungry: 246 (init) -> 246 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusShock: 4306 (init) -> 4306 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemNuggetFish: 4340 (init) -> 4340 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:PrimalArrow: 4362 (init) -> 4362 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:HoverHarness: 4352 (init) -> 4352 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticOpaque: 237 (init) -> 237 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStairsGreatwood: 416 (init) -> 416 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.neutronreflector: 4416 (init) -> 4416 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemPickThaumium: 4330 (init) -> 4330 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockTube: 240 (init) -> 240 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockWarded: 410 (init) -> 410 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemRingRunic: 4366 (init) -> 4366 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:TrunkSpawner: 4355 (init) -> 4355 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:WandRod: 4303 (init) -> 4303 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.Quad_Thoriumcell: 4425 (init) -> 4425 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusWarding: 4313 (init) -> 4313 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.Thoriumcell: 4423 (init) -> 4423 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMetalDevice: 241 (init) -> 241 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemChestplateCultistLeaderPlate: 4403 (init) -> 4403 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemEldritchObject: 4379 (init) -> 4379 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStairsSilverwood: 423 (init) -> 423 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemSanitySoap: 4392 (init) -> 4392 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockFluidPure: 229 (init) -> 229 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemInkwell: 4321 (init) -> 4321 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHoeElemental: 4346 (init) -> 4346 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemWispEssence: 4317 (init) -> 4317 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemNuggetPork: 4339 (init) -> 4339 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemLeggingsCultistPlate: 4401 (init) -> 4401 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockManaPod: 255 (init) -> 255 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockores: 438 (init) -> 438 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBootsCultist: 4398 (init) -> 4398 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemChestplateRobe: 4347 (init) -> 4347 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.integrated_circuit: 4409 (init) -> 4409 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.180k_NaK_Coolantcell: 4421 (init) -> 4421 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemGirdleRunic: 4367 (init) -> 4367 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemThaumonomicon: 4322 (init) -> 4322 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemChestplateThaumium: 4326 (init) -> 4326 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemChestplateCultistPlate: 4400 (init) -> 4400 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.Double_ThoriumcellDep: 4427 (init) -> 4427 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBucketPure: 4375 (init) -> 4375 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCustomPlant: 234 (init) -> 234 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockHole: 411 (init) -> 411 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBootsVoid: 4383 (init) -> 4383 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockmachines: 431 (init) -> 431 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemAmuletVis: 4368 (init) -> 4368 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBowBone: 4361 (init) -> 4361 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockEssentiaReservoir: 413 (init) -> 413 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemShovelThaumium: 4329 (init) -> 4329 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemLeggingsFortress: 4378 (init) -> 4378 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:TripleMeatTreat: 4341 (init) -> 4341 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMagicalLeaves: 233 (init) -> 233 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemLeggingsVoid: 4382 (init) -> 4382 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Baubles:Ring: 4300 (init) -> 4300 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemAxeThaumium: 4331 (init) -> 4331 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemChestplateVoid: 4381 (init) -> 4381 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusTrade: 4309 (init) -> 4309 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.sensorcard: 4415 (init) -> 4415 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticDoubleSlabStone: 428 (init) -> 428 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockPortalEldritch: 412 (init) -> 412 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemShard: 4319 (init) -> 4319 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemLeggingsCultistLeaderPlate: 4404 (init) -> 4404 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusPrimal: 4314 (init) -> 4314 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockEldritch: 253 (init) -> 253 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHelmetCultistPlate: 4399 (init) -> 4399 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemPrimalCrusher: 4408 (init) -> 4408 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticSlabWood: 425 (init) -> 425 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHelmetCultistRobe: 4395 (init) -> 4395 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemGolemUpgrade: 4358 (init) -> 4358 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemShovelVoid: 4384 (init) -> 4384 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusHellbat: 4307 (init) -> 4307 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemGolemDecoration: 4360 (init) -> 4360 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticDoubleSlabWood: 427 (init) -> 427 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockEldritchNothing: 414 (init) -> 414 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemLeggingsVoidFortress: 4391 (init) -> 4391 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemResonator: 4363 (init) -> 4363 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHelmetFortress: 4376 (init) -> 4376 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHelmetVoid: 4380 (init) -> 4380 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockcasings: 432 (init) -> 432 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemNuggetChicken: 4337 (init) -> 4337 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.Quad_ThoriumcellDep: 4428 (init) -> 4428 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.360k_Helium_Coolantcell: 4419 (init) -> 4419 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemGolemPlacer: 4356 (init) -> 4356 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemNugget: 4335 (init) -> 4335 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemThaumometer: 4323 (init) -> 4323 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemLootBag: 4406 (init) -> 4406 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockArcaneFurnace: 409 (init) -> 409 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCosmeticSlabStone: 426 (init) -> 426 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemSwordThaumium: 4332 (init) -> 4332 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:BootsTraveller: 4336 (init) -> 4336 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemSpawnerEgg: 4370 (init) -> 4370 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemCrystalEssence: 4373 (init) -> 4373 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusFrost: 4308 (init) -> 4308 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockFluxGas: 228 (init) -> 228 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMirror: 244 (init) -> 244 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusPouch: 4304 (init) -> 4304 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.metaitem.02: 4411 (init) -> 4411 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockTable: 245 (init) -> 245 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.metaitem.03: 4412 (init) -> 4412 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.metaitem.01: 4410 (init) -> 4410 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.ThoriumcellDep: 4426 (init) -> 4426 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHoeVoid: 4388 (init) -> 4388 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBottleTaint: 4394 (init) -> 4394 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:BlockJarFilledItem: 4353 (init) -> 4353 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:HandMirror: 4351 (init) -> 4351 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.180k_Helium_Coolantcell: 4418 (init) -> 4418 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockcasings4: 435 (init) -> 435 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockcasings3: 434 (init) -> 434 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHelmetThaumium: 4325 (init) -> 4325 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemArcaneDoor: 4334 (init) -> 4334 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockFluxGoo: 227 (init) -> 227 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockLifter: 248 (init) -> 248 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.Double_Thoriumcell: 4424 (init) -> 4424 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusFire: 4305 (init) -> 4305 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.metatool.01: 4413 (init) -> 4413 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockFluidDeath: 230 (init) -> 230 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemPickaxeElemental: 4344 (init) -> 4344 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemAxeElemental: 4345 (init) -> 4345 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:GolemBell: 4359 (init) -> 4359 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHelmetCultistLeaderPlate: 4402 (init) -> 4402 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemAmuletRunic: 4365 (init) -> 4365 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemCompassStone: 4407 (init) -> 4407 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemSanityChecker: 4393 (init) -> 4393 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:BlockJarNodeItem: 4354 (init) -> 4354 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusPortableHole: 4311 (init) -> 4311 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemGoggles: 4324 (init) -> 4324 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemAxeVoid: 4386 (init) -> 4386 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockLootUrn: 429 (init) -> 429 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBucketDeath: 4374 (init) -> 4374 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemResearchNotes: 4320 (init) -> 4320 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.blockcasings2: 433 (init) -> 433 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemHelmetVoidFortress: 4389 (init) -> 4389 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCandle: 252 (init) -> 252 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemManaBean: 4316 (init) -> 4316 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemShovelElemental: 4343 (init) -> 4343 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.60k_NaK_Coolantcell: 4420 (init) -> 4420 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockAiry: 254 (init) -> 254 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemNuggetBeef: 4338 (init) -> 4338 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemGolemCore: 4357 (init) -> 4357 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockTaintFibres: 236 (init) -> 236 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemBaubleBlanks: 4364 (init) -> 4364 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item gregtech:gt.60k_Helium_Coolantcell: 4417 (init) -> 4417 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockWoodenDevice: 242 (init) -> 242 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockStoneDevice: 243 (init) -> 243 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemChestplateVoidFortress: 4390 (init) -> 4390 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:WandCasting: 4301 (init) -> 4301 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCustomOre: 231 (init) -> 231 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockMagicBox: 249 (init) -> 249 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemEssence: 4315 (init) -> 4315 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemZombieBrain: 4371 (init) -> 4371 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemChestplateCultistRobe: 4396 (init) -> 4396 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:FocusPech: 4312 (init) -> 4312 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:blockCrystal: 239 (init) -> 239 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Injected new block/item Thaumcraft:ItemSwordVoid: 4387 (init) -> 4387 (map).
+[21:00:27] [Server thread/INFO] [FML/]: Applying holder lookups
+[21:00:27] [Server thread/INFO] [FML/]: Holder lookups applied
+[21:00:27] [Server thread/ERROR] [FML/]: The fluid IC2:water specified as default is not present - it will be reverted to default gregtech:water
+[21:00:27] [Server thread/ERROR] [FML/]: The fluid IC2:lava specified as default is not present - it will be reverted to default gregtech:lava
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKORECOPPER with ID 165.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKORETIN with ID 166.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKOREURAN with ID 167.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKORELEAD with ID 168.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKRUBWOOD with ID 169.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKRUBLEAVES with ID 176.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKRUBSAPLING with ID 177.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKHARZ with ID 178.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKRUBBER with ID 179.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKFENCEIRON with ID 180.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKALLOY with ID 181.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKBASALT with ID 182.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKALLOYGLASS with ID 183.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKDOORALLOY with ID 184.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKREINFORCEDFOAM with ID 185.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKFOAM with ID 186.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKWALL with ID 187.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKSCAFFOLD with ID 188.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKIRONSCAFFOLD with ID 189.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKMETAL with ID 190.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKCABLE with ID 191.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKKINETICGENERATOR with ID 192.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKHEATGENERATOR with ID 193.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKGENERATOR with ID 194.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKREACTORCHAMBER with ID 195.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKREACTORFLUIDPORT with ID 196.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKREACTORACCESSHATCH with ID 197.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKREACTORREDSTONEPORT with ID 198.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKREACTORVESSEL with ID 199.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKELECTRIC with ID 200.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKCHARGEPAD with ID 201.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKMACHINE with ID 202.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKMACHINE2 with ID 203.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKMACHINE3 with ID 204.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKLUMINATORDARK with ID 205.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKLUMINATOR with ID 206.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKMININGPIPE with ID 207.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKMININGTIP with ID 208.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKPERSONAL with ID 209.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKITNT with ID 210.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKNUKE with ID 211.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKDYNAMITE with ID 212.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKDYNAMITEREMOTE with ID 213.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKCROP with ID 214.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_BLOCKBARREL with ID 215.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDUUMATTER with ID 216.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDCONSTRUCTIONFOAM with ID 217.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDCOOLANT with ID 218.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDHOTCOOLANT with ID 219.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDPAHOEHOELAVA with ID 220.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDBIOMASS with ID 221.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDBIOGAS with ID 222.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDDISTILLEDWATER with ID 223.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDSUPERHEATEDSTEAM with ID 224.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDSTEAM with ID 225.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material IC2_FLUIDHOTWATER with ID 226.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKFLUXGOO with ID 227.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKFLUXGAS with ID 228.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKFLUIDPURE with ID 229.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKFLUIDDEATH with ID 230.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCUSTOMORE with ID 231.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKMAGICALLOG with ID 232.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKMAGICALLEAVES with ID 233.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCUSTOMPLANT with ID 234.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKTAINT with ID 235.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKTAINTFIBRES with ID 236.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICOPAQUE with ID 237.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICSOLID with ID 238.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCRYSTAL with ID 239.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKTUBE with ID 240.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKMETALDEVICE with ID 241.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKWOODENDEVICE with ID 242.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKSTONEDEVICE with ID 243.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKMIRROR with ID 244.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKTABLE with ID 245.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCHESTHUNGRY with ID 246.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKARCANEDOOR with ID 247.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKLIFTER with ID 248.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKMAGICBOX with ID 249.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKALCHEMYFURNACE with ID 250.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKJAR with ID 251.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCANDLE with ID 252.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKELDRITCH with ID 253.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKAIRY with ID 254.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKMANAPOD with ID 255.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKARCANEFURNACE with ID 409.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKWARDED with ID 410.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKHOLE with ID 411.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKPORTALELDRITCH with ID 412.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKESSENTIARESERVOIR with ID 413.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKELDRITCHNOTHING with ID 414.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKSTAIRSARCANESTONE with ID 415.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKSTAIRSGREATWOOD with ID 416.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKSTAIRSSILVERWOOD with ID 423.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKSTAIRSELDRITCH with ID 424.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICSLABWOOD with ID 425.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICSLABSTONE with ID 426.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICDOUBLESLABWOOD with ID 427.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICDOUBLESLABSTONE with ID 428.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKLOOTURN with ID 429.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material THAUMCRAFT_BLOCKLOOTCRATE with ID 430.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material GREGTECH_GTBLOCKMACHINES with ID 431.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material GREGTECH_GTBLOCKCASINGS with ID 432.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material GREGTECH_GTBLOCKCASINGS2 with ID 433.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material GREGTECH_GTBLOCKCASINGS3 with ID 434.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material GREGTECH_GTBLOCKCASINGS4 with ID 435.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material GREGTECH_GTBLOCKGRANITES with ID 436.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material GREGTECH_GTBLOCKCONCRETES with ID 437.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge block material GREGTECH_GTBLOCKORES with ID 438.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMHARZ with ID 4096.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMRUBBER with ID 4097.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMFLUIDCELL with ID 4098.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMUPGRADEKIT with ID 4099.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMRECIPEPART with ID 4100.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCASING with ID 4101.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCRUSHEDORE with ID 4102.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPURIFIEDCRUSHEDORE with ID 4103.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPLATES with ID 4104.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMDENSEPLATES with ID 4105.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTURNINGBLANKS with ID 4106.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTURNINGBLANKSWOOD with ID 4107.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMDUSTSMALL with ID 4108.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMDUST with ID 4109.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMDUST2 with ID 4110.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMINGOT with ID 4111.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORLITHIUMCELL with ID 4112.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTRITIUMCELL with ID 4113.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMURAN with ID 4114.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMMOX with ID 4115.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPLUTONIUM with ID 4116.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPLUTONIUMSMALL with ID 4117.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMURAN235 with ID 4118.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMURAN235SMALL with ID 4119.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMURAN238 with ID 4120.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMFUELROD with ID 4121.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMRTGPELLET with ID 4122.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTCIRCUIT with ID 4123.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTCIRCUITADV with ID 4124.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTALLOY with ID 4125.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTCARBONFIBRE with ID 4126.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTCARBONMESH with ID 4127.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTCARBONPLATE with ID 4128.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMOREIRIDIUM with ID 4129.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTIRIDIUM with ID 4130.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSHARDIRIDIUM with ID 4131.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTREETAP with ID 4132.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLBRONZEPICKAXE with ID 4133.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLBRONZEAXE with ID 4134.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLBRONZESWORD with ID 4135.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLBRONZESPADE with ID 4136.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLBRONZEHOE with ID 4137.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLWRENCH with ID 4138.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLCUTTER with ID 4139.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMFOAMSPRAYER with ID 4140.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLBOX with ID 4141.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCONTAINMENTBOX with ID 4142.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLFORGEHAMMER with ID 4143.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMLATHINGTOOL with ID 4144.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCRYSTALMEMORY with ID 4145.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLDRILL with ID 4146.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLDDRILL with ID 4147.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLIRIDIUMDRILL with ID 4148.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLCHAINSAW with ID 4149.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLWRENCHELECTRIC with ID 4150.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTREETAPELECTRIC with ID 4151.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLMININGLASER with ID 4152.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLMETER with ID 4153.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSCANNER with ID 4154.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSCANNERADV with ID 4155.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_OBSCURATOR with ID 4156.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMFREQ with ID 4157.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMNANOSABER with ID 4158.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_PLASMALAUNCHER with ID 4159.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_WINDMETER with ID 4160.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORHAZMATHELMET with ID 4161.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORHAZMATCHESTPLATE with ID 4162.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORHAZMATLEGGINGS with ID 4163.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORRUBBOOTS with ID 4164.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORBRONZEHELMET with ID 4165.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORBRONZECHESTPLATE with ID 4166.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORBRONZELEGS with ID 4167.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORBRONZEBOOTS with ID 4168.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORALLOYCHESTPLATE with ID 4169.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORNANOHELMET with ID 4170.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORNANOCHESTPLATE with ID 4171.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORNANOLEGS with ID 4172.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORNANOBOOTS with ID 4173.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORQUANTUMHELMET with ID 4174.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORQUANTUMCHESTPLATE with ID 4175.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORQUANTUMLEGS with ID 4176.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORQUANTUMBOOTS with ID 4177.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORJETPACK with ID 4178.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORJETPACKELECTRIC with ID 4179.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORBATPACK with ID 4180.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORADVBATPACK with ID 4181.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORENERGYPACK with ID 4182.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMARMORCFPACK with ID 4183.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSOLARHELMET with ID 4184.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSTATICBOOTS with ID 4185.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMNIGHTVISIONGOGGLES with ID 4186.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBATREDISCHARGED with ID 4187.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBATRE with ID 4188.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMADVBAT with ID 4189.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBATCRYSTAL with ID 4190.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBATLAMACRYSTAL with ID 4191.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBATSU with ID 4192.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBATCHARGERE with ID 4193.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBATCHARGEADV with ID 4194.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBATCHARGECRYSTAL with ID 4195.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBATCHARGELAMACRYSTAL with ID 4196.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCABLE with ID 4197.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCELLEMPTY with ID 4198.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTINCAN with ID 4199.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTINCANFILLED with ID 4200.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORMOXSIMPLE with ID 4201.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORMOXDUAL with ID 4202.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORMOXQUAD with ID 4203.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORURANIUMSIMPLE with ID 4204.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORURANIUMDUAL with ID 4205.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORURANIUMQUAD with ID 4206.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORMOXSIMPLEDEPLETED with ID 4207.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORMOXDUALDEPLETED with ID 4208.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORMOXQUADDEPLETED with ID 4209.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORURANIUMSIMPLEDEPLETED with ID 4210.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORURANIUMDUALDEPLETED with ID 4211.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORURANIUMQUADDEPLETED with ID 4212.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORCOOLANTSIMPLE with ID 4213.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORCOOLANTTRIPLE with ID 4214.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORCOOLANTSIX with ID 4215.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORPLATING with ID 4216.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORPLATINGHEAT with ID 4217.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORPLATINGEXPLOSIVE with ID 4218.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORHEATSWITCH with ID 4219.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORHEATSWITCHCORE with ID 4220.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORHEATSWITCHSPREAD with ID 4221.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORHEATSWITCHDIAMOND with ID 4222.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORVENT with ID 4223.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORVENTCORE with ID 4224.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORVENTGOLD with ID 4225.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORVENTSPREAD with ID 4226.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORVENTDIAMOND with ID 4227.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORREFLECTOR with ID 4228.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORREFLECTORTHICK with ID 4229.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORCONDENSATOR with ID 4230.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_REACTORCONDENSATORLAP with ID 4231.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTFBP with ID 4232.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTFBPCULTIVATION with ID 4233.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTFBPIRRIGATION with ID 4234.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTFBPCHILLING with ID 4235.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTFBPDESERTIFICATION with ID 4236.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTFBPFLATIFICATION with ID 4237.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTFBPMUSHROOM with ID 4238.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTCOALBALL with ID 4239.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTCOALBLOCK with ID 4240.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTCOALCHUNK with ID 4241.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTINDUSTRIALDIAMOND with ID 4242.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSLAG with ID 4243.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSCRAP with ID 4244.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSCRAPBOX with ID 4245.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMFUELPLANTBALL with ID 4246.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBIOCHAFF with ID 4247.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTER with ID 4248.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERBLACK with ID 4249.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERRED with ID 4250.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERGREEN with ID 4251.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERBROWN with ID 4252.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERBLUE with ID 4253.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERPURPLE with ID 4254.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERCYAN with ID 4255.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERLIGHTGREY with ID 4256.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERDARKGREY with ID 4257.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERPINK with ID 4258.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERLIME with ID 4259.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERYELLOW with ID 4260.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERCLOUD with ID 4261.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERMAGENTA with ID 4262.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERORANGE with ID 4263.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLPAINTERWHITE with ID 4264.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMDYNAMITE with ID 4265.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMDYNAMITESTICKY with ID 4266.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMREMOTE with ID 4267.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_UPGRADEMODULE with ID 4268.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCOIN with ID 4269.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMDOORALLOY with ID 4270.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMPARTCFPOWDER with ID 4271.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMGRINPOWDER with ID 4272.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMDEBUG with ID 4273.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBOAT with ID 4274.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMWEEDINGTROWEL with ID 4275.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMWEED with ID 4276.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCROPSEED with ID 4277.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCROPNALYZER with ID 4278.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMFERTILIZER with ID 4279.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCELLHYDRANT with ID 4280.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTOOLHOE with ID 4281.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMTERRAWART with ID 4282.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMWEEDEX with ID 4283.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMMUGEMPTY with ID 4284.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCOFEEBEANS with ID 4285.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMCOFEEPOWDER with ID 4286.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMMUGCOFFEE with ID 4287.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMHOPS with ID 4288.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMBARREL with ID 4289.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMMUGBOOZE with ID 4290.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMWOODROTOR with ID 4291.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMIRONROTOR with ID 4292.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSTEELROTOR with ID 4293.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMWCARBONROTOR with ID 4294.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSTEAMTURBINE with ID 4295.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMSTEAMTURBINEBLADE with ID 4296.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMIRONBLOCKCUTTINGBLADE with ID 4297.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMADVIRONBLOCKCUTTINGBLADE with ID 4298.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material IC2_ITEMDIAMONDBLOCKCUTTINGBLADE with ID 4299.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material BAUBLES_RING with ID 4300.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_WANDCASTING with ID 4301.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_WANDCAP with ID 4302.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_WANDROD with ID 4303.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSPOUCH with ID 4304.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSFIRE with ID 4305.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSSHOCK with ID 4306.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSHELLBAT with ID 4307.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSFROST with ID 4308.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSTRADE with ID 4309.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSEXCAVATION with ID 4310.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSPORTABLEHOLE with ID 4311.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSPECH with ID 4312.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSWARDING with ID 4313.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_FOCUSPRIMAL with ID 4314.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMESSENCE with ID 4315.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMMANABEAN with ID 4316.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMWISPESSENCE with ID 4317.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMRESOURCE with ID 4318.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSHARD with ID 4319.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMRESEARCHNOTES with ID 4320.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMINKWELL with ID 4321.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMTHAUMONOMICON with ID 4322.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMTHAUMOMETER with ID 4323.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMGOGGLES with ID 4324.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHELMETTHAUMIUM with ID 4325.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATETHAUMIUM with ID 4326.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSTHAUMIUM with ID 4327.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBOOTSTHAUMIUM with ID 4328.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSHOVELTHAUMIUM with ID 4329.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMPICKTHAUMIUM with ID 4330.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMAXETHAUMIUM with ID 4331.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSWORDTHAUMIUM with ID 4332.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHOETHAUMIUM with ID 4333.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMARCANEDOOR with ID 4334.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMNUGGET with ID 4335.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_BOOTSTRAVELLER with ID 4336.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMNUGGETCHICKEN with ID 4337.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMNUGGETBEEF with ID 4338.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMNUGGETPORK with ID 4339.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMNUGGETFISH with ID 4340.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_TRIPLEMEATTREAT with ID 4341.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSWORDELEMENTAL with ID 4342.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSHOVELELEMENTAL with ID 4343.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMPICKAXEELEMENTAL with ID 4344.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMAXEELEMENTAL with ID 4345.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHOEELEMENTAL with ID 4346.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATEROBE with ID 4347.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSROBE with ID 4348.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBOOTSROBE with ID 4349.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ARCANEDOORKEY with ID 4350.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_HANDMIRROR with ID 4351.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_HOVERHARNESS with ID 4352.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_BLOCKJARFILLEDITEM with ID 4353.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_BLOCKJARNODEITEM with ID 4354.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_TRUNKSPAWNER with ID 4355.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMGOLEMPLACER with ID 4356.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMGOLEMCORE with ID 4357.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMGOLEMUPGRADE with ID 4358.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_GOLEMBELL with ID 4359.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMGOLEMDECORATION with ID 4360.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBOWBONE with ID 4361.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_PRIMALARROW with ID 4362.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMRESONATOR with ID 4363.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBAUBLEBLANKS with ID 4364.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMAMULETRUNIC with ID 4365.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMRINGRUNIC with ID 4366.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMGIRDLERUNIC with ID 4367.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMAMULETVIS with ID 4368.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMGIRDLEHOVER with ID 4369.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSPAWNEREGG with ID 4370.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMZOMBIEBRAIN with ID 4371.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBATHSALTS with ID 4372.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCRYSTALESSENCE with ID 4373.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBUCKETDEATH with ID 4374.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBUCKETPURE with ID 4375.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHELMETFORTRESS with ID 4376.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATEFORTRESS with ID 4377.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSFORTRESS with ID 4378.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMELDRITCHOBJECT with ID 4379.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHELMETVOID with ID 4380.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATEVOID with ID 4381.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSVOID with ID 4382.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBOOTSVOID with ID 4383.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSHOVELVOID with ID 4384.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMPICKVOID with ID 4385.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMAXEVOID with ID 4386.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSWORDVOID with ID 4387.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHOEVOID with ID 4388.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHELMETVOIDFORTRESS with ID 4389.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATEVOIDFORTRESS with ID 4390.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSVOIDFORTRESS with ID 4391.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSANITYSOAP with ID 4392.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSANITYCHECKER with ID 4393.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBOTTLETAINT with ID 4394.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHELMETCULTISTROBE with ID 4395.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATECULTISTROBE with ID 4396.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSCULTISTROBE with ID 4397.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMBOOTSCULTIST with ID 4398.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHELMETCULTISTPLATE with ID 4399.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATECULTISTPLATE with ID 4400.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSCULTISTPLATE with ID 4401.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMHELMETCULTISTLEADERPLATE with ID 4402.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATECULTISTLEADERPLATE with ID 4403.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSCULTISTLEADERPLATE with ID 4404.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMSWORDCRIMSON with ID 4405.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMLOOTBAG with ID 4406.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMCOMPASSSTONE with ID 4407.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material THAUMCRAFT_ITEMPRIMALCRUSHER with ID 4408.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTINTEGRATED_CIRCUIT with ID 4409.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTMETAITEM01 with ID 4410.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTMETAITEM02 with ID 4411.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTMETAITEM03 with ID 4412.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTMETATOOL01 with ID 4413.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTGREGTECH_FLUIDDISPLAY with ID 4414.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTSENSORCARD with ID 4415.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTNEUTRONREFLECTOR with ID 4416.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GT60K_HELIUM_COOLANTCELL with ID 4417.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GT180K_HELIUM_COOLANTCELL with ID 4418.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GT360K_HELIUM_COOLANTCELL with ID 4419.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GT60K_NAK_COOLANTCELL with ID 4420.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GT180K_NAK_COOLANTCELL with ID 4421.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GT360K_NAK_COOLANTCELL with ID 4422.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTTHORIUMCELL with ID 4423.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTDOUBLE_THORIUMCELL with ID 4424.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTQUAD_THORIUMCELL with ID 4425.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTTHORIUMCELLDEP with ID 4426.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTDOUBLE_THORIUMCELLDEP with ID 4427.
+[21:00:28] [Server thread/INFO] [FML/]: Injected new Forge item material GREGTECH_GTQUAD_THORIUMCELLDEP with ID 4428.
+[21:00:28] [Server thread/INFO] [/]: Adding biome mapping 192 Tainted Land at BiomeBase[192]
+[21:00:28] [Server thread/INFO] [/]: Adding biome mapping 193 Magical Forest at BiomeBase[193]
+[21:00:28] [Server thread/INFO] [/]: Adding biome mapping 194 Eerie at BiomeBase[194]
+[21:00:28] [Server thread/INFO] [/]: Adding biome mapping 195 Eldritch at BiomeBase[195]
+[21:00:28] [Server thread/INFO] [FML/]: Loading dimension 0 (world) (net.minecraft.server.dedicated.DedicatedServer@43c3b4d1)
+[21:00:28] [Server thread/INFO] [FML/]: Loading dimension -42 (DIM-42) (net.minecraft.server.dedicated.DedicatedServer@43c3b4d1)
+[21:00:28] [Server thread/INFO] [FML/]: Loading dimension 1 (DIM1) (net.minecraft.server.dedicated.DedicatedServer@43c3b4d1)
+[21:00:28] [Server thread/INFO] [FML/]: Loading dimension -1 (DIM-1) (net.minecraft.server.dedicated.DedicatedServer@43c3b4d1)
+[21:00:29] [Server thread/INFO] [Minecraft/]: Server permissions file permissions.yml is empty, ignoring it
+[21:03:19] [Netty IO #2/INFO] [FML/]: Client protocol version 1
+[21:03:19] [Netty IO #2/INFO] [FML/]: Client attempting to join with 10 mods : Thaumcraft@4.2.3.5,InputFix@1.7.x-v2,voxelmap@1.7.10,FML@7.10.85.1230,Forge@10.13.2.1230,IC2@2.2.810-experimental,gregtech@MC1710,mcp@9.05,craftguide@1.6.8.1,Baubles@1.0.1.10
+[21:03:19] [Netty IO #2/INFO] [FML/]: Attempting connection with missing mods [] at CLIENT
+[21:03:19] [Server thread/INFO] [FML/]: [Server thread] Server side modded connection established
+[21:03:19] [Server thread/WARN] [Baubles/]: Data not found for sunbird. Trying to load backup data.
+[21:03:19] [Server thread/WARN] [THAUMCRAFT/]: Thaumcraft data not found for sunbird. Trying to load backup Thaumcraft data.
+[21:03:19] [Server thread/INFO] [THAUMCRAFT/]: Assigning initial aspects to sunbird
+[21:05:18] [Server thread/INFO] [/]: CONSOLE: Stopping the server..
+[21:05:18] [Server thread/INFO] [FML/]: Unloading dimension 0
+[21:05:18] [Server thread/INFO] [FML/]: Unloading dimension -1
+[21:05:18] [Server thread/INFO] [FML/]: Unloading dimension 1
+[21:05:18] [Server thread/INFO] [FML/]: Unloading dimension -42
+[21:05:18] [Server thread/INFO] [FML/]: Applying holder lookups
+[21:05:18] [Server thread/INFO] [FML/]: Holder lookups applied

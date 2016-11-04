@@ -1,0 +1,123 @@
+# This is the main configuration file for TileEntities.
+# 
+# If you need help with the configuration or have any questions related to Cauldron,
+# join us at the IRC or drop by our forums and leave a post.
+# 
+# IRC: #cauldron @ irc.esper.net ( http://webchat.esper.net/?channel=cauldron )
+# Forums: http://cauldron.minecraftforge.net/
+# 
+# Setting: settings.skip-tileentity-ticks Default: true   # If enabled, turns on tileentity tick skip feature when no players are near.
+# Setting: debug.enable-te-inventory-warning Default: false   # Set true to detect which tileentities with inventory failed to detect size for Bukkit's InventoryType enum. Note: This may detect a false-positive.
+# Setting: settings.prevent-invalid-tileentity-updates Default: true   # Used to determine if a tileentity should tick and if not the TE is added to a ban list. Note: This should help improve performance.
+# Setting: debug.enable-te-can-update-warning Default: false   # Set true to detect which tileentities should not be ticking.
+# Setting: debug.enable-te-place-warning Default: false   # Warn when a mod requests tile entity from a block that doesn't support one
+
+settings:
+  skip-tileentity-ticks: true
+  prevent-invalid-tileentity-updates: true
+debug:
+  enable-te-inventory-warning: false
+  enable-te-can-update-warning: false
+  enable-te-place-warning: false
+config-version: 1
+world-settings:
+  default:
+    net-minecraft-tileentity-TileEntityMobSpawner:
+      tick-no-players: false
+      tick-interval: 1
+    net-minecraft-tileentity-TileEntityChest:
+      tick-no-players: false
+      tick-interval: 1
+    net-minecraft-tileentity-TileEntityFurnace:
+      tick-no-players: false
+      tick-interval: 1
+    net-minecraft-tileentity-TileEntityBeacon:
+      tick-no-players: false
+      tick-interval: 1
+    net-minecraft-tileentity-TileEntityEnchantmentTable:
+      tick-no-players: false
+      tick-interval: 1
+    net-minecraft-tileentity-TileEntityEnderChest:
+      tick-no-players: false
+      tick-interval: 1
+    net-minecraft-tileentity-TileEntityBrewingStand:
+      tick-no-players: false
+      tick-interval: 1
+    net-minecraft-tileentity-TileEntityPiston:
+      tick-no-players: false
+      tick-interval: 1
+    gregtech-api-metatileentity-BaseMetaTileEntity:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-wiring-TileEntityElectricMFSU:
+      tick-no-players: false
+      tick-interval: 1
+    gregtech-api-metatileentity-BaseMetaPipeEntity:
+      tick-no-players: false
+      tick-interval: 1
+    net-minecraft-tileentity-TileEntityDaylightDetector:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-reactor-tileentity-TileEntityNuclearReactorElectric:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-reactor-tileentity-TileEntityReactorChamberElectric:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-reactor-tileentity-TileEntityReactorRedstonePort:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-machine-tileentity-TileEntityLiquidHeatExchanger:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-machine-tileentity-TileEntitySteamGenerator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-machine-tileentity-TileEntityFluidRegulator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-kineticgenerator-tileentity-TileEntitySteamKineticGenerator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-generator-tileentity-TileEntityKineticGenerator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-machine-tileentity-TileEntityCondenser:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-reactor-tileentity-TileEntityReactorFluidPort:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-machine-tileentity-TileEntityPump:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-machine-tileentity-TileEntityCanner:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-machine-tileentity-TileEntityFluidDistributor:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-generator-tileentity-TileEntityStirlingGenerator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-heatgenerator-tileentity-TileEntityRTHeatGenerator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-kineticgenerator-tileentity-TileEntityStirlingKineticGenerator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-generator-tileentity-TileEntityGeoGenerator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-heatgenerator-tileentity-TileEntityFluidHeatGenerator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-wiring-TileEntityChargepadMFSU:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-wiring-TileEntityLuminator:
+      tick-no-players: false
+      tick-interval: 1
+    ic2-core-block-generator-tileentity-TileEntityRTGenerator:
+      tick-no-players: false
+      tick-interval: 1
