@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>注册</title>
 </head>
-<body>
+<body style="background-color: #303030; color:#c0c0c0;">
 	${message} <br>
 	<form action="/WeiBuo/Registerservlet" method="post">
 		<table>

@@ -15,10 +15,10 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-import OMXInterface.player;
 import backgroundThreads.keepOnline.Online;
 import backgroundThreads.update.GetFile;
 import gpio.GPIOinterface;
+import omxInterface.player;
 import sqlOperation.SqlOperation;
 import ui.MainUI;
 import ui.SetUp;

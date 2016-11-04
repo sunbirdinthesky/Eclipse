@@ -1,4 +1,4 @@
-package OMXInterface;
+package omxInterface;
 
 import java.io.IOException;
 import java.util.Date;

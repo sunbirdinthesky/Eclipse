@@ -6,17 +6,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>欢迎登陆</title>
 </head>
-<body>
-	<table>
-		<tr>
-			<td> <image width=100 height=100 src="/WeiBuo/res/userDefault.png">
-			<td>140字，记录下您生活的点点滴滴 
-		</tr>
-		<tr>
-			<td>欢迎您, ${username}
-			<td>
-<%-- 			<td><jsp:include page='<%="/Messageservlet"%>'></jsp:include></td> --%>
-		</tr>
-	</table>
+<script>
+	void jump(val) {
+// 		session.setAttribute("id", val);
+		window.self.location = "/Deleteservlet"; 
+	}
+</script>
+<body style="background-color: #303030">
+		<table style="color: #c0c0c0">
+			<tr>
+				<td width=300 align="right"><image width=100 height=100
+						src="/WeiBuo/res/1.JPG">
+				<td align="center">140字，记录下您生活的点点滴滴
+			</tr>
+			<tr>
+				<td width=300 align="right">欢迎您, ${username}
+			</tr>
+			<tr>
+				<td>
+					<div style="overflow: auto; height: 500px; width: 1000px;">
+						<jsp:include page='<%="/Messageservlet"%>'></jsp:include>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<td align="center"> made by SunBird
+			</tr>
+		</table>
 </body>
 </html>
