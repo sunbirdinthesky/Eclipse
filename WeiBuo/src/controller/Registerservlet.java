@@ -27,9 +27,19 @@ public class Registerservlet extends HttpServlet {
 		String id = request.getParameter("username");
 		String passwd = request.getParameter("passwd");
 		String confirmPasswd = request.getParameter("confirmpasswd");
+		
 
 		if (id.equals("") || passwd.equals("") || confirmPasswd.equals("")) {// 验证是否为空字符（忘了填信息了）
 			request.setAttribute("message", "please enter all messages");
+			RequestDispatcher rd = request
+					.getRequestDispatcher("/view/register.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		
+
+		if (id.equals("null")) {
+			request.setAttribute("message", "用户名已存在");
 			RequestDispatcher rd = request
 					.getRequestDispatcher("/view/register.jsp");
 			rd.forward(request, response);
@@ -49,7 +59,7 @@ public class Registerservlet extends HttpServlet {
 										+ "\'" + id + "\'," + "\'" + passwd
 										+ "\')")) {
 							sql.SqlUpdate(
-									"CREATE TABLE" + id + "(`id` INT NOT NULL auto_increment,`publishTime` DATETIME NOT NULL,`content` TEXT(282) NULL,PRIMARY KEY (`id`))");
+									"CREATE TABLE " + id + "(`id` INT NOT NULL auto_increment,`publishTime` DATETIME NOT NULL,`content` TEXT(282) NULL,PRIMARY KEY (`id`))");
 							request.setAttribute("message", "注册成功");
 							RequestDispatcher rd = request
 									.getRequestDispatcher("/view/index.jsp");

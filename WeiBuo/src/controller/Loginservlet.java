@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import sqlOperation.SqlOperation;
 
 /**
@@ -18,7 +17,12 @@ import sqlOperation.SqlOperation;
 public class Loginservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("username");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/index.jsp");
+		rd.forward(request, response);
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -51,9 +55,9 @@ public class Loginservlet extends HttpServlet {
 				if (sql.rSet.next() 
 						&& sql.rSet.getString("passwd").equals(passwd)) {
 					
-					request.setAttribute("username", id);
-					RequestDispatcher rd = request.getRequestDispatcher("/view/member.jsp");
-					rd.forward(request, response);
+					HttpSession session = request.getSession(true);
+					session.setAttribute("username", id);
+					response.sendRedirect("/WeiBuo/view/member.jsp");
 					return;
 				}
 				else {

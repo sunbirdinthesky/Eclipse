@@ -11,31 +11,33 @@ import javax.servlet.http.HttpSession;
 import model.User;
 
 /**
- * Servlet implementation class Deleteservlet
+ * Servlet implementation class Publicservlet
  */
-@WebServlet("/Deleteservlet")
-public class Deleteservlet extends HttpServlet {
+@WebServlet("/Publicservlet")
+public class Publicservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
+		request.setCharacterEncoding("UTF-8");
 		
-		String id = request.getParameter("id");
+		String content;
 		String userName;
 		try {
+			content = request.getParameter("contain");
 			userName = session.getAttribute("username").toString();
 		} catch (Exception e) {
-			response.sendRedirect("/WeiBuo/view/index.jsp");
+			e.printStackTrace();
+			response.sendRedirect("/WeiBuo/view/member.jsp");
 			return;
 		}
-			
 		
-		User userBlog = new User(userName);
-		userBlog.deleteBlog(Integer.valueOf(id));
+		if (content == null || content.isEmpty())
+			response.sendRedirect("/WeiBuo/view/member.jsp");
+		
+		User user = new User(userName);
+		user.publishBlog(content);
 		response.sendRedirect("/WeiBuo/view/member.jsp");
 	}
+
 }

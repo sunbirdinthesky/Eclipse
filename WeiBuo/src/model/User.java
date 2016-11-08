@@ -40,6 +40,7 @@ public class User {
 	}
 	
 	public void publishBlog(String content) {
-		sql.SqlUpdate("insert into sunbird(publishTime, content) values(now(), \"" + content + "\")");
+		
+		sql.SqlUpdate("insert into " + userName + "(publishTime, content) values(now(), \"" + content + "\")");
 	}
 }
