@@ -1,3 +1,5 @@
+import classes.Proce;
+
 
 
 class createpc {

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% username = request.getParameter("username"); %>
-	<h3><font color = "blue">Hello, <%=username %>   </font></h3>
+<%-- 	<% username = request.getParameter("username"); %> --%>
+<%-- 	<h3><font color = "blue">Hello, <%=username %>   </font></h3> --%>
 </body>
 </html>
