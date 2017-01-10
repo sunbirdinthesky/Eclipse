@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;AdMachine&apos;&#x0D;&#x0A;- Original project: &apos;AdMachine&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     pi4j-core.jar&#x0D;&#x0A;     pi4j-device.jar&#x0D;&#x0A;     pi4j-gpio-extension.jar&#x0D;&#x0A;     pi4j-service.jar" description="Delete elements" element1="pi4j-core.jar" element2="pi4j-service.jar" element3="pi4j-device.jar" element4="pi4j-gpio-extension.jar" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1470907570815" subPackages="false" version="1.0"/>
+</session>

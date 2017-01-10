@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+org.eclipse.rse.preferences.order.connections=SunBird-PC.Local;SunBird-PC.192.168.0.129
+org.eclipse.rse.preferences.verify.connection=true
+org.eclipse.rse.shells.ui.view.SystemViewRemoteOutputAdapter\:org.eclipse.rse.shells.ui.view.SystemCommandsView=null

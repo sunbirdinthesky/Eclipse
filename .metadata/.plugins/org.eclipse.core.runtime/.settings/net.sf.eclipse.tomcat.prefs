@@ -1,0 +1,11 @@
+configMode=serverFile
+contextsDir=C\:\\Program Files\\eclipse\\apache-tomcat-8.0.37\\conf\\Catalina\\localhost
+eclipse.preferences.version=1
+managerPassword=sunbird
+managerUrl=http\://localhost\:8080/manager
+managerUser=sunbird
+projectsInSourcePath=testweb;
+tomcatConfigFile=C\:\\Program Files\\eclipse\\apache-tomcat-8.0.37\\conf\\server.xml
+tomcatDir=C\:\\Program Files\\eclipse\\apache-tomcat-8.0.37
+tomcatJRE=1470053640337
+tomcatVersion=tomcatV8

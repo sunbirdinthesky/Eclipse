@@ -1,0 +1,130 @@
+
+import java.io.File;  
+import java.io.FileOutputStream;
+import java.io.IOException;  
+import java.io.OutputStream;
+import org.apache.commons.net.ftp.FTP;  
+import org.apache.commons.net.ftp.FTPClient;  
+  
+public interface ftpRename {  
+    /** 
+     * 连接FTP 
+     *  
+     * @param ip 
+     * @param port 
+     * @param userName 
+     * @param password 
+     * @param file 
+     * @param remotePathName 
+     * @param remoteName 
+     */  
+	static void rename(String ip, int port, String userName,  
+            String password, File file, String remotePathName, 
+            String remoteName) {  
+        FTPClient ftpClient = new FTPClient();  
+        try {  
+            ftpClient.connect(ip, port);  
+            ftpClient.login(userName, password);  
+            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);  
+            ftpClient.enterLocalPassiveMode();  
+  
+            download(ftpClient, file, remotePathName, remoteName);  
+  
+        } catch (Exception e) {  
+            System.out.println("fail to download files : " + e.getMessage());  
+        } finally {  
+            if (ftpClient != null && ftpClient.isConnected()) {  
+                try {  
+                    ftpClient.disconnect();  
+                    System.out.println("file downloaded");
+                } catch (IOException e) {  
+                    System.out.println("ftp fails to disconnect : "  
+                            + e.getMessage());  
+                }  
+            }  
+        }  
+    }  
+	
+  
+    /** 
+     * 上传文件 
+     *  
+     * @param ftpClient 
+     * @param file 
+     * @param remotePathName 
+     * @param remoteName 
+     */  
+    static void download(FTPClient ftpClient, File file,  
+            String remotePathName, String remoteName) throws Exception {  
+        try {  
+            changeDirectory(ftpClient, remotePathName);  
+            downloadFile(ftpClient, file, remotePathName, remoteName);  
+            backToRootDirectory(ftpClient);  
+        } catch (IOException e) {  
+        }  
+    }  
+  
+    /** 
+     * 切换目录 
+     *  
+     * @param ftpClient 
+     * @param path 
+     * @throws IOException 
+     */  
+    static void changeDirectory(FTPClient ftpClient, String path)  
+            throws IOException {  
+        int nextSeperator = path.indexOf("/", 1);  
+        String currentPath = null;  
+        if (nextSeperator < 0) {  
+            nextSeperator = path.length();  
+            currentPath = path.substring(1, nextSeperator);  
+            changeDirectory0(ftpClient, currentPath);  
+            return;  
+        } else {  
+            currentPath = path.substring(1, nextSeperator);  
+            changeDirectory0(ftpClient, currentPath);  
+            changeDirectory(ftpClient, path.substring(nextSeperator));  
+        }  
+    }  
+  
+    /** 
+     * 如果切换的目录不存在 就创建一个新的目录 
+     *  
+     * @param ftpClient 
+     * @param path 
+     * @throws IOException 
+     */  
+    static void changeDirectory0(FTPClient ftpClient, String path)  
+            throws IOException {  
+        if (!ftpClient.changeWorkingDirectory(path)) {  
+            ftpClient.makeDirectory(path);  
+        }  
+        ftpClient.changeWorkingDirectory(path);  
+    }  
+    
+    
+  
+    /** 
+     * 回到根目录根 
+     *  
+     * @param ftpClient 
+     * @throws IOException 
+     */  
+    static void backToRootDirectory(FTPClient ftpClient)  
+            throws IOException {  
+        ftpClient.changeWorkingDirectory("/");  
+    }  
+  
+    /** 
+     * 真正的下载文件方法 
+     *  
+     * @param ftpClient 
+     * @param file 
+     * @param remotePathName 
+     * @param remoteName 
+     */  
+    static void downloadFile(FTPClient ftpClient, File file,  
+            String remotePathName, String remoteName) throws Exception {
+    	ftpClient.rename(remoteName, file.getName());
+    }  
+}  

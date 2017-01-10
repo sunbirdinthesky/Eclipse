@@ -1,0 +1,240 @@
+package ui_logic;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.MouseTrackListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import backGround.AdsRefresh;
+import backGround.DeviceRefresh;
+import ui.MainUI;
+import vars.AdFile;
+import vars.Vars;
+
+public class MainUiLogic extends MainUI {
+	private AdsRefresh adsRefresh;
+	private DeviceRefresh deviceRefresh;
+
+	/**
+	 * @wbp.parser.entryPoint
+	 */
+	public static void main(String[] s) {
+		try {
+			MainUiLogic window = new MainUiLogic();
+			window.open();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void LogicInit() {
+		OptionSelect(1);
+		OptionButtonsInit();
+		adsRefresh = new AdsRefresh();
+		adsRefresh.start();
+		deviceRefresh = new DeviceRefresh();
+		deviceRefresh.start();
+	}
+
+	@Override
+	public void Update() {
+		if (!deviceRefresh.isAlive()) {
+			deviceRefresh = new DeviceRefresh();
+			deviceRefresh.start();
+		}
+		if (!adsRefresh.isAlive()) {
+			adsRefresh = new AdsRefresh();
+			adsRefresh.start();
+		}
+	}
+
+	void adsListRefresh() {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				while (!Thread.interrupted()) {
+					ListAds.dispose();
+					ListAds = new Composite(ContainerADs, SWT.NONE);
+					ListAds.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					ListAds.setBounds(26, 138, 640, 534);
+					int i = 1;
+					for (AdFile tmp : Vars.ads) {
+						Composite tigger = new Composite(ListAds, SWT.NONE);
+						tigger.setBounds(10, i * 23, 648, 23);
+						tigger.setBackground(SWTResourceManager
+								.getColor(SWT.COLOR_TRANSPARENT));
+						
+						Label nameLable = new Label(ListAds, SWT.NONE);
+						nameLable.setBounds(10, i * 23, 180, 23);
+						nameLable.setBackground(SWTResourceManager
+								.getColor(SWT.COLOR_TRANSPARENT));
+						nameLable.setText(tmp.name);
+						
+						Label priceLable = new Label(ListAds, SWT.NONE);
+						priceLable.setBounds(270, i * 23, 120, 23);
+						priceLable.setBackground(SWTResourceManager
+								.getColor(SWT.COLOR_TRANSPARENT));
+						priceLable.setText(String.valueOf(tmp.playCnt));
+						
+						Label playcntLable = new Label(ListAds, SWT.NONE);
+						playcntLable.setBounds(400, i * 23, 120, 23);
+						playcntLable.setBackground(SWTResourceManager
+								.getColor(SWT.COLOR_TRANSPARENT));
+						playcntLable.setText(String.valueOf("1"));
+
+						Label during = new Label(ListAds, SWT.NONE);
+						during.setBounds(526, i * 23, 100, 23);
+						during.setBackground(SWTResourceManager
+								.getColor(SWT.COLOR_TRANSPARENT));
+						during.setText(tmp.begin + '~' + tmp.end);
+					}
+				}
+			}
+		});
+	}
+
+	void OptionButtonsInit() {
+
+		Button_Close.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				shell.dispose();
+			}
+		});
+
+		Button_AboutDevice.addMouseTrackListener(new MouseTrackListener() {
+			public void mouseHover(MouseEvent arg0) {
+			}
+
+			public void mouseExit(MouseEvent arg0) {
+				Button_AboutDevice.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			}
+
+			public void mouseEnter(MouseEvent arg0) {
+				Button_AboutDevice
+						.setBackground(SWTResourceManager.getColor(38, 18, 10));
+			}
+		});
+		Button_AboutDevice.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseUp(MouseEvent arg0) {
+				OptionSelect(1);
+			}
+
+			@Override
+			public void mouseDown(MouseEvent arg0) {
+			}
+
+			@Override
+			public void mouseDoubleClick(MouseEvent arg0) {
+			}
+		});
+
+		Button_AboutADs.addMouseTrackListener(new MouseTrackListener() {
+			public void mouseHover(MouseEvent arg0) {
+			}
+
+			public void mouseExit(MouseEvent arg0) {
+				Button_AboutADs.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			}
+
+			public void mouseEnter(MouseEvent arg0) {
+				Button_AboutADs
+						.setBackground(SWTResourceManager.getColor(38, 18, 10));
+			}
+		});
+		Button_AboutADs.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseUp(MouseEvent arg0) {
+				OptionSelect(2);
+			}
+
+			@Override
+			public void mouseDown(MouseEvent arg0) {
+			}
+
+			@Override
+			public void mouseDoubleClick(MouseEvent arg0) {
+			}
+		});
+
+		Button_AboutUpload.addMouseTrackListener(new MouseTrackListener() {
+			public void mouseHover(MouseEvent arg0) {
+			}
+
+			public void mouseExit(MouseEvent arg0) {
+				Button_AboutUpload.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			}
+
+			public void mouseEnter(MouseEvent arg0) {
+				Button_AboutUpload
+						.setBackground(SWTResourceManager.getColor(38, 18, 10));
+			}
+		});
+		Button_AboutUpload.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseUp(MouseEvent arg0) {
+				OptionSelect(3);
+			}
+
+			@Override
+			public void mouseDown(MouseEvent arg0) {
+			}
+
+			@Override
+			public void mouseDoubleClick(MouseEvent arg0) {
+			}
+		});
+	}
+
+	void OptionSelect(int OptionNum) {
+		switch (OptionNum) {
+		case 1:
+			ContainerDevice.setEnabled(true);
+			ContainerDevice.setVisible(true);
+
+			ContainerADs.setEnabled(false);
+			ContainerADs.setVisible(false);
+
+			ContainerUpload.setEnabled(false);
+			ContainerUpload.setVisible(false);
+			break;
+
+		case 2:
+			ContainerDevice.setEnabled(false);
+			ContainerDevice.setVisible(false);
+
+			ContainerADs.setEnabled(true);
+			ContainerADs.setVisible(true);
+
+			ContainerUpload.setEnabled(false);
+			ContainerUpload.setVisible(false);
+			break;
+
+		case 3:
+			ContainerDevice.setEnabled(false);
+			ContainerDevice.setVisible(false);
+
+			ContainerADs.setEnabled(false);
+			ContainerADs.setVisible(false);
+
+			ContainerUpload.setEnabled(true);
+			ContainerUpload.setVisible(true);
+			break;
+		}
+	}
+}

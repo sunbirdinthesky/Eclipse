@@ -1,0 +1,59 @@
+package backGround;
+
+import SQLOperation.SqlOperation;
+import vars.AdFile;
+import vars.Vars;
+/**************************\
+table ads (
+	name char(32) not null,
+	playCount int null default 0,
+	md5 char(64) not null,
+	begin char(12) null default "0000-00-00",
+	end char(12) null default "0000-00-00",
+	company char(32) null default "n/a"
+);
+\**************************/
+public class AdsRefresh extends Thread {
+	public void run() {
+		SqlOperation sqlOperation = new SqlOperation();
+		while (!Thread.interrupted()) {
+			try {
+				if (!Vars.adsFlag)
+					continue;
+				
+				Vars.adsFlag = false;
+				if (sqlOperation.isConnected() || sqlOperation.init()) {
+					sqlOperation.Query("select * from ads");
+				}
+				
+				Vars.ads.clear();
+				while (sqlOperation.rSet.next()) {
+					AdFile tmp = new AdFile();
+					tmp.name = sqlOperation.rSet.getString("name");
+					tmp.playCnt = sqlOperation.rSet.getInt("playCount");
+					tmp.md5 = sqlOperation.rSet.getString("md5");
+					tmp.begin = sqlOperation.rSet.getString("begin");
+					tmp.end = sqlOperation.rSet.getString("end");
+					tmp.company = sqlOperation.rSet.getString("company");
+					Vars.ads.add(tmp);
+				}
+				
+				int pos = 0;
+				for (AdFile tmp : Vars.ads) {
+					sqlOperation.Query("select * from ads" + tmp.name);
+					while (sqlOperation.rSet.next()) {
+						tmp.imei.add(sqlOperation.rSet.getString("imei"));
+						tmp.SpecialPlayCount.add(
+								sqlOperation.rSet.getInt("SpecialPlayCount"));
+					}
+					Vars.ads.set(pos, tmp);
+					pos++;
+				}
+				Vars.adsFlag = true;
+				Thread.sleep(2000);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	};
+}

@@ -1,0 +1,84 @@
+package ui_logic;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import gpio.GPIOinterface;
+import sqlOperation.SqlOperation;
+import ui.Finish;
+import ui.MainUI;
+import vars.Vars;
+
+public class FinishLogic extends Finish {
+
+	public FinishLogic(Composite composite) {
+		super(composite);
+	}
+
+	@Override
+	protected void logicInit() {
+		message = new Label(composite, SWT.NONE);
+		message.setBounds(userWidth*5/16, userHight*3/8, userWidth* 6 / 16, userHight / 4);
+		message.setAlignment(SWT.CENTER);
+		message.setText("请在出口取走您的礼品");
+		message.setFont(SWTResourceManager.getFont("Ubuntu", userWidth / 50, SWT.NORMAL));
+		message.setBackgroundImage(SWTResourceManager.getImage(MainUI.class, "/UIImage/label_background.png"));
+		DBConnection();
+		timeDelay(5000);
+	}
+
+	private void timeDelay(final int time) {
+		new Thread() {
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(time);
+				} catch (InterruptedException e1) {
+				}
+				Display.getDefault().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						System.out.println("finishLogic disposed");
+						message.dispose();
+						isDisposed = true;
+					}
+				});
+			}
+		}.start();
+		
+		new Thread() {
+			public void run() {
+				try {
+					System.out.println("starting stepCtrl()");
+					int i = GPIOinterface.stepCtrl();
+					System.out.println("stepCtrl() over at " + i);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			};
+		}.start();
+	}
+
+	// send the num of items to server
+	private void DBConnection() {
+		new Thread() {
+			@Override
+			public void run() {
+				Vars.nItem--;
+				SqlOperation sqlOperation = new SqlOperation();
+				if (sqlOperation.SqlInit()) {
+					try {
+						sqlOperation.SqlUpdate("update device set nItem = " + Vars.nItem + " where imei = \""
+								+ Vars.imei.substring(1) + "\"");
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+				sqlOperation.disconnect();
+			}
+		}.start();
+	}
+}

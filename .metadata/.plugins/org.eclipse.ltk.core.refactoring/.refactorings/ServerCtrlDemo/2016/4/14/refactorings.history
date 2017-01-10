@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;ServerCtrl&apos;&#x0D;&#x0A;- Original project: &apos;ServerCtrlDemo&apos;&#x0D;&#x0A;- Destination element: &apos;ServerCtrl&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     mysql-connector-java-5.1.20.jar&#x0D;&#x0A;     commons-net-3.4.jar&#x0D;&#x0A;     swing2swt.jar" description="Copy files" destination="=ServerCtrl" element1="mysql-connector-java-5.1.20.jar" element2="commons-net-3.4.jar" element3="swing2swt.jar" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1459507581863" units="0" version="1.0"/>
+</session>

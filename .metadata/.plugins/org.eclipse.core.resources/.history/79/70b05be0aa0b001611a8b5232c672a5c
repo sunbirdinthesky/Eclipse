@@ -1,0 +1,80 @@
+package ui;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+
+public class Warning extends Dialog {
+
+	protected Object result;
+	protected Shell shell;
+	private String message;
+
+	/**
+	 * Create the dialog.
+	 * @param parent
+	 * @param style
+	 */
+	public Warning(Shell parent, String message) {
+		super(parent, SWT.NO_TRIM);
+		this.message = message;
+	}
+
+	/**
+	 * Open the dialog.
+	 * @return the result
+	 */
+	public Object open() {
+		createContents();
+		shell.open();
+		shell.layout();
+		Display display = getParent().getDisplay();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Create contents of the dialog.
+	 */
+	private void createContents() {
+		shell = new Shell(getParent(), SWT.NO_TRIM);
+		shell.setSize(450, 300);
+		shell.setText(getText());
+		shell.setBackgroundImage(SWTResourceManager.getImage(Main.class, "/UIImage/background.png"));
+		
+		Button btnNewButton = new Button(shell, SWT.NONE);
+		btnNewButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				shell.dispose();
+			}
+		});
+		btnNewButton.setBounds(182, 235, 80, 27);
+		btnNewButton.setText("OK");
+		
+		Label lblNewLabel = new Label(shell, SWT.NONE);
+		lblNewLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblNewLabel.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 16, SWT.NORMAL));
+		lblNewLabel.setAlignment(SWT.CENTER);
+		lblNewLabel.setBounds(93, 52, 259, 177);
+		lblNewLabel.setText(message);
+		
+		Label lblNewLabel_1 = new Label(shell, SWT.NONE);
+		lblNewLabel_1.setForeground(SWTResourceManager.getColor(0, 0, 0));
+		lblNewLabel_1.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblNewLabel_1.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 16, SWT.NORMAL));
+		lblNewLabel_1.setAlignment(SWT.CENTER);
+		lblNewLabel_1.setBounds(182, 10, 80, 36);
+		lblNewLabel_1.setText("\u63D0\u793A");
+	}
+}

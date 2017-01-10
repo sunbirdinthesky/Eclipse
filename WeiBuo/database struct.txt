@@ -1,6 +1,0 @@
-create database javaweb
-
-create table users (
-	username char(32) not null,
-	passwd char(32) not null
-);

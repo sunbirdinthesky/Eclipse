@@ -1,0 +1,194 @@
+package ui;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.widgets.Button;
+
+public class ViewAns extends Dialog {
+
+	protected Object result;
+	protected Shell shell;
+	private static String finalAns;
+	private static Composite composite;
+	private static int pos;
+	/**
+	 * Create the dialog.
+	 * @param parent
+	 * @param style
+	 */
+	public ViewAns(Shell parent, int style) {
+		super(parent, style);
+		setText("SWT Dialog");
+	}
+
+	/**
+	 * Open the dialog.
+	 * @return the result
+	 */
+	public Object open() {
+		createContents();
+		shell.open();
+		shell.layout();
+		Display display = getParent().getDisplay();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Create contents of the dialog.
+	 */
+	private void createContents() {
+		shell = new Shell(getParent(), SWT.NO_TRIM);
+		shell.setBackgroundImage(SWTResourceManager.getImage(ViewAns.class, "/UIImage/background.png"));
+		shell.setSize(492, 391);
+		shell.setText(getText());
+		
+		
+
+		DBConnection(Variable.ques.get(pos).name);
+		
+		ScrolledComposite scrolledComposite = new ScrolledComposite(shell, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		scrolledComposite.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		scrolledComposite.setBounds(0, 25, 492, 366);
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
+		
+		composite = new Composite(scrolledComposite, SWT.NONE);
+		
+		scrolledComposite.setContent(composite);
+		scrolledComposite.setMinSize(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+		
+		Label lblA = new Label(shell, SWT.NONE);
+		lblA.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblA.setLocation(100, 2);
+		lblA.setSize(61, 17);
+		lblA.setText("A");
+		
+		Label lblB = new Label(shell, SWT.NONE);
+		lblB.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblB.setLocation(199, 2);
+		lblB.setSize(61, 17);
+		lblB.setText("B");
+		
+		Label lblC = new Label(shell, SWT.NONE);
+		lblC.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblC.setLocation(300, 0);
+		lblC.setSize(61, 17);
+		lblC.setText("C");
+		
+		Label lblD = new Label(shell, SWT.NONE);
+		lblD.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblD.setLocation(401, 0);
+		lblD.setSize(61, 17);
+		lblD.setText("D");
+		
+		Button button = new Button(shell, SWT.CENTER);
+		button.setImage(SWTResourceManager.getImage(ViewAns.class, "/UIImage/close2.png"));
+		button.setBackgroundImage(SWTResourceManager.getImage(ViewAns.class, "/UIImage/close2.png"));
+		button.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		button.setBounds(10, 2, 20, 20);
+
+	}
+	
+	static void DBConnection(String ans){
+        //驱动程序名//不固定，根据驱动
+        String driver = "com.mysql.jdbc.Driver";
+        // URL指向要访问的数据库名******
+        String url = "jdbc:mysql://" + Variable.ip + ":3306/ADmachine";
+        // MySQL配置时的用户名
+        String user = Variable.sqlName;
+        // Java连接MySQL配置时的密码******
+        String password = Variable.sqlPasswd;
+
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+
+            // 连续数据库
+            Connection conn = DriverManager.getConnection(url, user, password);
+            if(!conn.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+
+            // statement用来执行SQL语句
+            Statement statement = conn.createStatement();
+
+            // 要执行的SQL语句id和content是表review中的项。
+            finalAns = new String();
+
+            ResultSet rs = statement.executeQuery("select * from ans" + ans);
+
+            int[][] ansCnt = new int[300][4];
+            for (int i = 0; i < 300; i++) {
+        		ansCnt[i] = new int[4];
+        		ansCnt[i][0] = 0;
+        		ansCnt[i][1] = 0;
+        		ansCnt[i][2] = 0;
+        		ansCnt[i][3] = 0;
+            }
+            int q = 0;
+            while(rs.next()) {
+            	String s = rs.getString("ans");
+            	for (int i = 0; i < s.length(); i++) {
+            		ansCnt[i+1][Integer.valueOf(s.charAt(i))-'0']++;
+            		System.out.println(ansCnt[i+1][Integer.valueOf(s.charAt(i))-'0']);
+            	}
+            	q = s.length();
+            }
+            Vector<Label> tmp = new Vector<>();
+            for (int i = 1; i <= q; i++) {
+            	Label label1 = new Label(composite, SWT.NONE);
+            	label1.setBounds(10, i*25+10, 61, 17);
+            	label1.setText("ans" + String.valueOf(i) + ":");
+        		tmp.add(label1);
+            	
+            	Label label2 = new Label(composite, SWT.NONE);
+            	label2.setBounds(110, i*25+10, 61, 17);
+            	label2.setText(String.valueOf(ansCnt[i][0]));
+        		tmp.add(label2);
+            	
+            	Label label3 = new Label(composite, SWT.NONE);
+            	label3.setBounds(210, i*25+10, 61, 17);
+            	label3.setText(String.valueOf(ansCnt[i][1]));
+        		tmp.add(label3);
+            	
+            	Label label4 = new Label(composite, SWT.NONE);
+            	label4.setBounds(310, i*25+10, 61, 17);
+            	label4.setText(String.valueOf(ansCnt[i][2]));
+        		tmp.add(label4);
+            	
+            	Label label5 = new Label(composite, SWT.NONE);
+            	label5.setBounds(410, i*25+10, 61, 17);
+            	label5.setText(String.valueOf(ansCnt[i][3]));
+        		tmp.add(label5);
+            }
+            
+            rs.close();
+            conn.close();
+        } catch(ClassNotFoundException e) {
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+}

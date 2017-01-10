@@ -1,0 +1,204 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.StatusLineManager;
+import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.window.ApplicationWindow;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+public class EditDevices extends ApplicationWindow {
+
+	int pos;
+	private Text location;
+	private Text nItem;
+	private Label warn;
+	/**
+	 * Create the application window.
+	 */
+	public EditDevices(int x) {
+		super(null);
+		setShellStyle(SWT.DIALOG_TRIM);
+		setBlockOnOpen(true);
+		createActions();
+		addToolBar(SWT.FLAT | SWT.WRAP);
+		addMenuBar();
+		addStatusLine();
+		pos = x;
+	}
+
+	/**
+	 * Create contents of the application window.
+	 * @param parent
+	 */
+	@Override
+	protected Control createContents(Composite parent) {
+		setStatus("Edit information about devices.");
+		Composite container = new Composite(parent, SWT.NONE);
+		
+		Label lblImei = new Label(container, SWT.NONE);
+		lblImei.setBounds(10, 10, 83, 17);
+		lblImei.setText("imei\u7F16\u53F7");
+		
+		Label label = new Label(container, SWT.NONE);
+		label.setBounds(10, 56, 83, 17);
+		label.setText("\u6240\u5728\u5730");
+		
+		Label label_1 = new Label(container, SWT.NONE);
+		label_1.setBounds(10, 102, 83, 17);
+		label_1.setText("\u7269\u54C1\u5269\u4F59\u6570\u91CF");
+		
+		location = new Text(container, SWT.BORDER);
+		location.setBounds(99, 53, 285, 23);
+		
+		nItem = new Text(container, SWT.BORDER);
+		nItem.setBounds(99, 102, 285, 23);
+		
+		Label lblNewLabel = new Label(container, SWT.NONE);
+		lblNewLabel.setBounds(99, 10, 285, 17);
+		lblNewLabel.setText(Variable.Devices.get(pos).imei);
+		
+		Button confirm = new Button(container, SWT.NONE);
+		confirm.setBounds(137, 141, 120, 47);
+		confirm.setText("\u63D0\u4EA4");
+		confirm.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				if (location.getText().length() == 0) {
+					warn.setText("请填写地址");
+					return;
+				}
+				int tmp = 0;
+				try {
+					tmp = Integer.valueOf(nItem.getText());
+				}catch (Exception e) {
+					warn.setText("请填写正确的自然数");
+					return;
+				}
+				if (tmp < 0) {
+					warn.setText("请填写正确的自然数");
+					return;
+				}
+				if (DBConnection())
+					warn.setText("修改成功");
+				else {
+					warn.setText("修改失败");
+				}
+				
+			}
+			public void widgetDefaultSelected(SelectionEvent arg0) {}
+		});
+		
+		warn = new Label(container, SWT.CENTER);
+		warn.setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_RED));
+		warn.setBounds(10, 194, 374, 38);
+		
+		
+		return container;
+	}
+	
+	boolean DBConnection(){
+        //驱动程序名//不固定，根据驱动
+        String driver = "com.mysql.jdbc.Driver";
+        // URL指向要访问的数据库名******
+        String url = "jdbc:mysql://" + Variable.ip + ":3306/ADmachine";
+        // MySQL配置时的用户名
+        String user = Variable.sqlName;
+        // Java连接MySQL配置时的密码******
+        String password = Variable.sqlPasswd;
+
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+
+            // 连续数据库
+            Connection conn = DriverManager.getConnection(url, user, password);
+            if(!conn.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+
+            // statement用来执行SQL语句
+            Statement statement = conn.createStatement();
+
+            // 要执行的SQL语句id和content是表review中的项。
+            statement.executeUpdate("update device set location=\"" +
+            		location.getText() + "\" where imei = \"" +
+            		Variable.Devices.get(pos).imei + "\"");
+            Variable.Devices.get(pos).location = location.getText();
+            
+            statement.executeUpdate("update device set nItem=" +
+            		Integer.valueOf(nItem.getText()) + " where imei = \"" +
+            		Variable.Devices.get(pos).imei + "\"");
+            Variable.Devices.get(pos).nItem = Integer.valueOf(nItem.getText());
+            
+            
+            conn.close();
+            return true;
+        } catch(ClassNotFoundException e) {
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+	/**
+	 * Create the actions.
+	 */
+	private void createActions() {
+		// Create the actions
+	}
+
+	/**
+	 * Create the status line manager.
+	 * @return the status line manager
+	 */
+	@Override
+	protected StatusLineManager createStatusLineManager() {
+		StatusLineManager statusLineManager = new StatusLineManager();
+		return statusLineManager;
+	}
+
+	/**
+	 * Configure the shell.
+	 * @param newShell
+	 */
+	@Override
+	protected void configureShell(Shell newShell) {
+		super.configureShell(newShell);
+		newShell.setText("EditDevice");
+	}
+
+	/**
+	 * Return the initial size of the window.
+	 */
+	@Override
+	protected Point getInitialSize() {
+		return new Point(400, 300);
+	}
+}

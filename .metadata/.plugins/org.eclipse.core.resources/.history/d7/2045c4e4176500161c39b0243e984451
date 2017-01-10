@@ -1,0 +1,342 @@
+package ui_logic;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+import java.util.Vector;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import OMXInterface.player;
+import backgroundThreads.keepOnline.Online;
+import backgroundThreads.update.GetFile;
+import gpio.GPIOinterface;
+import sqlOperation.SqlOperation;
+import ui.MainUI;
+import ui.SetUp;
+import vars.Vars;
+
+public class MainUILogic extends MainUI {
+	boolean play = true;
+
+	public static void main(String s[]) {
+		MainUILogic mainUI = new MainUILogic();
+		mainUI.open();
+	}
+
+	@Override
+	protected void logicInit() {
+		btn_Close.dispose();
+		makeUUID();
+		Thread repeatKeeper = new Thread() { //keep playing ads
+			public void run() {
+				try {
+					Thread.sleep(5000);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
+				while (!shell.isDisposed()) {
+					try {
+						Thread.sleep(1000);
+						if (play) {
+							File file = fileSelect();
+							if (file == null)
+								continue;
+							player.play(file.getAbsolutePath());
+							onComplete(file.getName());
+						}
+					} catch (Exception e) {
+					}
+				}
+			};
+		};
+
+		repeatKeeper.start();
+
+		Thread checker = new Thread() {  //keep background thread running
+			@Override
+			public void run() {
+				while (!shell.isDisposed()) {
+					try {
+						checkThread();
+						Thread.sleep(10000);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				Vars.online.interrupt();
+				Vars.getfile.interrupt();
+			}
+		};
+		checker.start();
+
+		buttonInit();
+	}
+
+	private void buttonInit() {
+		// //gpio signal,key pressed
+		// final GpioController gpio = GpioFactory.getInstance();
+		// final GpioPinDigitalInput myButton =
+		// gpio.provisionDigitalInputPin(RaspiPin.GPIO_11,
+		// PinPullResistance.PULL_DOWN);
+		// myButton.setShutdownOptions(true);
+		// myButton.addListener(new GpioPinListenerDigital() {
+		// @Override
+		// public void
+		// handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent
+		// event) {
+		// System.out.println("gpio signal,key pressed");
+		// if (play && event.getState().toString().equals("HIGH")) {
+		// Display.getDefault().asyncExec(new Runnable() {
+		// @Override
+		// public void run() {
+		// System.out.println("play is true, running");
+		// play = false;
+		// System.out.println("play = " + play);
+		// player.stop();
+		// WatchAdsLogic watchAdsLogic = new WatchAdsLogic(shell);
+		// watchAdsLogic.open();
+		// play = true;
+		// System.out.println("play = " + play);
+		// }
+		// });
+		// }
+		// }
+		// });
+
+		// gpio signal,card reader
+		new Thread() {
+			@Override
+			public void run() {
+
+				boolean outOfPaper = false;
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				new Thread() {
+					public void run() {
+						while (!shell.isDisposed()) {
+							System.out.println("main thread:starting gpio()");
+							int i = GPIOinterface.gpio();
+							System.err.println("main thread:WARNING! gpio() terminated at  " + i);
+							System.err.println("main thread:restarting gpio()");
+						}
+					};
+				}.start();
+				try {
+					Thread.sleep(500);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				while (true) { //catch gpio signal
+					System.out.println("main thread:starting getUserFlag()");
+					int i = GPIOinterface.getUserFlag();
+					System.out.println("main thread:getUserFlag() over at " + i);
+					
+					if (play && i > 0) { //button pressed or card read
+						if (i == 1) {
+							String cardNumber = GPIOinterface.getCardNumber();
+							System.out.println("KeyPressed(Card Read)Action:CardNumber = " + cardNumber);
+							if (Vars.administrator.contains(cardNumber)) {
+								System.out.println("KeyPressed(Card Read)Action:Confirm admin card, stop playing");
+								play = false;
+								Display.getDefault().syncExec(new Runnable() {
+									public void run() {
+										SetUp setUp = new SetUp(shell, SWT.ON_TOP);
+										setUp.open();
+									}
+								});
+								GPIOinterface.resetOutOfPaper();
+								System.out.println("KeyPressed(Card Read)Action:starting resetFlag()");
+								i = GPIOinterface.resetFlag();
+								System.out.println("KeyPressed(Card Read)Action:resetFlag() over at " + i);
+								play = true;
+								continue;
+							}
+						}
+						System.out.println("KeyPressed(Card Read)Action:gpio signal received");
+						play = false;
+						System.out.println("KeyPressed(Card Read)Action:play = " + play);
+						Display.getDefault().syncExec(new Runnable() {
+							public void run() {
+								WatchAdsLogic watchAdsLogic = new WatchAdsLogic(composite);
+								watchAdsLogic.open();
+							}
+						});
+						System.out.println("KeyPressed(Card Read)Action:starting resetFlag()");
+						i = GPIOinterface.resetFlag();
+						System.out.println("KeyPressed(Card Read)Action:resetFlag() over at " + i);
+						play = true;
+						System.out.println("KeyPressed(Card Read)Action:play = " + play);
+					}
+					
+					if (i == -1) {  //out of paper
+						play = false;
+						outOfPaper = true;
+						System.out.println("OutOfPaperAction:halt,player disabled");
+						System.out.println("OutOfPaperAction:play = " + play);
+						player.stop();
+						Display.getDefault().asyncExec(new Runnable() {
+							public void run() {
+								Vars.nItem = 0;
+								Label tmp = new Label(composite, SWT.NONE);
+								tmp.setBounds(userWidth*5/16, userHight*3/8, userWidth* 6 / 16, userHight / 4);
+								tmp.setAlignment(SWT.CENTER);
+								tmp.setText("抱歉，礼品箱已经空了~");
+								tmp.setFont(SWTResourceManager.getFont("Ubuntu", userWidth / 50, SWT.NORMAL));
+								tmp.setBackgroundImage(SWTResourceManager.getImage(MainUI.class, "/UIImage/label_background.png"));
+								message.dispose();
+								message = tmp;
+							}
+						});
+						try {
+							Thread.sleep(5000);
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+						System.out.println("OutOfPaperAction:play = " + play);
+					} else if (outOfPaper == true){
+						try {
+							System.out.println("OutOfPaperAction:status reset");
+							play = true;
+							outOfPaper = false;
+							message.dispose();
+						} catch (Exception e) {
+						}
+					}
+					
+					
+					try {
+						Thread.sleep(1000);
+					} catch (Exception e) {
+					}
+				}
+			}
+		}.start();
+	}
+
+	private void checkThread() {
+		if (!Vars.getfile.isAlive()) {
+			Vars.getfile = new GetFile();
+			Vars.getfile.start();
+		}
+		if (!Vars.online.isAlive()) {
+			Vars.online = new Online();
+			Vars.online.start();
+		}
+	}
+
+	private File fileSelect() {  //select a file from repeats
+		File pictures = new File(Vars.localPathRoot + "/AdMachine/repeats/");
+		File[] file = pictures.listFiles();
+		Vector<File> files = new Vector<>();
+
+		if (file == null || file.length == 0) {
+			return null;
+		}
+
+		for (File f : file) {
+			if (f.getName().length() <= 4)
+				files.add(f);
+			else if (!f.getName().substring(0, 4).equals("tmp_")) {
+				files.add(f);
+			}
+		}
+
+		if (files.size() == 0) {
+			return null;
+		}
+
+		if (Vars.repeatID == files.size() - 1)
+			Vars.repeatID = 0;
+		else
+			Vars.repeatID++;
+		int tmp = Vars.repeatID;
+
+		return files.get(tmp);
+	}
+
+	// send log to server and save it local
+	// final String name = files.get(tmp).getName();
+	private void onComplete(final String name) {
+		new Thread() {
+			@Override
+			public void run() {
+				SqlOperation sqlOperation = new SqlOperation();
+
+				if (sqlOperation.SqlInit()) {
+					try {
+						File log = new File(Vars.localPathRoot + "/AdMachine/logs/");
+						if (!log.exists())
+							log.createNewFile();
+						FileWriter writer = new FileWriter(log, true);
+						writer.write(Vars.imei.substring(1) + " " + name + " " + GetNowTime() + "\n");
+						writer.flush();
+						writer.close();
+
+						sqlOperation.SqlUpdate("insert into log values(" + "\"" + Vars.imei.substring(1) + "\"," + "\""
+								+ name + "\"," + "\"" + GetNowTime() + "\")");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				sqlOperation.disconnect();
+				System.out.println("sql finish");
+			}
+		}.start();
+
+	}
+
+	// get local date
+	public String GetNowTime() {
+		Date date = new Date();
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = format.format(date);
+		return time;
+	}
+
+	
+	//make a random UUID, just like IMEI
+	void makeUUID() {
+		File file = new File(Vars.localPathRoot + "/AdMachine/");
+		if (!file.exists())
+			file.mkdir();
+		file = new File(Vars.localPathRoot + "/AdMachine/uuid");
+		if (file.exists()) {
+			try {
+				FileReader fileReader = new FileReader(file);
+				char[] tmp = new char[130];
+				fileReader.read(tmp);
+				fileReader.close();
+				Vars.imei = tmp.toString();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return;
+		}
+		try {
+			file.createNewFile();
+			FileWriter fileWriter = new FileWriter(file);
+			UUID uuid = UUID.randomUUID();
+			Vars.imei = "/" + uuid.toString();
+			fileWriter.write(Vars.imei);
+			fileWriter.flush();
+			fileWriter.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,201 @@
+package ui;
+
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import vars.Vars;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.events.SelectionAdapter;
+
+public class DeviceDetail extends Dialog {
+	protected Object result;
+	protected Shell shell;
+	
+	int pos;
+	private Text location;
+	private Text nItem;
+	private Label warn;
+
+	/**
+	 * Create the dialog.
+	 * @param parent
+	 * @param style
+	 */
+	public DeviceDetail(Shell parent, int style) {
+		super(parent, style);
+		setText("SWT Dialog");
+	}
+
+	/**
+	 * Open the dialog.
+	 * @return the result
+	 */
+	public Object open(int pos) {
+		this.pos = pos;
+		createContents();
+		shell.open();
+		shell.layout();
+		Display display = getParent().getDisplay();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Create contents of the dialog.
+	 */
+	private void createContents() {
+		shell = new Shell(getParent(), SWT.NO_TRIM);
+		shell.setBackgroundImage(SWTResourceManager.getImage(AdsDetail.class, "/UIImage/background.png"));
+		shell.setSize(400, 250);
+		shell.setText(getText());
+		
+		
+		Label lblImei = new Label(shell, SWT.NONE);
+		lblImei.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblImei.setBounds(10, 68, 83, 17);
+		lblImei.setText("imei\u7F16\u53F7");
+		
+		Label label = new Label(shell, SWT.NONE);
+		label.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label.setBounds(10, 94, 83, 17);
+		label.setText("\u6240\u5728\u5730");
+		
+		Label label_1 = new Label(shell, SWT.NONE);
+		label_1.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_1.setBounds(10, 123, 83, 17);
+		label_1.setText("\u7269\u54C1\u5269\u4F59\u6570\u91CF");
+		
+		location = new Text(shell, SWT.BORDER);
+		location.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		location.setBounds(99, 91, 285, 23);
+		location.setText(Vars.Devices.get(pos).location);
+		
+		nItem = new Text(shell, SWT.BORDER);
+		nItem.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		nItem.setBounds(99, 120, 285, 23);
+		nItem.setText(String.valueOf(Vars.Devices.get(pos).nItem));
+		
+		Label lblNewLabel = new Label(shell, SWT.NONE);
+		lblNewLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblNewLabel.setBounds(99, 68, 285, 17);
+		lblNewLabel.setText(Vars.Devices.get(pos).imei);
+		
+		Button confirm = new Button(shell, SWT.NONE);
+		confirm.setBounds(136, 149, 120, 47);
+		confirm.setText("\u63D0\u4EA4");
+		confirm.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				if (location.getText().length() == 0) {
+					warn.setText("请填写地址");
+					return;
+				}
+				int tmp = 0;
+				try {
+					tmp = Integer.valueOf(nItem.getText());
+				}catch (Exception e) {
+					warn.setText("请填写正确的自然数");
+					return;
+				}
+				if (tmp < 0) {
+					warn.setText("请填写正确的自然数");
+					return;
+				}
+				if (DBConnection())
+					warn.setText("修改成功");
+				else {
+					warn.setText("修改失败");
+				}
+				
+			}
+			public void widgetDefaultSelected(SelectionEvent arg0) {}
+		});
+		
+		warn = new Label(shell, SWT.CENTER);
+		warn.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		warn.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 16, SWT.NORMAL));
+		warn.setText("\u8B66\u544A\uFF1A\u8BF7\u4F7F\u7528\u82F1\u6587\u5B57\u7B26");
+		warn.setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_RED));
+		warn.setBounds(10, 202, 374, 38);
+		
+		Button button = new Button(shell, SWT.CENTER);
+		button.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				shell.dispose();
+			}
+		});
+		button.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		button.setImage(SWTResourceManager.getImage(DeviceDetail.class, "/UIImage/close2.png"));
+		button.setBounds(10, 10, 20, 20);
+		
+		
+
+	}
+	
+	boolean DBConnection(){
+        //驱动程序名//不固定，根据驱动
+        String driver = "com.mysql.jdbc.Driver";
+        // URL指向要访问的数据库名******
+        String url = "jdbc:mysql://" + Vars.ip + ":3306/ADmachine";
+        // MySQL配置时的用户名
+        String user = Vars.sqlName;
+        // Java连接MySQL配置时的密码******
+        String password = Vars.sqlPasswd;
+
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+
+            // 连续数据库
+            Connection conn = DriverManager.getConnection(url, user, password);
+            if(!conn.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+
+            // statement用来执行SQL语句
+            Statement statement = conn.createStatement();
+
+            // 要执行的SQL语句id和content是表review中的项。
+            statement.executeUpdate("update device set location=\"" +
+            		location.getText() + "\" where imei = \"" +
+            		Vars.Devices.get(pos).imei + "\"");
+            Vars.Devices.get(pos).location = location.getText();
+            
+            statement.executeUpdate("update device set nItem=" +
+            		Integer.valueOf(nItem.getText()) + " where imei = \"" +
+            		Vars.Devices.get(pos).imei + "\"");
+            Vars.Devices.get(pos).nItem = Integer.valueOf(nItem.getText());
+            
+            
+            conn.close();
+            return true;
+        } catch(ClassNotFoundException e) {
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+}

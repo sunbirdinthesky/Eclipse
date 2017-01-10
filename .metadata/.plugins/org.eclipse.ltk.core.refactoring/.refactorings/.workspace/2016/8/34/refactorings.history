@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ServerCtrlRebuild&apos; to &apos;ServerCtrlForPi&apos;" description="Rename resource &apos;ServerCtrlRebuild&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/ServerCtrlRebuild" name="ServerCtrlForPi" stamp="1471315111474" updateReferences="true"/>
+</session>

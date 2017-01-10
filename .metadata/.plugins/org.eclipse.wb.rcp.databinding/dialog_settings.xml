@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.wb.internal.core.databinding.ui.BindDialog">
+		<item value="402" key="x"/>
+		<item value="1015" key="width"/>
+		<item value="124" key="y"/>
+		<item value="774" key="height"/>
+	</section>
+	<section name="org.eclipse.wb.internal.rcp.databinding.ui.contentproviders.UpdateStrategyPropertiesUiContentProvider">
+		<item value="false" key="Target strategy expanded state"/>
+		<item value="false" key="Model strategy expanded state"/>
+	</section>
+	<section name="org.eclipse.wb.internal.rcp.databinding.DatabindingsProvider">
+		<item value="1" key="Observes_Sash.y"/>
+		<item value="1" key="Observes_Sash.x"/>
+		<item value="250" key="ModelColumn"/>
+		<item value="250" key="TargetColumn"/>
+		<item value="170" key="TargetStrategyColumn"/>
+		<item value="170" key="ModelStrategyColumn"/>
+		<item value="3" key="Main_Sash.y"/>
+		<item value="1" key="Main_Sash.x"/>
+		<item value="250" key="VariableBindingColumn"/>
+	</section>
+</section>

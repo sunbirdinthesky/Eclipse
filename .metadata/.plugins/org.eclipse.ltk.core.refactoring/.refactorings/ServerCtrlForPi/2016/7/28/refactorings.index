@@ -1,0 +1,29 @@
+1467526148309	Rename type 'Operation'
+1467526160480	Rename type 'Operations'
+1467527071312	Delete element
+1467527076848	Delete elements
+1467527080489	Delete elements
+1467529190817	Copy package
+1467529196694	Delete element
+1467529203509	Copy package
+1467529207682	Delete element
+1467529241442	Delete element
+1467615252043	Delete element
+1467618876625	Rename local variable 'priceSumLable'
+1467620105102	Rename local variable 'priceLable'
+1467620211587	Rename local variable 'playcntLable'
+1467620340053	Rename local variable 'nameLable'
+1467620348691	Rename local variable 'nameLable'
+1467620355399	Rename local variable 'nameL'
+1467620362457	Rename local variable 'priceLable'
+1467620371533	Rename local variable 'playcntLable'
+1467626124165	Rename local variable 'button'
+1467698797246	Rename method 'OptionButtonsInit'
+1467700564390	Rename method 'init'
+1467700577419	Rename method 'Update'
+1467700588267	Rename method 'Query'
+1467819674091	Rename field 'UploadIndex'
+1468045314077	Rename type 'RepeatLogic'
+1468054770327	Rename package 'ftp'
+1468054778890	Rename package 'SQLOperation'
+1468063207096	Delete element

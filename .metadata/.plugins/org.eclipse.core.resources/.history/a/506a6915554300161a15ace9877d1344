@@ -1,0 +1,65 @@
+package ui_logic;
+
+import java.util.Vector;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import ui.AdsSetUp;
+import vars.AdFile;
+import vars.Device;
+import vars.UploadIndex;
+
+public class AdsLogic extends AdsSetUp {
+
+	public AdsLogic(AdFile target, Vector<Device> DeviceList) {
+		super(target, DeviceList);
+	}
+
+	@Override
+	public void logicInit() {
+		TextBox_Name.setText(target.name);
+		TextBox_PlayCount.setText(String.valueOf(target.playCnt));
+		TextBox_Company.setText(target.company);
+		TextBox_Begin.setText(target.begin);
+		TextBox_End.setText(target.end);
+		
+		ListConfig.dispose();
+		ListConfig = new ScrolledComposite(composite, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		ListConfig.setExpandVertical(true);
+		ListConfig.setExpandHorizontal(true);
+		ListConfig.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		ListConfig.setBounds(26, 114, 640, 548);
+		
+		Vector<String> IMEIs = new Vector<>();
+		Vector<Integer> PlayCounts = new Vector<>();
+		for (UploadIndex index : target.Config) {
+			IMEIs.add(index.imei);
+			PlayCounts.add(index.playCount);
+		}
+		
+		int i = 1;
+		for (Device tmp : DeviceList) {
+			Button selected = new Button(ListConfig, SWT.CHECK);
+			selected.setBounds(10, i * 23, 500, 23);
+			selected.setBackground(
+					SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			selected.setText(
+					tmp.imei + ' ' + tmp.location + ' ' + tmp.nItem);
+			if (IMEIs.indexOf(tmp.imei) != -1) {
+				selected.setSelection(true);
+			}
+
+			Text specialPlayCount = new Text(ListConfig, SWT.BORDER);
+			specialPlayCount.setBounds(510, i * 23, 138, 23);
+			specialPlayCount.setText("ÇëÌîÐ´²¥·Å´ÎÊý");
+
+			i++;
+		}
+	}
+	
+}

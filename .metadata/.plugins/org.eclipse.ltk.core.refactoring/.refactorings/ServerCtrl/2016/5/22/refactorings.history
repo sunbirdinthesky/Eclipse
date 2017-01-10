@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;price&apos; in &apos;ui.Main&apos; to &apos;playCount&apos;&#x0D;&#x0A;- Original project: &apos;ServerCtrl&apos;&#x0D;&#x0A;- Original element: &apos;ui.Main.price&apos;&#x0D;&#x0A;- Renamed element: &apos;ui.Main.playCount&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;price&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;ui{Main.java[Main^price" name="playCount" references="true" setter="false" stamp="1463908433527" textual="false" version="1.0"/>
+</session>

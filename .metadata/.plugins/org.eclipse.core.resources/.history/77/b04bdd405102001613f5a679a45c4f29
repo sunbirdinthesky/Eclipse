@@ -1,0 +1,103 @@
+package ui;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.widgets.Button;
+
+public class ViewAns extends Dialog {
+
+	protected Object result;
+	protected Shell shell;
+	private static String finalAns;
+	private static Composite composite;
+	private static int pos;
+	/**
+	 * Create the dialog.
+	 * @param parent
+	 * @param style
+	 */
+	public ViewAns(Shell parent, int style) {
+		super(parent, style);
+		setText("SWT Dialog");
+	}
+
+	/**
+	 * Open the dialog.
+	 * @return the result
+	 */
+	public Object open() {
+		createContents();
+		shell.open();
+		shell.layout();
+		Display display = getParent().getDisplay();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Create contents of the dialog.
+	 */
+	private void createContents() {
+		shell = new Shell(getParent(), SWT.NO_TRIM);
+		shell.setBackgroundImage(SWTResourceManager.getImage(ViewAns.class, "/UIImage/background.png"));
+		shell.setSize(492, 391);
+		shell.setText(getText());
+		
+		
+
+		DBConnection(Variable.ques.get(pos).name);
+		
+		ScrolledComposite scrolledComposite = new ScrolledComposite(shell, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		scrolledComposite.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		scrolledComposite.setBounds(0, 25, 492, 366);
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
+		
+		composite = new Composite(scrolledComposite, SWT.NONE);
+		
+		scrolledComposite.setContent(composite);
+		scrolledComposite.setMinSize(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+		
+		Label lblA = new Label(shell, SWT.NONE);
+		lblA.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblA.setLocation(100, 2);
+		lblA.setSize(61, 17);
+		lblA.setText("A");
+		
+		Label lblB = new Label(shell, SWT.NONE);
+		lblB.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblB.setLocation(199, 2);
+		lblB.setSize(61, 17);
+		lblB.setText("B");
+		
+		Label lblC = new Label(shell, SWT.NONE);
+		lblC.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblC.setLocation(300, 0);
+		lblC.setSize(61, 17);
+		lblC.setText("C");
+		
+		Label lblD = new Label(shell, SWT.NONE);
+		lblD.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblD.setLocation(401, 0);
+		lblD.setSize(61, 17);
+		lblD.setText("D");
+		
+		Button button = new Button(shell, SWT.CENTER);
+		button.setImage(SWTResourceManager.getImage(ViewAns.class, "/UIImage/close2.png"));
+		button.setBackgroundImage(SWTResourceManager.getImage(ViewAns.class, "/UIImage/close2.png"));
+		button.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		button.setBounds(10, 2, 20, 20);
+
+	}
+
+}

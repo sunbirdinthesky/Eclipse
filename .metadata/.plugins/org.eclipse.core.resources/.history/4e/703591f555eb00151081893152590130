@@ -1,0 +1,858 @@
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.security.MessageDigest;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+import java.util.jar.Attributes.Name;
+import java.util.logging.Handler;
+
+import org.eclipse.jface.action.CoolBarManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.StatusLineManager;
+import org.eclipse.jface.window.ApplicationWindow;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.ControlListener;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.jface.viewers.ListViewer;
+import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.ui.internal.registry.ViewParameterValues;
+import org.eclipse.swt.widgets.Spinner;
+import org.eclipse.swt.events.SelectionAdapter;
+
+public class MainUI extends ApplicationWindow {
+	public static Composite device;
+	public static Composite ads;
+	public static Composite ques;
+	public static Composite bins;
+	public static Composite upload;
+	private static Text path;
+	private static Text price;
+	private static Combo combo;
+	private static Label Warn;
+
+	/**
+	 * Create the application window,
+	 */
+	public MainUI() {
+		super(null);
+		setBlockOnOpen(true);
+		setShellStyle(SWT.DIALOG_TRIM);
+		createActions();
+		addStatusLine();
+	}
+
+	/**
+	 * Create contents of the application window.
+	 * 
+	 * @param parent
+	 */
+	@Override
+	protected Control createContents(Composite parent) {
+		setStatus(
+				"Made by SunBird at February 19th\uFF0C2016. If you have found any bugs, please connect sunbirdinbox@163.com.");
+		Composite container = new Composite(parent, SWT.NONE);
+
+		TabFolder tabFolder = new TabFolder(container, SWT.NONE);
+		tabFolder.setBounds(0, 0, 894, 642);
+
+		TabItem tabDevice = new TabItem(tabFolder, SWT.NONE);
+		tabDevice.setText("\u8BBE\u5907\u89C6\u56FE");
+
+		Composite composite = new Composite(tabFolder, SWT.NONE);
+		tabDevice.setControl(composite);
+
+		Label lblNewLabel = new Label(composite, SWT.NONE);
+		lblNewLabel.setBounds(10, 10, 102, 17);
+		lblNewLabel.setText("\u8BBE\u5907IMEI\u7F16\u53F7");
+
+		Label lblNewLabel_2 = new Label(composite, SWT.NONE);
+		lblNewLabel_2.setBounds(340, 10, 61, 17);
+		lblNewLabel_2.setText("\u5730\u5740");
+
+		Label lblNewLabel_3 = new Label(composite, SWT.NONE);
+		lblNewLabel_3.setBounds(680, 10, 61, 17);
+		lblNewLabel_3.setText("\u7269\u54C1\u6570\u91CF");
+
+		Label lblNewLabel_4 = new Label(composite, SWT.NONE);
+		lblNewLabel_4.setBounds(800, 10, 61, 17);
+		lblNewLabel_4.setText("\u7F16\u8F91");
+
+		ScrolledComposite scrolledComposite = new ScrolledComposite(composite, SWT.BORDER | SWT.V_SCROLL);
+		scrolledComposite.setBounds(0, 33, 886, 579);
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
+
+		device = new Composite(scrolledComposite, SWT.NONE);
+		
+
+		TabItem tabADs = new TabItem(tabFolder, SWT.NONE);
+		tabADs.setText("\u89C6\u9891\u5E7F\u544A");
+
+		Composite composite_1 = new Composite(tabFolder, SWT.NONE);
+		tabADs.setControl(composite_1);
+		composite_1.setLayout(null);
+
+		Label lblNewLabel_1 = new Label(composite_1, SWT.NONE);
+		lblNewLabel_1.setBounds(10, 10, 61, 17);
+		lblNewLabel_1.setText("\u540D\u79F0");
+
+		Label lblNewLabel_7 = new Label(composite_1, SWT.NONE);
+		lblNewLabel_7.setBounds(400, 10, 61, 17);
+		lblNewLabel_7.setText("\u5355\u4EF7");
+
+		Label lblNewLabel_8 = new Label(composite_1, SWT.NONE);
+		lblNewLabel_8.setBounds(600, 10, 61, 17);
+		lblNewLabel_8.setText("\u603B\u4EF7");
+
+		Label lblNewLabel_10 = new Label(composite_1, SWT.NONE);
+		lblNewLabel_10.setBounds(200, 10, 61, 17);
+		lblNewLabel_10.setText("\u64AD\u653E\u6B21\u6570");
+
+		Label lblNewLabel_12 = new Label(composite_1, SWT.NONE);
+		lblNewLabel_12.setBounds(800, 10, 61, 17);
+		lblNewLabel_12.setText("\u5220\u9664");
+
+		ScrolledComposite scrolledComposite_1 = new ScrolledComposite(composite_1, SWT.BORDER | SWT.V_SCROLL);
+		scrolledComposite_1.setExpandVertical(true);
+		scrolledComposite_1.setExpandHorizontal(true);
+		scrolledComposite_1.setBounds(0, 33, 886, 579);
+
+		ads = new Composite(scrolledComposite_1, SWT.NONE);
+		scrolledComposite_1.setContent(ads);
+		scrolledComposite_1.setMinSize(ads.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
+		TabItem tabQues = new TabItem(tabFolder, SWT.NONE);
+		tabQues.setText("\u95EE\u5377");
+
+		Composite composite_4 = new Composite(tabFolder, SWT.NONE);
+		composite_4.setLayout(null);
+		tabQues.setControl(composite_4);
+
+		Label label = new Label(composite_4, SWT.NONE);
+		label.setText("\u540D\u79F0");
+		label.setBounds(10, 10, 61, 17);
+
+		Label label_1 = new Label(composite_4, SWT.NONE);
+		label_1.setText("\u5355\u4EF7");
+		label_1.setBounds(400, 10, 61, 17);
+
+		Label label_2 = new Label(composite_4, SWT.NONE);
+		label_2.setText("\u603B\u4EF7");
+		label_2.setBounds(600, 10, 61, 17);
+
+		Label label_3 = new Label(composite_4, SWT.NONE);
+		label_3.setText("\u7528\u6237\u53C2\u4E0E\u6B21\u6570");
+		label_3.setBounds(200, 10, 78, 17);
+
+		Label label_4 = new Label(composite_4, SWT.NONE);
+		label_4.setText("\u5220\u9664");
+		label_4.setBounds(800, 10, 61, 17);
+
+		ScrolledComposite scrolledComposite_2 = new ScrolledComposite(composite_4, SWT.BORDER | SWT.V_SCROLL);
+		scrolledComposite_2.setExpandVertical(true);
+		scrolledComposite_2.setExpandHorizontal(true);
+		scrolledComposite_2.setBounds(0, 33, 886, 579);
+
+		ques = new Composite(scrolledComposite_2, SWT.NONE);
+		scrolledComposite_2.setContent(ques);
+		scrolledComposite_2.setMinSize(ques.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+		scrolledComposite_2.setMinSize(new Point(64, 64));
+
+		Label label_10 = new Label(composite_4, SWT.NONE);
+		label_10.setBounds(700, 10, 78, 17);
+		label_10.setText("\u67E5\u770B\u95EE\u5377\u7ED3\u679C");
+
+		TabItem tabBin = new TabItem(tabFolder, SWT.NONE);
+		tabBin.setText("\u4E8C\u7EF4\u7801");
+
+		Composite composite_5 = new Composite(tabFolder, SWT.NONE);
+		tabBin.setControl(composite_5);
+
+		Label label_5 = new Label(composite_5, SWT.NONE);
+		label_5.setText("\u540D\u79F0");
+		label_5.setBounds(10, 10, 61, 17);
+
+		Label label_6 = new Label(composite_5, SWT.NONE);
+		label_6.setText("\u5355\u4EF7");
+		label_6.setBounds(400, 10, 61, 17);
+
+		Label label_7 = new Label(composite_5, SWT.NONE);
+		label_7.setText("\u603B\u4EF7");
+		label_7.setBounds(600, 10, 61, 17);
+
+		Label label_8 = new Label(composite_5, SWT.NONE);
+		label_8.setText("\u626B\u63CF\u6B21\u6570");
+		label_8.setBounds(200, 10, 61, 17);
+
+		Label label_9 = new Label(composite_5, SWT.NONE);
+		label_9.setText("\u5220\u9664");
+		label_9.setBounds(800, 10, 61, 17);
+
+		ScrolledComposite scrolledComposite_3 = new ScrolledComposite(composite_5, SWT.BORDER | SWT.V_SCROLL);
+		scrolledComposite_3.setExpandVertical(true);
+		scrolledComposite_3.setExpandHorizontal(true);
+		scrolledComposite_3.setBounds(0, 33, 886, 579);
+
+		bins = new Composite(scrolledComposite_3, SWT.NONE);
+		scrolledComposite_3.setContent(bins);
+
+		TabItem tbtmNewItem = new TabItem(tabFolder, SWT.NONE);
+		tbtmNewItem.setText("\u4E0A\u4F20");
+
+		Composite composite_2 = new Composite(tabFolder, SWT.NONE);
+		tbtmNewItem.setControl(composite_2);
+
+		path = new Text(composite_2, SWT.BORDER);
+		path.setBounds(144, 79, 717, 23);
+
+		Label label_11 = new Label(composite_2, SWT.NONE);
+		label_11.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 11, SWT.NORMAL));
+		label_11.setBounds(27, 79, 111, 23);
+		label_11.setText("\u6587\u4EF6\u7EDD\u5BF9\u8DEF\u5F84  \uFF1A");
+
+		Label label_12 = new Label(composite_2, SWT.NONE);
+		label_12.setText("\u5355\u4EF7                 \uFF1A");
+		label_12.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 11, SWT.NORMAL));
+		label_12.setBounds(27, 134, 111, 23);
+
+		price = new Text(composite_2, SWT.BORDER);
+		price.setBounds(144, 134, 717, 23);
+
+		Button btnNewButton = new Button(composite_2, SWT.NONE);
+		btnNewButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				try {
+					upload();
+				} catch (FileNotFoundException e1) {
+					Warn.setText("上传失败，请重试");
+				}
+				combo.select(-1);
+			}
+		});
+		btnNewButton.setBounds(328, 538, 216, 27);
+		btnNewButton.setText("\u4E0A\u4F20");
+
+		Label lblNewLabel_6 = new Label(composite_2, SWT.NONE);
+		lblNewLabel_6.setBounds(27, 33, 111, 17);
+		lblNewLabel_6.setText("\u6587\u4EF6\u7C7B\u578B             \uFF1A");
+
+		combo = new Combo(composite_2, SWT.READ_ONLY);
+		combo.setItems(new String[] { "\u89C6\u9891\u6587\u4EF6", "\u95EE\u5377\u8C03\u67E5", "\u4E8C\u7EF4\u7801" });
+		combo.setBounds(144, 30, 717, 25);
+
+		ScrolledComposite scrolledComposite_4 = new ScrolledComposite(composite_2,
+				SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		scrolledComposite_4.setBounds(27, 163, 834, 369);
+		scrolledComposite_4.setExpandHorizontal(true);
+		scrolledComposite_4.setExpandVertical(true);
+
+		upload = new Composite(scrolledComposite_4, SWT.NONE);
+		scrolledComposite_4.setContent(upload);
+		scrolledComposite_4.setMinSize(upload.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
+		DBConnection();
+		addItemDevice();
+		addItemAds();
+		addItemQues();
+		addItemBins();
+
+		scrolledComposite_1.setContent(ads);
+		scrolledComposite_1.setMinSize(ads.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
+		scrolledComposite_2.setContent(ques);
+		scrolledComposite_2.setMinSize(ques.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
+		scrolledComposite_3.setContent(bins);
+		scrolledComposite_3.setMinSize(bins.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
+		scrolledComposite_4.setContent(upload);
+		scrolledComposite_4.setMinSize(upload.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
+		Warn = new Label(composite_2, SWT.NONE);
+		Warn.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		Warn.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 16, SWT.NORMAL));
+		Warn.setAlignment(SWT.CENTER);
+		Warn.setBounds(197, 571, 478, 31);
+		
+		Label lblNewLabel_5 = new Label(composite_2, SWT.NONE);
+		lblNewLabel_5.setAlignment(SWT.CENTER);
+		lblNewLabel_5.setBounds(328, 7, 216, 17);
+		lblNewLabel_5.setText("\u8B66\u544A\uFF1A\u8BF7\u4F7F\u7528\u82F1\u6587\u5B57\u7B26");
+
+		scrolledComposite.setContent(device);
+		scrolledComposite.setMinSize(device.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
+		return container;
+	}
+
+	/**
+	 * Create the actions.
+	 */
+	private void createActions() {
+		// Create the actions
+	}
+
+	/**
+	 * Create the status line manager.
+	 * 
+	 * @return the status line manager
+	 */
+	@Override
+	protected StatusLineManager createStatusLineManager() {
+		StatusLineManager statusLineManager = new StatusLineManager();
+		return statusLineManager;
+	}
+
+	/**
+	 * Configure the shell.
+	 * 
+	 * @param newShell
+	 */
+	@Override
+	protected void configureShell(Shell newShell) {
+		super.configureShell(newShell);
+		newShell.setText("SeverCtrl");
+	}
+
+	/**
+	 * Return the initial size of the window.
+	 */
+	@Override
+	protected Point getInitialSize() {
+		return new Point(900, 700);
+	}
+
+	/**
+	 * Launch the application.
+	 * 
+	 * @param args
+	 */
+	public static void main(String args[]) {
+		try {
+			MainUI window = new MainUI();
+			window.setBlockOnOpen(true);
+			window.open();
+			Display.getCurrent().dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void upload () throws FileNotFoundException {
+		File file = new File(path.getText());
+		if (!file.exists() || file.isDirectory()) {
+			Warn.setText("文件路径错误！");
+			return;
+		}
+		if (combo.getSelectionIndex() == -1) {
+			Warn.setText("请选择文件的类别");
+			return;
+		}
+		try {
+			Float.valueOf(price.getText());
+		} catch (Exception e) {
+			Warn.setText("请填写正确的小数");
+			return;
+		}
+		boolean checked = false;
+		for (int i = 0; i < Variable.uploadcfg.size(); i++) {
+			if (Variable.uploadcfg.get(i).getSelection()) {
+				checked = true;
+				break;
+			}
+		}
+		if (!checked) {
+			Warn.setText("请至少勾选一个设备");
+			return;
+		}
+		String name = file.getName();
+		if (name.indexOf('.') != -1)
+			name = name.substring(0, name.indexOf('.'));
+
+		Warn.setText("上传中");
+		
+		DBConnectionForUpload(name, getMd5ByFile(file));
+		boolean ok = false;
+		switch (combo.getSelectionIndex()) {
+		case 0:
+			UpLoad.upload(Variable.ip, Variable.port,
+					Variable.ftpName, Variable.ftpPasswd,
+					file, "/ADmachine/ads/", name);
+			ok = true;
+			break;
+		case 1:
+			UpLoad.upload(Variable.ip, Variable.port,
+					Variable.ftpName, Variable.ftpPasswd,
+					file, "/ADmachine/questions/", name);
+			ok = true;
+			break;
+		case 2:
+			UpLoad.upload(Variable.ip, Variable.port,
+					Variable.ftpName, Variable.ftpPasswd,
+					file, "/ADmachine/bin-pictures/", name);
+			ok = true;
+			break;
+		}
+		if (ok)
+			Warn.setText("上传完毕");
+		else 
+			Warn.setText("上传失败，请重试");
+	}
+
+	static void DBConnectionForUpload(String name, String md5){
+        //驱动程序名//不固定，根据驱动
+        String driver = "com.mysql.jdbc.Driver";
+        // URL指向要访问的数据库名******
+        String url = "jdbc:mysql://" + Variable.ip + ":3306/ADmachine";
+        // MySQL配置时的用户名
+        String user = Variable.sqlName;
+        // Java连接MySQL配置时的密码******
+        String password = Variable.sqlPasswd;
+
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+
+            // 连续数据库
+            Connection conn = DriverManager.getConnection(url, user, password);
+            if(!conn.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+
+            // statement用来执行SQL语句
+            Statement statement = conn.createStatement();
+
+            switch (combo.getSelectionIndex()) {
+			case 0:
+	            statement.executeUpdate("insert into ads values (" 
+	            		+ "\"" + name + "\"" 
+						+ ", 0"
+	            		+ ", " +  price.getText()
+	            		+ ", \"" + md5 + "\")");
+	            statement.executeUpdate("create table ads" + name 
+	            		+ "(imei char(32) not null)");
+				for (int i = 0; i < Variable.uploadcfg.size(); i++) {
+					if (Variable.uploadcfg.get(i).getSelection())
+						statement.executeUpdate("insert into ads" + name
+								+ " values (\"" 
+								+ Variable.Devices.get(i).imei + "\" )");
+				}
+				break;
+			case 1:
+				statement.executeUpdate("insert into ques values (" 
+	            		+ "\"" + name + "\"" 
+						+ ", 0"
+	            		+ ", " +  price.getText()
+	            		+ ", \"" + md5 + "\")");
+	            statement.executeUpdate("create table ques" + name 
+	            		+ "(imei char(32) not null)");
+	            statement.executeUpdate("create table ans" + name 
+	            		+ "(ans char(127) not null)");
+				for (int i = 0; i < Variable.uploadcfg.size(); i++) {
+					if (Variable.uploadcfg.get(i).getSelection())
+						statement.executeUpdate("insert into ques" + name
+								+ " values (\"" 
+								+ Variable.Devices.get(i).imei + "\")");
+				}
+				break;
+
+			case 2:
+				statement.executeUpdate("insert into bins values (" 
+	            		+ "\"" + name + "\"" 
+						+ ", 0"
+	            		+ ", " +  price.getText()
+	            		+ ", \"" + md5 + "\")");
+	            statement.executeUpdate("create table bins" + name 
+	            		+ "(imei char(32) not null)");
+				for (int i = 0; i < Variable.uploadcfg.size(); i++) {
+					if (Variable.uploadcfg.get(i).getSelection())
+						statement.executeUpdate("insert into bins" + name
+								+ " values (\"" 
+								+ Variable.Devices.get(i).imei + "\")");
+				}
+				break;
+			}
+            conn.close();
+        } catch(ClassNotFoundException e) {
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+	
+    public static String getMd5ByFile(File file) throws FileNotFoundException {
+        String value = null;
+        FileInputStream in = new FileInputStream(file);
+        try {
+            MappedByteBuffer byteBuffer = in.getChannel().map(FileChannel.MapMode.READ_ONLY, 0, file.length());
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            md5.update(byteBuffer);
+            BigInteger bi = new BigInteger(1, md5.digest());
+            value = bi.toString(16);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(null != in) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return value;
+    }
+
+
+	static void addItemDevice() {
+		Vector<Label> imeiLable = new Vector<>();
+		Vector<Label> locationLable = new Vector<>();
+		Vector<Label> nItemLable = new Vector<>();
+		Vector<Button> editButton = new Vector<>();
+		Variable.uploadcfg.clear();
+		for (int i = 0; i < Variable.Devices.size(); i++) {
+
+			Variable.uploadcfg.add(new Button(upload, SWT.CHECK));
+			Variable.uploadcfg.get(i).setBounds(10, i * 23 + 10, 810, 17);
+			Variable.uploadcfg.get(i)
+					.setText("  imei号:" + Variable.Devices.get(i).imei + "   设备位置:" + Variable.Devices.get(i).location);
+
+			imeiLable.add(new Label(device, SWT.NONE));
+			imeiLable.get(i).setBounds(10, i * 23, 320, 17);
+			imeiLable.get(i).setText(Variable.Devices.get(i).imei);
+
+			locationLable.add(new Label(device, SWT.NONE));
+			locationLable.get(i).setBounds(340, i * 23, 320, 17);
+			locationLable.get(i).setText(Variable.Devices.get(i).location);
+
+			nItemLable.add(new Label(device, SWT.NONE));
+			nItemLable.get(i).setBounds(680, i * 23, 100, 17);
+			nItemLable.get(i).setText(String.valueOf(Variable.Devices.get(i).nItem));
+
+			editButton.add(new Button(device, SWT.NONE));
+			editButton.get(i).setBounds(800, i * 23, 60, 17);
+			editButton.get(i).setText("编辑");
+			final int x = i;
+			editButton.get(i).addSelectionListener(new SelectionListener() {
+				public void widgetSelected(SelectionEvent arg0) {
+					EditDevices window = new EditDevices(x);
+					window.setBlockOnOpen(true);
+					window.open();
+					locationLable.get(x).setText(Variable.Devices.get(x).location);
+					nItemLable.get(x).setText(String.valueOf(Variable.Devices.get(x).nItem));
+				}
+
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+				}
+			});
+		}
+	}
+
+	static void addItemAds() {
+		Vector<Label> nameLable = new Vector<>();
+		Vector<Label> playcntLable = new Vector<>();
+		Vector<Label> priceLable = new Vector<>();
+		Vector<Label> priceSumLable = new Vector<>();
+		Vector<Button> editButton = new Vector<>();
+		for (int i = 0; i < Variable.ads.size(); i++) {
+
+			nameLable.add(new Label(ads, SWT.NONE));
+			nameLable.get(i).setBounds(10, i * 23, 180, 17);
+			nameLable.get(i).setText(Variable.ads.get(i).name);
+
+			playcntLable.add(new Label(ads, SWT.NONE));
+			playcntLable.get(i).setBounds(200, i * 23, 180, 17);
+			playcntLable.get(i).setText(String.valueOf(Variable.ads.get(i).playCnt));
+
+			priceLable.add(new Label(ads, SWT.NONE));
+			priceLable.get(i).setBounds(400, i * 23, 180, 17);
+			priceLable.get(i).setText(String.valueOf(Variable.ads.get(i).price));
+
+			priceSumLable.add(new Label(ads, SWT.NONE));
+			priceSumLable.get(i).setBounds(600, i * 23, 180, 17);
+			priceSumLable.get(i).setText(String.valueOf(Variable.ads.get(i).price * Variable.ads.get(i).playCnt));
+
+			editButton.add(new Button(ads, SWT.NONE));
+			editButton.get(i).setBounds(800, i * 23, 80, 17);
+			editButton.get(i).setText("编辑");
+			final int x = i;
+			editButton.get(i).addSelectionListener(new SelectionListener() {
+				public void widgetSelected(SelectionEvent arg0) {
+					EditAds window = new EditAds(x);
+					window.setBlockOnOpen(true);
+					window.open();
+					if (Variable.ads.get(x).name.contains("已删除")) {
+						playcntLable.get(x).setEnabled(false);
+						nameLable.get(x).setEnabled(false);
+						priceLable.get(x).setEnabled(false);
+						priceSumLable.get(x).setEnabled(false);
+						editButton.get(x).setEnabled(false);
+					}
+					else {
+						playcntLable.get(x).setText(String.valueOf(Variable.ads.get(x).playCnt));
+						nameLable.get(x).setText(Variable.ads.get(x).name);
+						priceLable.get(x).setText(String.valueOf(Variable.ads.get(x).price));
+						priceSumLable.get(x).setText(String.valueOf(Variable.ads.get(x).price *
+										Variable.ads.get(x).playCnt));
+					}
+				}
+
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+				}
+			});
+		}
+	}
+
+	static void addItemBins() {
+		Vector<Label> nameLable = new Vector<>();
+		Vector<Label> playcntLable = new Vector<>();
+		Vector<Label> priceLable = new Vector<>();
+		Vector<Label> priceSumLable = new Vector<>();
+		Vector<Button> editButton = new Vector<>();
+		for (int i = 0; i < Variable.bins.size(); i++) {
+			nameLable.add(new Label(bins, SWT.NONE));
+			nameLable.get(i).setBounds(10, i * 23, 180, 17);
+			nameLable.get(i).setText(Variable.bins.get(i).name);
+
+			playcntLable.add(new Label(bins, SWT.NONE));
+			playcntLable.get(i).setBounds(200, i * 23, 180, 17);
+			playcntLable.get(i).setText(String.valueOf(Variable.bins.get(i).playCnt));
+
+			priceLable.add(new Label(bins, SWT.NONE));
+			priceLable.get(i).setBounds(400, i * 23, 180, 17);
+			priceLable.get(i).setText(String.valueOf(Variable.bins.get(i).price));
+
+			priceSumLable.add(new Label(bins, SWT.NONE));
+			priceSumLable.get(i).setBounds(600, i * 23, 180, 17);
+			priceSumLable.get(i).setText(String.valueOf(Variable.bins.get(i).price * Variable.bins.get(i).playCnt));
+
+			editButton.add(new Button(bins, SWT.NONE));
+			editButton.get(i).setBounds(800, i * 23, 80, 17);
+			editButton.get(i).setText("编辑");
+			final int x = i;
+			editButton.get(i).addSelectionListener(new SelectionListener() {
+				public void widgetSelected(SelectionEvent arg0) {
+					EditBins editbins = new EditBins(x);
+					editbins.setBlockOnOpen(true);
+					editbins.open();
+					playcntLable.get(x).setText(String.valueOf(Variable.bins.get(x).playCnt));
+					nameLable.get(x).setText(Variable.bins.get(x).name);
+					priceLable.get(x).setText(String.valueOf(Variable.bins.get(x).price));
+					priceSumLable.get(x).setText(String.valueOf(Variable.bins.get(x).price *
+									Variable.bins.get(x).playCnt));
+				}
+
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+				}
+			});
+		}
+	}
+
+	static void addItemQues() {
+		Vector<Label> nameLable = new Vector<>();
+		Vector<Label> playcntLable = new Vector<>();
+		Vector<Label> priceLable = new Vector<>();
+		Vector<Label> priceSumLable = new Vector<>();
+		Vector<Button> editButton = new Vector<>();
+		Vector<Button> viewButton = new Vector<>();
+		for (int i = 0; i < Variable.ques.size(); i++) {
+			final int x = i;
+			nameLable.add(new Label(ques, SWT.NONE));
+			nameLable.get(i).setBounds(10, i * 23, 180, 17);
+			nameLable.get(i).setText(Variable.ques.get(i).name);
+
+			playcntLable.add(new Label(ques, SWT.NONE));
+			playcntLable.get(i).setBounds(200, i * 23, 180, 17);
+			playcntLable.get(i).setText(String.valueOf(Variable.ques.get(i).playCnt));
+
+			priceLable.add(new Label(ques, SWT.NONE));
+			priceLable.get(i).setBounds(400, i * 23, 180, 17);
+			priceLable.get(i).setText(String.valueOf(Variable.ques.get(i).price));
+
+			priceSumLable.add(new Label(ques, SWT.NONE));
+			priceSumLable.get(i).setBounds(600, i * 23, 80, 17);
+			priceSumLable.get(i).setText(String.valueOf(Variable.ques.get(i).price * Variable.ques.get(i).playCnt));
+
+			viewButton.add(new Button(ques, SWT.NONE));
+			viewButton.get(i).setBounds(700, i * 23, 80, 17);
+			viewButton.get(i).setText("查看");
+			viewButton.get(i).addSelectionListener(new SelectionListener() {
+				public void widgetSelected(SelectionEvent arg0) {
+					ViewAns viewAns = new ViewAns(x);
+					viewAns.setBlockOnOpen(true);
+					viewAns.open();
+				}
+				public void widgetDefaultSelected(SelectionEvent arg0) {}
+			});
+
+			editButton.add(new Button(ques, SWT.NONE));
+			editButton.get(i).setBounds(800, i * 23, 80, 17);
+			editButton.get(i).setText("编辑");
+			editButton.get(i).addSelectionListener(new SelectionListener() {
+				public void widgetSelected(SelectionEvent arg0) {
+					EditQues editques = new EditQues(x);
+					editques.setBlockOnOpen(true);
+					editques.open();
+					playcntLable.get(x).setText(String.valueOf(Variable.ques.get(x).playCnt));
+					nameLable.get(x).setText(Variable.ques.get(x).name);
+					priceLable.get(x).setText(String.valueOf(Variable.ques.get(x).price));
+					priceSumLable.get(x).setText(String.valueOf(Variable.ques.get(x).price *
+									Variable.ques.get(x).playCnt));
+				}
+
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+				}
+			});
+		}
+	}
+
+	static void DBConnection() {
+		// 驱动程序名//不固定，根据驱动
+		String driver = "com.mysql.jdbc.Driver";
+		// URL指向要访问的数据库名******
+		String url = "jdbc:mysql://" + Variable.ip + ":3306/ADmachine";
+		// MySQL配置时的用户名
+		String user = Variable.sqlName;
+		// Java连接MySQL配置时的密码******
+		String password = Variable.sqlPasswd;
+
+		try {
+			// 加载驱动程序
+			Class.forName(driver);
+
+			// 连续数据库
+			Connection conn = DriverManager.getConnection(url, user, password);
+			if (!conn.isClosed())
+				System.out.println("Succeeded connecting to the Database!");
+
+			// statement用来执行SQL语句
+			Statement statement = conn.createStatement();
+
+			// 要执行的SQL语句id和content是表review中的项。
+			Variable.ads.clear();
+			Variable.ques.clear();
+			Variable.bins.clear();
+
+			ResultSet rs = statement.executeQuery("select * from ads");
+
+			while (rs.next()) {
+				adFile tmp = new adFile();
+				tmp.name = rs.getString("name");
+				tmp.playCnt = rs.getInt("playCount");
+				tmp.price = rs.getFloat("price");
+				tmp.md5 = rs.getString("md5");
+				Variable.ads.add(tmp);
+			}
+			
+			for(int i = 0; i < Variable.ads.size(); i++) {
+				rs = statement.executeQuery("select * from ads" + Variable.ads.get(i).name);
+				while (rs.next()) {
+					Variable.ads.get(i).imei.add(rs.getString("imei"));
+				}
+			}
+
+			rs = statement.executeQuery("select * from ques");
+
+			while (rs.next()) {
+				adFile tmp = new adFile();
+				tmp.name = rs.getString("name");
+				tmp.playCnt = rs.getInt("playCount");
+				tmp.price = rs.getFloat("price");
+				tmp.md5 = rs.getString("md5");
+
+				
+				Variable.ques.add(tmp);
+			}
+			
+			for(int i = 0; i < Variable.ques.size(); i++) {
+				rs = statement.executeQuery("select * from ques" + Variable.ques.get(i).name);
+				while (rs.next()) {
+					Variable.ques.get(i).imei.add(rs.getString("imei"));
+				}
+				rs = statement.executeQuery("select * from ans" + Variable.ques.get(i).name);
+				while (rs.next()) {
+					Variable.ques.get(i).ans.add(rs.getString("ans"));
+				}
+			}
+
+			rs = statement.executeQuery("select * from bins");
+
+			while (rs.next()) {
+				adFile tmp = new adFile();
+				tmp.name = rs.getString("name");
+				tmp.playCnt = rs.getInt("playCount");
+				tmp.price = rs.getFloat("price");
+				tmp.md5 = rs.getString("md5");
+
+				
+				Variable.bins.add(tmp);
+			}
+			
+			for(int i = 0; i < Variable.bins.size(); i++) {
+				rs = statement.executeQuery("select * from bins" + Variable.bins.get(i).name);
+				while (rs.next()) {
+					Variable.bins.get(i).imei.add(rs.getString("imei"));
+				}
+			}
+
+			rs = statement.executeQuery("select * from device");
+
+			while (rs.next()) {
+				Device tmp = new Device();
+				tmp.imei = rs.getString("imei");
+				tmp.location = rs.getString("location");
+				tmp.nItem = rs.getInt("nItem");
+				Variable.Devices.add(tmp);
+				
+			}
+			System.out.println("checked");
+
+			rs.close();
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Sorry,can`t find the Driver!");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

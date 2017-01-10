@@ -1,0 +1,153 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+
+import javax.management.loading.PrivateClassLoader;
+
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.StatusLineManager;
+import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.window.ApplicationWindow;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.custom.ScrolledComposite;
+
+public class ViewAns extends ApplicationWindow {
+	private static String finalAns;
+	/**
+	 * Create the application window.
+	 */
+	public ViewAns() {
+		super(null);
+		setShellStyle(SWT.DIALOG_TRIM);
+		addToolBar(SWT.FLAT | SWT.WRAP);
+		addMenuBar();
+		addStatusLine();
+	}
+
+	/**
+	 * Create contents of the application window.
+	 * @param parent
+	 */
+	@Override
+	protected Control createContents(Composite parent) {
+		setStatus("View answers.");
+		Composite container = new Composite(parent, SWT.NONE);
+		
+		ScrolledComposite scrolledComposite = new ScrolledComposite(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		scrolledComposite.setBounds(0, 0, 694, 470);
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
+		
+		Composite composite = new Composite(scrolledComposite, SWT.NONE);
+		
+		Vector<Integer> answers = new Vector<>();
+		for (int i = 0; i < Variable.ques.size(); i++) {
+			
+		}
+		
+		scrolledComposite.setContent(composite);
+		scrolledComposite.setMinSize(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
+		return container;
+	}
+
+
+	/**
+	 * Create the status line manager.
+	 * @return the status line manager
+	 */
+	@Override
+	protected StatusLineManager createStatusLineManager() {
+		StatusLineManager statusLineManager = new StatusLineManager();
+		return statusLineManager;
+	}
+
+	/**
+	 * Launch the application.
+	 * @param args
+	 */
+	public static void main(String args[]) {
+		try {
+			ViewAns window = new ViewAns();
+			window.setBlockOnOpen(true);
+			window.open();
+			Display.getCurrent().dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Configure the shell.
+	 * @param newShell
+	 */
+	@Override
+	protected void configureShell(Shell newShell) {
+		super.configureShell(newShell);
+		newShell.setText("ViewAns");
+	}
+
+	/**
+	 * Return the initial size of the window.
+	 */
+	@Override
+	protected Point getInitialSize() {
+		return new Point(700, 528);
+	}
+	
+	static void DBConnection(String ans){
+        //驱动程序名//不固定，根据驱动
+        String driver = "com.mysql.jdbc.Driver";
+        // URL指向要访问的数据库名******
+        String url = "jdbc:mysql://" + Variable.ip + ":3306/ADmachine";
+        // MySQL配置时的用户名
+        String user = Variable.sqlName;
+        // Java连接MySQL配置时的密码******
+        String password = Variable.sqlPasswd;
+
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+
+            // 连续数据库
+            Connection conn = DriverManager.getConnection(url, user, password);
+            if(!conn.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+
+            // statement用来执行SQL语句
+            Statement statement = conn.createStatement();
+
+            // 要执行的SQL语句id和content是表review中的项。
+            finalAns = new String();
+
+            ResultSet rs = statement.executeQuery("select * from ans" + ans);
+
+            int[][] ansCnt = new int[300][5];
+            int q = 1;
+            while(rs.next()) {
+            	String s = rs.getString("ans");
+            	for (int i = 0; i < s.length(); i++)
+            		ansCnt[q][Integer.valueOf(s.charAt(i))];
+            	q++;
+            }
+            
+            rs.close();
+            conn.close();
+        } catch(ClassNotFoundException e) {
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+}

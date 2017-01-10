@@ -1,0 +1,316 @@
+package ui_logic;
+
+import java.util.Vector;
+
+import javax.swing.JOptionPane;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import ftp.FtpOperations;
+import ui.AdsSetUp;
+import vars.AdFile;
+import vars.Device;
+import vars.UploadIndex;
+
+public class AdsLogic extends AdsSetUp {
+	Vector<Button> ModifyIMEIs = new Vector<>();
+	Vector<Text> ModifyPlayCounts = new Vector<>();
+
+	public AdsLogic(AdFile target, Vector<Device> DeviceList) {
+		super(target, DeviceList);
+	}
+
+	@Override
+	public void logicInit() {
+		TextBox_Name.setText(target.name);
+		TextBox_PlayCount.setText(String.valueOf(target.playCnt));
+		TextBox_Company.setText(target.company);
+		
+		String yearPre = target.begin.substring(0, 4);
+		String monthPre = target.begin.substring(5, 7);
+		String daPre = target.begin.substring(8);
+		
+		String yearAft = target.begin.substring(0, 4);
+		String monthAft = target.begin.substring(5, 7);
+		String daAft = target.begin.substring(8);
+		
+		Combo_Upload_YearPre.select(Combo_Upload_YearPre.indexOf(yearPre));
+		Combo_Upload_MonthPre.select(Combo_Upload_MonthPre.indexOf(monthPre));
+		
+		Combo_Upload_YearPre.select(Combo_Upload_YearPre.indexOf(yearPre));
+		Combo_Upload_YearPre.select(Combo_Upload_MonthPre.indexOf(monthPre));
+		
+		Vector<String> Month = new Vector<>();
+		Vector<Integer> PlayCounts = new Vector<>();
+		
+		ModifyIMEIs.clear();
+		ModifyPlayCounts.clear();
+		
+		for (UploadIndex index : target.Config) {
+			IMEIs.add(index.imei);
+			PlayCounts.add(index.playCount);
+		}
+		
+		int i = 1;
+		for (Device tmp : DeviceList) {
+			Button selected = new Button(ListConfig, SWT.CHECK);
+			selected.setBounds(10, i * 23, 500, 23);
+			selected.setBackground(
+					SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			selected.setText(
+					tmp.imei + ' ' + tmp.location + ' ' + tmp.nItem);
+
+			Text specialPlayCount = new Text(ListConfig, SWT.BORDER);
+			specialPlayCount.setBounds(510, i * 23, 138, 23);
+			specialPlayCount.setText("请填写播放次数");
+
+			int mark = IMEIs.indexOf(tmp.imei);
+			if (mark != -1) {
+				selected.setSelection(true);
+				specialPlayCount.setText(PlayCounts.get(mark).toString());
+			}
+			
+			ModifyIMEIs.add(selected);
+			ModifyPlayCounts.add(specialPlayCount);
+			i++;
+		}
+		buttonInit();
+	}
+	
+	void buttonInit () {
+		Button_Close.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				shell.dispose();
+			}
+		});
+		
+		Button_Confirm.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Label_Attention.setText(Upload());
+			}
+		});
+		
+		Button_Delete.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (JOptionPane.showConfirmDialog(null, "警告", "警告", JOptionPane.YES_NO_OPTION) == 0){
+					Label_Attention.setText("删除中");
+					if (Delete()) {
+						shell.dispose();
+						JOptionPane.showMessageDialog(null, "已删除", "提示", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else 
+						Label_Attention.setText("删除失败");
+				}
+			}
+		});
+	}
+	
+	boolean Delete () {
+		if (isConnected() || SqlInit()) {
+			SqlUpdate("drop table ads" + target.name);
+			SqlUpdate("delete from ads where name = \"" 
+					+ target.name + "\"");
+			FtpOperations ftpOperations = new FtpOperations();
+			ftpOperations.delete("/AdMachine/ads/", target.name);
+			return true;
+		}
+		return false;
+	}
+	
+	@SuppressWarnings("unchecked")
+	String Upload () {
+		
+		for (int i = 0; i < TextBox_Company.getText().length(); i++) {
+			char ch = TextBox_Company.getText().charAt(i);
+			if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')
+					|| (ch >= '0' && ch <= '9') || (ch == '_')) {
+			} else {
+				return "字符中只能含有大小写字母，数字和下划线";
+			}
+		}
+		
+		for (int i = 0; i < TextBox_Name.getText().length(); i++) {
+			char ch = TextBox_Name.getText().charAt(i);
+			if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')
+					|| (ch >= '0' && ch <= '9') || (ch == '_')) {
+			} else {
+				return "字符中只能含有大小写字母，数字和下划线";
+			}
+		}
+		
+		String begin = ""; // 格式化初使日期，如"2016-02-01"
+		begin += Combo_Upload_YearPre.getText();
+		begin += "-";
+		if (Combo_Upload_MonthPre.getText().length() == 1) {
+			begin += "0";
+		}
+		begin += Combo_Upload_MonthPre.getText();
+		begin += "-";
+		if (Combo_Upload_DayPre.getText().length() == 1) {
+			begin += "0";
+		}
+		begin += Combo_Upload_DayPre.getText();
+
+		String end = ""; // 格式化终止日期，如"2016-02-01"
+		end += Combo_Upload_YearAfter.getText();
+		end += "-";
+		if (Combo_Upload_MonthAfter.getText().length() == 1) {
+			end += "0";
+		}
+		end += Combo_Upload_MonthAfter.getText();
+		end += "-";
+		if (Combo_Upload_DayAfter.getText().length() == 1) {
+			end += "0";
+		}
+		end += Combo_Upload_DayAfter.getText();
+
+		if (end.compareTo(begin) < 0) {
+			return "结束日期不应小于开始日期";
+		}
+		
+		
+		try {
+			Integer.valueOf(TextBox_PlayCount.getText());
+		} catch (Exception e) {
+			return "请填写正确的整数";
+		}
+		
+		if (!TextBox_Name.getText().equals(target.name) && checkSQL(TextBox_Name.getText())) {
+			return "修改失败，服务器上有同名文件存在？";
+		}
+		
+		boolean checked = false;
+		int cnt = 0;
+		Vector<UploadIndex> pre = new Vector<>();
+		for (Button tmp : ModifyIMEIs) {
+			if (tmp.getSelection()) {
+				checked = true;
+				UploadIndex up = new UploadIndex();
+				up.imei = tmp.getText().substring(0,
+						tmp.getText().indexOf(' '));
+				try {
+					up.playCount = Integer
+							.valueOf(ModifyPlayCounts.get(cnt).getText());
+				} catch (Exception e) {
+					up.playCount = -1;
+				}
+				pre.add(up);
+			}
+			cnt++;
+		}
+
+		if (!checked) {
+			return "请至少勾选一个设备";
+		}
+		
+		final String lastName = target.name;
+		target.name = TextBox_Name.getText();
+		target.playCnt = Integer.valueOf(TextBox_PlayCount.getText());
+		target.company = TextBox_Company.getText();
+		target.begin = begin;
+		target.end = end;
+		target.Config = (Vector<UploadIndex>) pre.clone();
+		
+		Button_Confirm.setEnabled(false);
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				FtpOperations ftpOperations = new FtpOperations();
+				ftpOperations.rename(lastName, "/AdMachine/ads/", target.name);
+				
+				SqlInit();
+				SqlUpdate("update ads set name = " 
+						+ "\"" + target.name + "\""
+						+ ", playCount = " + target.playCnt 
+						+ ", md5 = \"" + target.md5 
+						+ "\", begin = \""+ target.begin 
+						+ "\", end = \"" + target.end 
+						+ "\", company = \"" + target.company 
+						+ "\" where name = \"" + lastName + "\"");
+				
+				int def = 0;
+				int sum = target.playCnt;
+				int acc = 0;
+				int mod = 0;
+				for (UploadIndex index : target.Config) {//初始化，计算每个广告机该播几个
+					if (index.playCount == -1)
+						def++;
+					else
+						sum -= index.playCount;
+				}
+				if (def == 0) {
+					acc = sum/target.Config.size();
+					mod = sum%target.Config.size();
+				} else {
+					acc = sum/def;
+					mod = sum%def;
+				}
+				for (int i = 0; i < target.Config.size(); i++) {//开始写入数据库
+					if (target.Config.get(i).playCount == -1) {
+						target.Config.get(i).playCount = acc;
+					} else {
+						target.Config.get(i).playCount += acc;
+					}
+					if (i == 0) {
+						target.Config.get(i).playCount += mod;
+					}
+				}
+				
+				SqlUpdate("alter table ads" + lastName +
+						" rename ads" + target.name);
+				SqlUpdate("delete from ads" + target.name);
+				for (UploadIndex index : target.Config) {
+					SqlUpdate("insert into ads" + target.name + " values (\""
+							+ index.imei + "\", " + index.playCount + ")");
+				}
+				
+				Display.getDefault().asyncExec(new Runnable() {
+					public void run() {
+						logicInit();
+						Label_Attention.setText("所有工作完成，已就绪");
+						Button_Confirm.setEnabled(true);
+					}
+				});
+			}
+		}).start();
+		
+		return "正在操作数据库";
+	}
+	
+	boolean checkSQL(String name) {
+		boolean state = false;
+		try {
+			if (isConnected() || SqlInit()) {
+				SqlQuery("select name from ads where name = " + "\"" + name
+						+ "\"");
+				if (rSet.next()) {
+					state = true;
+				}
+				SqlQuery("select name from repeats where name = " + "\"" + name
+						+ "\"");
+				if (rSet.next()) {
+					state = true;
+				}
+			}
+			if (rSet != null && !rSet.isClosed())
+				rSet.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("SQL连接失败");
+			state = true;
+		}
+
+		return state;
+	}
+
+}

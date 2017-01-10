@@ -1,0 +1,42 @@
+
+
+import java.awt.Checkbox;
+import java.util.Vector;
+
+import org.eclipse.swt.widgets.Button;
+
+/**
+ * Created by SunBird on 2016/2/11.
+ */
+public class Variable {
+    public static String ip = "192.168.1.44";
+    public static int port = 21;
+    public static String ftpName = "sunbird";
+    public static String ftpPasswd = "a5018335686";
+
+    public static String sqlName = "root";
+    public static String sqlPasswd = "a5018335686";
+    
+    public static Vector<Button> uploadcfg = new Vector<>();
+    public static Vector<adFile> ads = new Vector<>();
+    public static Vector<adFile> ques = new Vector<>();
+    public static Vector<adFile> bins = new Vector<>();
+    public static Vector<Device> Devices = new Vector<>();
+    
+    
+}
+
+class Device {
+	public String imei;
+	public String location;
+	public int nItem = 0;
+}
+
+class adFile {
+	public String name;
+	public int playCnt = 0;
+	public float price = 0;
+	public String md5;
+	public Vector<String> imei = new Vector<>();
+	public Vector<String> ans = new Vector<>();
+}

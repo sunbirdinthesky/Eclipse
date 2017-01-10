@@ -1,0 +1,302 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.StatusLineManager;
+import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.window.ApplicationWindow;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ToolItem;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+
+public class EditBins extends ApplicationWindow {
+	private Text newPrice;
+	private Text newName;
+	private Composite items;
+	private int pos;
+
+	/**
+	 * Create the application window.
+	 */
+	public EditBins(int x) {
+		super(null);
+		addToolBar(SWT.FLAT | SWT.WRAP);
+		addMenuBar();
+		addStatusLine();
+		pos = x;
+	}
+
+	/**
+	 * Create contents of the application window.
+	 * @param parent
+	 */
+	@Override
+	protected Control createContents(Composite parent) {
+		setStatus("Edit bins information.");
+		Composite container = new Composite(parent, SWT.NONE);
+		
+		Label label = new Label(container, SWT.NONE);
+		label.setBounds(10, 10, 61, 17);
+		label.setText("\u6587\u4EF6\u540D");
+		
+		Label lblNewLabel_1 = new Label(container, SWT.NONE);
+		lblNewLabel_1.setBounds(10, 56, 61, 17);
+		lblNewLabel_1.setText("\u5355\u4EF7");
+		
+		newPrice = new Text(container, SWT.BORDER);
+		newPrice.setBounds(77, 56, 347, 23);
+		
+		newName = new Text(container, SWT.BORDER);
+		newName.setBounds(77, 10, 347, 23);
+		newName.setText(Variable.bins.get(pos).name);
+		
+		Button setZero = new Button(container, SWT.NONE);
+		setZero.setBounds(10, 381, 135, 50);
+		setZero.setText("\u6E05\u96F6\u64AD\u653E\u6B21\u6570");
+		setZero.addSelectionListener(new SelectionListener() {
+			public void widgetSelected(SelectionEvent arg0) {
+				zero();
+			}
+			public void widgetDefaultSelected(SelectionEvent arg0) {}
+		});
+		
+		Label warn = new Label(container, SWT.NONE);
+		warn.setAlignment(SWT.CENTER);
+		warn.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 18, SWT.NORMAL));
+		warn.setBounds(10, 437, 414, 38);
+		
+		Button confirm = new Button(container, SWT.NONE);
+		confirm.setBounds(295, 381, 129, 50);
+		confirm.setText("\u63D0\u4EA4");
+		confirm.addSelectionListener(new SelectionListener() {
+			public void widgetSelected(SelectionEvent arg0) {
+				DBconnection();
+			}
+			public void widgetDefaultSelected(SelectionEvent arg0) {}
+		});
+		
+		ScrolledComposite selection = new ScrolledComposite(container, SWT.BORDER | SWT.V_SCROLL);
+		selection.setBounds(10, 85, 414, 290);
+		selection.setExpandHorizontal(true);
+		selection.setExpandVertical(true);
+		
+		items = new Composite(selection, SWT.NONE);
+		addItem();
+		selection.setContent(items);
+		selection.setMinSize(items.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+		
+		Button delete = new Button(container, SWT.NONE);
+		delete.setBounds(151, 381, 138, 50);
+		delete.setText("\u5220\u9664");
+		delete.addSelectionListener(new SelectionListener() {
+			public void widgetSelected(SelectionEvent arg0) {
+				del();
+			}
+			public void widgetDefaultSelected(SelectionEvent arg0) {}
+		});
+
+		return container;
+	}
+	
+	Vector<Button> uploadcfg = new Vector<>();
+	void addItem () {
+		uploadcfg.clear();
+		for (int i = 0; i < Variable.Devices.size(); i++) {
+
+			uploadcfg.add(new Button(items, SWT.CHECK));
+			uploadcfg.get(i).setBounds(10, i * 23 + 10, 810, 17);
+			uploadcfg.get(i)
+					.setText("  imei号:" + Variable.Devices.get(i).imei + "   设备位置:" + Variable.Devices.get(i).location);
+		}
+	}
+
+	boolean del(){
+        //驱动程序名//不固定，根据驱动
+        String driver = "com.mysql.jdbc.Driver";
+        // URL指向要访问的数据库名******
+        String url = "jdbc:mysql://" + Variable.ip + ":3306/ADmachine";
+        // MySQL配置时的用户名
+        String user = Variable.sqlName;
+        // Java连接MySQL配置时的密码******
+        String password = Variable.sqlPasswd;
+
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+
+            // 连续数据库
+            Connection conn = DriverManager.getConnection(url, user, password);
+            if(!conn.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+
+            // statement用来执行SQL语句
+            Statement statement = conn.createStatement();
+
+            // 要执行的SQL语句id和content是表review中的项。
+            statement.executeUpdate("delete from bins where name = \"" + 
+            		Variable.bins.get(pos).name + "\"");
+            statement.executeUpdate("drop table bins" + 
+            		Variable.bins.get(pos).name);
+            Variable.bins.get(pos).name = "已删除";
+            Variable.bins.get(pos).playCnt = 0;
+            Variable.bins.get(pos).price = 0;
+            Variable.bins.get(pos).md5 = "n/a";
+            Variable.bins.get(pos).imei.clear();
+            
+            conn.close();
+            return true;
+        } catch(ClassNotFoundException e) {
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+	
+	boolean zero(){
+        //驱动程序名//不固定，根据驱动
+        String driver = "com.mysql.jdbc.Driver";
+        // URL指向要访问的数据库名******
+        String url = "jdbc:mysql://" + Variable.ip + ":3306/ADmachine";
+        // MySQL配置时的用户名
+        String user = Variable.sqlName;
+        // Java连接MySQL配置时的密码******
+        String password = Variable.sqlPasswd;
+
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+
+            // 连续数据库
+            Connection conn = DriverManager.getConnection(url, user, password);
+            if(!conn.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+
+            // statement用来执行SQL语句
+            Statement statement = conn.createStatement();
+
+            // 要执行的SQL语句id和content是表review中的项。
+            statement.executeUpdate("update bins set playCount = 0 where name = \"" + 
+            		Variable.bins.get(pos).name + "\"");
+            Variable.bins.get(pos).playCnt = 0;
+            
+            conn.close();
+            return true;
+        } catch(ClassNotFoundException e) {
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+	boolean DBconnection(){
+        //驱动程序名//不固定，根据驱动
+        String driver = "com.mysql.jdbc.Driver";
+        // URL指向要访问的数据库名******
+        String url = "jdbc:mysql://" + Variable.ip + ":3306/ADmachine";
+        // MySQL配置时的用户名
+        String user = Variable.sqlName;
+        // Java连接MySQL配置时的密码******
+        String password = Variable.sqlPasswd;
+
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+
+            // 连续数据库
+            Connection conn = DriverManager.getConnection(url, user, password);
+            if(!conn.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+
+            // statement用来执行SQL语句
+            Statement statement = conn.createStatement();
+
+            // 要执行的SQL语句id和content是表review中的项。
+            statement.executeUpdate("update bins set name = \"" + newName.getText() + "\" where name = \"" + 
+            		Variable.bins.get(pos).name + "\"");
+            statement.executeUpdate("alter table bins" + Variable.bins.get(pos).name + " rename bins" + 
+            		newName.getText());
+//#####################################
+            Variable.bins.get(pos).name = newName.getText();
+            
+            statement.executeUpdate("update bins set price = " + 
+            		Float.valueOf(newPrice.getText()) + " where name = \"" + 
+            		Variable.bins.get(pos).name + "\"");
+            Variable.bins.get(pos).price = Float.valueOf(newPrice.getText());
+            
+            statement.executeUpdate("delete from bins" + Variable.bins.get(pos).name);
+            for (int i = 0; i < uploadcfg.size(); i++) {
+            	if (uploadcfg.get(i).getSelection()) {
+            		statement.executeUpdate("insert into bins" + Variable.bins.get(pos).name
+            				+ " values (\"" + Variable.Devices.get(i).imei
+            				+ "\")");
+            	}
+            }
+            
+            
+            conn.close();
+            return true;
+        } catch(ClassNotFoundException e) {
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+	/**
+	 * Create the status line manager.
+	 * @return the status line manager
+	 */
+	@Override
+	protected StatusLineManager createStatusLineManager() {
+		StatusLineManager statusLineManager = new StatusLineManager();
+		return statusLineManager;
+	}
+
+	/**
+	 * Configure the shell.
+	 * @param newShell
+	 */
+	@Override
+	protected void configureShell(Shell newShell) {
+		super.configureShell(newShell);
+		newShell.setText("Editbins");
+	}
+
+	/**
+	 * Return the initial size of the window.
+	 */
+	@Override
+	protected Point getInitialSize() {
+		return new Point(450, 553);
+	}
+}

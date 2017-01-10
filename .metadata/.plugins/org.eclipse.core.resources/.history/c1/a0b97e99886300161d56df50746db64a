@@ -1,0 +1,19 @@
+package gpio;
+
+/*
+ * GPIOinterface, for getting message from C program
+ */
+
+public class GPIOinterface {
+	static {
+		System.load("/home/pi/libgpio.so");
+	}
+
+	public native static int getUserFlag();
+
+	public native static int gpio();
+
+	public native static int stepCtrl();
+	
+	public native static int resetFlag();
+}

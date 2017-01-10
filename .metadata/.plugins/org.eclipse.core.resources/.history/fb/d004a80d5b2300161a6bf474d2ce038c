@@ -1,0 +1,2197 @@
+package ui;
+
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Composite;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.security.MessageDigest;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import ftp.Operations;
+
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.MouseMoveListener;
+import org.eclipse.swt.events.MouseTrackListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.widgets.Combo;
+
+import vars.*;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.graphics.Point;
+
+public class Main {
+	protected Shell shell;
+	private Button closeButton;
+	private Label DeviceManager;
+	private Label AdsManager;
+	private Label QuestionsManager;
+	private Label Bin_CodeManager;
+	private Label FileUpload;
+	private Composite DevicesContainer;
+	private Label line;
+	private Label title4;
+	private Label title5;
+	private Composite DeviceItems;
+	private Composite AdsContainer;
+	private Label label;
+	private Label label_2;
+	private Label label_3;
+	private Label label_4;
+	private Composite AdsItems;
+	private Composite QuesContainer;
+	private Label label_5;
+	private Label label_7;
+	private Label label_8;
+	private Label label_9;
+	private Composite QuesItems;
+	private Composite BinsContainer;
+	private Label label_10;
+	private Label label_12;
+	private Label label_14;
+	private Composite BinsItems;
+	private Composite UploadContainer;
+	private Label label_15;
+	private Composite composite;
+	private Text path;
+	private Label label_16;
+	private Label label_17;
+	private Text playCount;
+	private Button upload;
+	private Label label_18;
+	private Combo FileType;
+	private ScrolledComposite DeviceList;
+	private Label label_20;
+	private boolean KeyDown;
+	private int argx, argy;
+	private Composite moveBar;
+	private Composite moveBar2;
+	private static Thread updating;
+	private Combo monthPre;
+	private Combo dayPre;
+	private Combo yearAft;
+	private Combo monthAft;
+	private Combo dayAft;
+	private Combo yearPre;
+
+	void init() {
+		KeyDown = false;
+		// 初始化显示
+		updating = new Thread(new Runnable() {
+			public void run() {
+				try {
+					while (!Thread.interrupted()) {
+
+						System.out.println("updateing");
+						DevicesRefresh();
+						AdsRefresh();
+						QuesRefresh();
+						BinsRefresh();
+						System.out.println("sleeping");
+						Thread.sleep(2000);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+		updating.start();
+		DevicesContainer.setEnabled(false);
+		DevicesContainer.setVisible(false);
+
+		AdsContainer.setEnabled(false);
+		AdsContainer.setVisible(false);
+
+		QuesContainer.setEnabled(false);
+		QuesContainer.setVisible(false);
+
+		BinsContainer.setEnabled(false);
+		BinsContainer.setVisible(false);
+
+		UploadContainer.setEnabled(false);
+		UploadContainer.setVisible(false);
+
+		// 添加监听器
+		moveBar.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseUp(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				KeyDown = false;
+			}
+
+			@Override
+			public void mouseDown(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				KeyDown = true;
+				argx = arg0.x;
+				argy = arg0.y;
+			}
+
+			@Override
+			public void mouseDoubleClick(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		moveBar.addMouseMoveListener(new MouseMoveListener() {
+
+			@Override
+			public void mouseMove(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				if (KeyDown)
+					shell.setLocation(shell.getLocation().x + arg0.x - argx,
+							shell.getLocation().y + arg0.y - argy);
+			}
+		});
+
+		moveBar2.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseUp(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				KeyDown = false;
+			}
+
+			@Override
+			public void mouseDown(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				KeyDown = true;
+				argx = arg0.x;
+				argy = arg0.y;
+			}
+
+			@Override
+			public void mouseDoubleClick(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		moveBar2.addMouseMoveListener(new MouseMoveListener() {
+
+			@Override
+			public void mouseMove(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				if (KeyDown)
+					shell.setLocation(shell.getLocation().x + arg0.x - argx,
+							shell.getLocation().y + arg0.y - argy);
+			}
+		});
+
+		closeButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				shell.dispose();
+			}
+		});
+
+		DeviceManager.addMouseListener(new MouseListener() {
+			public void mouseUp(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				DevicesContainer.setEnabled(true);
+				DevicesContainer.setVisible(true);
+
+				AdsContainer.setEnabled(false);
+				AdsContainer.setVisible(false);
+
+				QuesContainer.setEnabled(false);
+				QuesContainer.setVisible(false);
+
+				BinsContainer.setEnabled(false);
+				BinsContainer.setVisible(false);
+
+				UploadContainer.setEnabled(false);
+				UploadContainer.setVisible(false);
+			}
+
+			public void mouseDown(MouseEvent arg0) {
+			}
+
+			public void mouseDoubleClick(MouseEvent arg0) {
+			}
+		});
+
+		DeviceManager.addMouseTrackListener(new MouseTrackListener() {
+			public void mouseHover(MouseEvent arg0) {
+			}
+
+			public void mouseExit(MouseEvent arg0) {
+				DeviceManager.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			}
+
+			public void mouseEnter(MouseEvent arg0) {
+				DeviceManager
+						.setBackground(SWTResourceManager.getColor(38, 18, 10));
+			}
+		});
+
+		AdsManager.addMouseListener(new MouseListener() {
+			public void mouseUp(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				DevicesContainer.setEnabled(false);
+				DevicesContainer.setVisible(false);
+
+				AdsContainer.setEnabled(true);
+				AdsContainer.setVisible(true);
+
+				QuesContainer.setEnabled(false);
+				QuesContainer.setVisible(false);
+
+				BinsContainer.setEnabled(false);
+				BinsContainer.setVisible(false);
+
+				UploadContainer.setEnabled(false);
+				UploadContainer.setVisible(false);
+			}
+
+			public void mouseDown(MouseEvent arg0) {
+			}
+
+			public void mouseDoubleClick(MouseEvent arg0) {
+			}
+		});
+
+		AdsManager.addMouseTrackListener(new MouseTrackListener() {
+			public void mouseHover(MouseEvent arg0) {
+			}
+
+			public void mouseExit(MouseEvent arg0) {
+				AdsManager.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			}
+
+			public void mouseEnter(MouseEvent arg0) {
+				AdsManager
+						.setBackground(SWTResourceManager.getColor(38, 18, 10));
+			}
+		});
+
+		QuestionsManager.addMouseListener(new MouseListener() {
+			public void mouseUp(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				DevicesContainer.setEnabled(false);
+				DevicesContainer.setVisible(false);
+
+				AdsContainer.setEnabled(false);
+				AdsContainer.setVisible(false);
+
+				QuesContainer.setEnabled(true);
+				QuesContainer.setVisible(true);
+
+				BinsContainer.setEnabled(false);
+				BinsContainer.setVisible(false);
+
+				UploadContainer.setEnabled(false);
+				UploadContainer.setVisible(false);
+			}
+
+			public void mouseDown(MouseEvent arg0) {
+			}
+
+			public void mouseDoubleClick(MouseEvent arg0) {
+			}
+		});
+
+		QuestionsManager.addMouseTrackListener(new MouseTrackListener() {
+			public void mouseHover(MouseEvent arg0) {
+			}
+
+			public void mouseExit(MouseEvent arg0) {
+				QuestionsManager.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			}
+
+			public void mouseEnter(MouseEvent arg0) {
+				QuestionsManager
+						.setBackground(SWTResourceManager.getColor(38, 18, 10));
+			}
+		});
+
+		Bin_CodeManager.addMouseListener(new MouseListener() {
+			public void mouseUp(MouseEvent arg0) {
+				DevicesContainer.setEnabled(false);
+				DevicesContainer.setVisible(false);
+
+				AdsContainer.setEnabled(false);
+				AdsContainer.setVisible(false);
+
+				QuesContainer.setEnabled(false);
+				QuesContainer.setVisible(false);
+
+				BinsContainer.setEnabled(true);
+				BinsContainer.setVisible(true);
+
+				UploadContainer.setEnabled(false);
+				UploadContainer.setVisible(false);
+
+			}
+
+			public void mouseDown(MouseEvent arg0) {
+			}
+
+			public void mouseDoubleClick(MouseEvent arg0) {
+			}
+		});
+
+		Bin_CodeManager.addMouseTrackListener(new MouseTrackListener() {
+			public void mouseHover(MouseEvent arg0) {
+			}
+
+			public void mouseExit(MouseEvent arg0) {
+				Bin_CodeManager.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			}
+
+			public void mouseEnter(MouseEvent arg0) {
+				Bin_CodeManager
+						.setBackground(SWTResourceManager.getColor(38, 18, 10));
+			}
+		});
+
+		FileUpload.addMouseListener(new MouseListener() {
+			public void mouseUp(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				DevicesContainer.setEnabled(false);
+				DevicesContainer.setVisible(false);
+
+				AdsContainer.setEnabled(false);
+				AdsContainer.setVisible(false);
+
+				QuesContainer.setEnabled(false);
+				QuesContainer.setVisible(false);
+
+				BinsContainer.setEnabled(false);
+				BinsContainer.setVisible(false);
+
+				UploadContainer.setEnabled(true);
+				UploadContainer.setVisible(true);
+			}
+
+			public void mouseDown(MouseEvent arg0) {
+			}
+
+			public void mouseDoubleClick(MouseEvent arg0) {
+			}
+		});
+
+		FileUpload.addMouseTrackListener(new MouseTrackListener() {
+			public void mouseHover(MouseEvent arg0) {
+			}
+
+			public void mouseExit(MouseEvent arg0) {
+				FileUpload.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+			}
+
+			public void mouseEnter(MouseEvent arg0) {
+				FileUpload
+						.setBackground(SWTResourceManager.getColor(38, 18, 10));
+			}
+		});
+
+		upload.addMouseListener(new MouseListener() {
+			public void mouseUp(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+
+				try {
+					upload();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+
+			public void mouseDown(MouseEvent arg0) {
+			}
+
+			public void mouseDoubleClick(MouseEvent arg0) {
+			}
+		});
+
+	}
+
+	void DevicesRefresh() throws Exception {
+		if (!SQLOperation.Operation.isConnected()) {
+			try {
+				SQLOperation.Operation.init();
+			} catch (Exception e) {
+				e.printStackTrace();
+				Display.getDefault().syncExec(new Runnable() {
+					public void run() {
+						Warning warning = new Warning(getShell(), "广告机列表获取失败");
+						warning.open();
+					}
+				});
+				return;
+			}
+		}
+
+		ResultSet rs = SQLOperation.Operation
+				.runQueryStatement("select * from device");
+		Vars.Devices.clear();
+		while (rs.next()) {
+			Device tmp = new Device();
+			tmp.imei = rs.getString("imei");
+			tmp.location = rs.getString("location");
+			tmp.nItem = rs.getInt("nItem");
+			tmp.time = rs.getString("time");
+			Vars.Devices.add(tmp);
+		}
+		Long hour = 0l;
+		Long min = 0l;
+		Long sec = 0l;
+
+		rs = SQLOperation.Operation.runQueryStatement("select now()");
+		rs.next();
+		String now = rs.getString("now()");
+		hour = Long.valueOf(now.substring(11, 13));
+		min = Long.valueOf(now.substring(14, 16));
+		sec = Long.valueOf(now.substring(18, 19));
+		rs = SQLOperation.Operation
+				.runQueryStatement("select time from device");
+		int t = 0;
+		while (rs.next()) {
+			Vars.Devices.get(t++).time = rs.getString("time");
+		}
+		final long a = hour;
+		final long b = min;
+		final long c = sec;
+		Display.getDefault().syncExec(new Runnable() {
+
+			public void run() {
+				DeviceItems.dispose();
+				DeviceItems = new Composite(DevicesContainer, SWT.NONE);
+				DeviceItems.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+				DeviceItems.setBounds(26, 138, 640, 534);
+
+				int i = 1;
+				for (Device tmp : Vars.Devices) {
+					final int x = i - 1;
+					Vars.uploadcfg.add(new Button(DeviceList, SWT.CHECK));
+					Vars.uploadcfg.get(i - 1).setBounds(10, i * 23 + 10, 648,
+							23);
+					Vars.uploadcfg.get(i - 1).setText(
+							"  imei号:" + tmp.imei + "   设备位置:" + tmp.location);
+					Vars.uploadcfg.get(i - 1).setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+
+					Label nameLable = new Label(DeviceItems, SWT.NONE);
+					nameLable.setBounds(10, i * 23, 180, 23);
+					nameLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					nameLable.setText(tmp.imei);
+					nameLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							DeviceDetail DeviceDetail = new DeviceDetail(
+									getShell(), SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										DevicesRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Label playcntLable = new Label(DeviceItems, SWT.NONE);
+					playcntLable.setBounds(270, i * 23, 120, 23);
+					playcntLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					playcntLable.setText(String.valueOf(tmp.location));
+					playcntLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							DeviceDetail DeviceDetail = new DeviceDetail(
+									getShell(), SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										DevicesRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Label priceSumLable = new Label(DeviceItems, SWT.NONE);
+					priceSumLable.setBounds(526, i * 23, 100, 23);
+					priceSumLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					priceSumLable.setText(String.valueOf(tmp.nItem));
+					priceSumLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							DeviceDetail DeviceDetail = new DeviceDetail(
+									getShell(), SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										DevicesRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+					i++;
+				}
+
+				long time = c + b * 60 + a * 60 * 60;
+				for (int c = 0; c < Vars.Devices.size(); c++) {
+					String r = Vars.Devices.get(c).time;
+					long rec = Long.valueOf((String) r.subSequence(11, 13)) * 60
+							* 60
+							+ Long.valueOf((String) r.subSequence(14, 16)) * 60
+							+ Long.valueOf((String) r.subSequence(18, 19));
+					Composite tigger = new Composite(DeviceItems, SWT.NONE);
+					tigger.setBounds(0, c * 23 + 23, 10, 10);
+					final int x = c;
+					tigger.addMouseListener(new MouseListener() {
+
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							DeviceDetail DeviceDetail = new DeviceDetail(
+									getShell(), SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										DevicesRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					if (rec - time >= 5 || rec - time <= -5) {
+						tigger.setBackground(
+								SWTResourceManager.getColor(SWT.COLOR_RED));
+					} else {
+						tigger.setBackground(
+								SWTResourceManager.getColor(SWT.COLOR_GREEN));
+					}
+					Composite tmp = new Composite(DeviceItems, SWT.NONE);
+					tmp.setBounds(10, c * 23 + 23, 638, 10);
+					tmp.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					tmp.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							DeviceDetail DeviceDetail = new DeviceDetail(
+									getShell(), SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										DevicesRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+				}
+
+			}
+
+		});
+	}
+
+	void AdsRefresh() throws Exception {
+		if (!SQLOperation.Operation.isConnected()) {
+			try {
+				SQLOperation.Operation.init();
+			} catch (Exception e) {
+				Display.getDefault().syncExec(new Runnable() {
+					public void run() {
+						Warning warning = new Warning(getShell(), "视频广告列表获取失败");
+						warning.open();
+					}
+				});
+				return;
+			}
+		}
+
+		ResultSet rs = SQLOperation.Operation
+				.runQueryStatement("select * from ads");
+		Vars.ads.clear();
+		while (rs.next()) {
+			AdFile tmp = new AdFile();
+			tmp.name = rs.getString("name");
+			tmp.playCnt = rs.getInt("playCount");
+			tmp.md5 = rs.getString("md5");
+			Vars.ads.add(tmp);
+		}
+		rs.close();
+
+		Display.getDefault().syncExec(new Runnable() {
+
+			public void run() {
+				AdsItems.dispose();
+				AdsItems = new Composite(AdsContainer, SWT.NONE);
+				AdsItems.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+				AdsItems.setBounds(26, 138, 640, 534);
+
+				int i = 1;
+				for (AdFile tmp : Vars.ads) {
+					final int x = i - 1;
+					Label nameLable = new Label(AdsItems, SWT.NONE);
+					nameLable.setBounds(10, i * 23, 180, 23);
+					nameLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					nameLable.setText(tmp.name);
+					nameLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							AdsDetail adsDetail = new AdsDetail(getShell(),
+									SWT.NO_TRIM);
+							adsDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										AdsRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Label playcntLable = new Label(AdsItems, SWT.NONE);
+					playcntLable.setBounds(270, i * 23, 120, 23);
+					playcntLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					playcntLable.setText(String.valueOf(tmp.price));
+					playcntLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							AdsDetail adsDetail = new AdsDetail(getShell(),
+									SWT.NO_TRIM);
+							adsDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										AdsRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Label priceLable = new Label(AdsItems, SWT.NONE);
+					priceLable.setBounds(400, i * 23, 120, 23);
+					priceLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					priceLable.setText(String.valueOf(tmp.playCnt));
+					priceLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							AdsDetail adsDetail = new AdsDetail(getShell(),
+									SWT.NO_TRIM);
+							adsDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										AdsRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Label priceSumLable = new Label(AdsItems, SWT.NONE);
+					priceSumLable.setBounds(526, i * 23, 100, 23);
+					priceSumLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					priceSumLable
+							.setText(String.valueOf(tmp.price * tmp.playCnt));
+					priceSumLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							AdsDetail adsDetail = new AdsDetail(getShell(),
+									SWT.NO_TRIM);
+							adsDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										AdsRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Composite tigger = new Composite(AdsItems, SWT.NONE);
+					tigger.setBounds(10, i * 23, 648, 23);
+					tigger.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					tigger.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							AdsDetail adsDetail = new AdsDetail(getShell(),
+									SWT.NO_TRIM);
+							adsDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										AdsRefresh();
+									} catch (Exception e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+					i++;
+				}
+			}
+
+		});
+	}
+
+	void QuesRefresh() throws SQLException {
+		if (!SQLOperation.Operation.isConnected()) {
+			try {
+				SQLOperation.Operation.init();
+			} catch (Exception e) {
+				Display.getDefault().syncExec(new Runnable() {
+					public void run() {
+						Warning warning = new Warning(getShell(), "问卷调查列表获取失败");
+						warning.open();
+					}
+				});
+				return;
+			}
+		}
+
+		ResultSet rs = SQLOperation.Operation
+				.runQueryStatement("select * from ques");
+		Vars.ques.clear();
+		while (rs.next()) {
+			AdFile tmp = new AdFile();
+			tmp.name = rs.getString("name");
+			tmp.playCnt = rs.getInt("playCount");
+			tmp.md5 = rs.getString("md5");
+			Vars.ques.add(tmp);
+		}
+
+		Display.getDefault().syncExec(new Runnable() {
+
+			public void run() {
+				QuesItems.dispose();
+				QuesItems = new Composite(QuesContainer, SWT.NONE);
+				QuesItems.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+				QuesItems.setBounds(26, 138, 640, 534);
+
+				int i = 1;
+				for (AdFile tmp : Vars.ques) {
+					final int x = i - 1;
+					Label nameLable = new Label(QuesItems, SWT.NONE);
+					nameLable.setBounds(10, i * 23, 180, 23);
+					nameLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					nameLable.setText(tmp.name);
+					nameLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							QuesDetail DeviceDetail = new QuesDetail(getShell(),
+									SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										QuesRefresh();
+									} catch (SQLException e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Label playcntLable = new Label(QuesItems, SWT.NONE);
+					playcntLable.setBounds(270, i * 23, 120, 23);
+					playcntLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					playcntLable.setText(String.valueOf(tmp.price));
+					playcntLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							QuesDetail DeviceDetail = new QuesDetail(getShell(),
+									SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										QuesRefresh();
+									} catch (SQLException e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Label priceLable = new Label(QuesItems, SWT.NONE);
+					priceLable.setBounds(400, i * 23, 120, 23);
+					priceLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					priceLable.setText(String.valueOf(tmp.playCnt));
+					priceLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							QuesDetail DeviceDetail = new QuesDetail(getShell(),
+									SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										QuesRefresh();
+									} catch (SQLException e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Label priceSumLable = new Label(QuesItems, SWT.NONE);
+					priceSumLable.setBounds(526, i * 23, 100, 23);
+					priceSumLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					priceSumLable
+							.setText(String.valueOf(tmp.price * tmp.playCnt));
+					priceSumLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							QuesDetail DeviceDetail = new QuesDetail(getShell(),
+									SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										QuesRefresh();
+									} catch (SQLException e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Composite tigger = new Composite(QuesItems, SWT.NONE);
+					tigger.setBounds(10, i * 23, 648, 23);
+					tigger.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					tigger.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							QuesDetail DeviceDetail = new QuesDetail(getShell(),
+									SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										QuesRefresh();
+									} catch (SQLException e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+					i++;
+				}
+			}
+
+		});
+	}
+
+	void BinsRefresh() throws SQLException {
+		if (!SQLOperation.Operation.isConnected()) {
+			try {
+				SQLOperation.Operation.init();
+			} catch (Exception e) {
+				Display.getDefault().syncExec(new Runnable() {
+					public void run() {
+						Warning warning = new Warning(getShell(), "二维码列表获取失败");
+						warning.open();
+					}
+				});
+				return;
+			}
+		}
+
+		ResultSet rs = SQLOperation.Operation
+				.runQueryStatement("select * from bins");
+		Vars.bins.clear();
+		while (rs.next()) {
+			AdFile tmp = new AdFile();
+			tmp.name = rs.getString("name");
+			tmp.playCnt = rs.getInt("playCount");
+			tmp.md5 = rs.getString("md5");
+			Vars.bins.add(tmp);
+		}
+
+		Display.getDefault().syncExec(new Runnable() {
+
+			public void run() {
+				BinsItems.dispose();
+				BinsItems = new Composite(BinsContainer, SWT.NONE);
+				BinsItems.setBackground(
+						SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+				BinsItems.setBounds(26, 138, 640, 534);
+
+				int i = 1;
+				for (AdFile tmp : Vars.bins) {
+					final int x = i - 1;
+					Label nameLable = new Label(BinsItems, SWT.NONE);
+					nameLable.setBounds(10, i * 23, 180, 23);
+					nameLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					nameLable.setText(tmp.name);
+					nameLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							BinsDetail DeviceDetail = new BinsDetail(getShell(),
+									SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										BinsRefresh();
+									} catch (SQLException e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Label priceSumLable = new Label(BinsItems, SWT.NONE);
+					priceSumLable.setBounds(526, i * 23, 100, 23);
+					priceSumLable.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					priceSumLable.setText(String.valueOf(tmp.price));
+					priceSumLable.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							BinsDetail DeviceDetail = new BinsDetail(getShell(),
+									SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										BinsRefresh();
+									} catch (SQLException e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+
+					Composite tigger = new Composite(BinsItems, SWT.NONE);
+					tigger.setBounds(10, i * 23, 648, 23);
+					tigger.setBackground(
+							SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+					tigger.addMouseListener(new MouseListener() {
+						public void mouseUp(MouseEvent arg0) {
+							// TODO Auto-generated method stub
+							BinsDetail DeviceDetail = new BinsDetail(getShell(),
+									SWT.NO_TRIM);
+							DeviceDetail.open(x);
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										BinsRefresh();
+									} catch (SQLException e) {
+										// TODO Auto-generated catch
+										// block
+										e.printStackTrace();
+									}
+								}
+							}).start();
+						}
+
+						public void mouseDown(MouseEvent arg0) {
+						}
+
+						public void mouseDoubleClick(MouseEvent arg0) {
+						}
+					});
+					i++;
+				}
+			}
+
+		});
+	}
+
+	void upload() throws FileNotFoundException, SQLException {
+		File file = new File(path.getText());
+		String ErrorMessage = null;
+		if (!file.exists() || file.isDirectory()) {
+			ErrorMessage = "文件路径错误";
+		}
+		if (FileType.getSelectionIndex() == -1) {
+			ErrorMessage = "请选择文件的类别";
+		}
+		try {
+			Integer.valueOf(playCount.getText());
+		} catch (Exception e) {
+			ErrorMessage = "请填写正确的整数";
+		}
+		boolean checked = false;
+		for (Button tmp : Vars.uploadcfg) {
+			if (tmp.getSelection()) {
+				checked = true;
+				break;
+			}
+		}
+		if (!checked) {
+			ErrorMessage = "请至少勾选一个设备";
+		}
+
+		String name = file.getName();
+		if (name.indexOf('.') != -1)
+			name = name.substring(0, name.indexOf('.'));
+
+		for (int i = 0; i < name.length(); i++) {
+			char ch = name.charAt(i);
+			if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')
+					|| (ch >= '0' && ch <= '9') || (ch == '_')) {
+			} else {
+				ErrorMessage = "文件名中只能含有大小写字母，数字和下划线";
+			}
+		}
+
+		if (checkSQL(name)) {
+			ErrorMessage = "上传失败，有同名文件存在？";
+		}
+
+		if (yearPre.getSelectionIndex() == -1
+				|| yearAft.getSelectionIndex() == -1
+				|| monthPre.getSelectionIndex() == -1
+				|| monthAft.getSelectionIndex() == -1
+				|| dayPre.getSelectionIndex() == -1
+				|| dayAft.getSelectionIndex() == -1) {
+			ErrorMessage = "请填写完整日期";
+		}
+
+		String begin = "\""; // 格式化初使日期，如"20160201"
+		begin += yearPre.getText();
+		begin += "-";
+		if (monthPre.getText().length() == 1) {
+			begin += "0";
+		}
+		begin += monthPre.getText();
+		begin += "-";
+		if (dayPre.getText().length() == 1) {
+			begin += "0";
+		}
+		begin += dayPre.getText();
+		begin += "\"";
+
+		String end = "\""; // 格式化终止日期，如"20160201"
+		end += yearAft.getText();
+		end += "-";
+		if (monthAft.getText().length() == 1) {
+			end += "0";
+		}
+		end += monthAft.getText();
+		end += "-";
+		if (dayAft.getText().length() == 1) {
+			end += "0";
+		}
+		end += dayAft.getText();
+		end += "\"";
+		System.out.println(end.compareTo(begin));
+		if (end.compareTo(begin) < 0) {
+			ErrorMessage = "结束日期不应小于开始日期";
+		}
+
+		if (ErrorMessage != null) {
+			final String cover = ErrorMessage;
+			new Thread(new Runnable() {
+				public void run() {
+					Display.getDefault().syncExec(new Runnable() {
+						public void run() {
+							Warning warning = new Warning(getShell(), cover);
+							warning.open();
+						}
+					});
+				}
+			}).start();
+			return;
+		}
+
+		System.err.println(ErrorMessage);
+		AdFile temp = new AdFile();
+		temp.name = name;
+		temp.md5 = getMd5ByFile(file);
+		temp.playCnt = 0;
+		temp.price = Integer.valueOf(playCount.getText());
+		int i = 0;
+		for (Button tmp : Vars.uploadcfg) {
+			if (tmp.getSelection()) {
+				temp.imei.add(Vars.Devices.get(i).imei);
+			}
+			i++;
+		}
+		System.out.println("uploading");
+		Operations ftp = new Operations();
+
+		switch (FileType.getSelectionIndex()) {
+		case 0:
+			ftp.upload(file, "/ADmachine/ads", temp.name);
+			break;
+
+		case 1:
+			ftp.upload(file, "/ADmachine/ques", temp.name);
+			break;
+
+		case 2:
+			ftp.upload(file, "/ADmachine/bins", temp.name);
+			break;
+			
+		case 3:
+			ftp.upload(file, "/ADmachine/repeats", temp.name);
+			break;
+
+		default:
+			break;
+		}
+
+		DBConnectionForUpload(name, temp.md5, temp.price, begin, end);
+
+		new Thread(new Runnable() {
+
+			public void run() {
+				Display.getDefault().syncExec(new Runnable() {
+					public void run() {
+						Warning warning = new Warning(getShell(), "上传完成");
+						warning.open();
+					}
+				});
+			}
+
+		}).start();
+	}
+
+	boolean checkSQL(String name) throws SQLException {
+		boolean state = false;
+		if (!SQLOperation.Operation.isConnected()) {
+			try {
+				SQLOperation.Operation.init();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		ResultSet rSet = null;
+		
+			rSet = SQLOperation.Operation.runQueryStatement(
+					"select name from ads where name = " + "\"" + name + "\"");
+			if (rSet.next()) {
+				rSet.close();
+				state = true;
+			}
+			rSet = SQLOperation.Operation.runQueryStatement(
+					"select name from ques where name = " + "\"" + name + "\"");
+			if (rSet.next()) {
+				rSet.close();
+				state = true;
+			}
+			rSet = SQLOperation.Operation.runQueryStatement(
+					"select name from bins where name = " + "\"" + name + "\"");
+			if (rSet.next()) {
+				rSet.close();
+				state = true;
+			}
+			rSet = SQLOperation.Operation.runQueryStatement(
+					"select name from repeats where name = " + "\"" + name + "\"");
+			if (rSet.next()) {
+				rSet.close();
+				state = true;
+			}
+
+		if (rSet != null && !rSet.isClosed())
+			rSet.close();
+
+		return state;
+	}
+
+	void DBConnectionForUpload(String name, String md5, int playCount, String begin,
+			String end) throws SQLException {
+		if (!SQLOperation.Operation.isConnected()) {
+			try {
+				SQLOperation.Operation.init();
+			} catch (Exception e) {
+
+			}
+		}
+		System.out.println("正在执行数据库更新");
+		switch (FileType.getSelectionIndex()) {
+		case 0:
+			SQLOperation.Operation.runUpdateStatement("insert into ads values ("
+					+ "\"" + name + "\"" + ", " + playCount
+					+ ", \"" + md5 + "\", " + begin + ", " + end + ", null)");
+			SQLOperation.Operation.runUpdateStatement("create table ads" + name
+					+ "(imei char(50) not null, playCount int null default -1)");
+			for (int i = 0; i < Vars.uploadcfg.size(); i++) {
+				if (Vars.uploadcfg.get(i).getSelection())
+					SQLOperation.Operation.runUpdateStatement(
+							"insert into ads" + name + " values (\""
+									+ Vars.Devices.get(i).imei + "\", -1)");
+			}
+			break;
+		case 1:
+			SQLOperation.Operation
+					.runUpdateStatement("insert into ques values (" + "\""
+							+ name + "\"" + ", " + playCount
+							+ ", \"" + md5 + "\", " + begin + ", " + end + ", null)");
+			SQLOperation.Operation.runUpdateStatement("create table ques" + name
+					+ "(imei char(50) not null, playCount int null default -1)");
+			SQLOperation.Operation.runUpdateStatement(
+					"create table ans" + name + "(ans char(127) not null)");
+			for (int i = 0; i < Vars.uploadcfg.size(); i++) {
+				if (Vars.uploadcfg.get(i).getSelection())
+					SQLOperation.Operation.runUpdateStatement(
+							"insert into ques" + name + " values (\""
+									+ Vars.Devices.get(i).imei + "\", -1)");
+			}
+			break;
+
+		case 2:
+			SQLOperation.Operation
+					.runUpdateStatement("insert into bins values (" + "\""
+							+ name + "\"" + ", " + playCount
+							+ ", \"" + md5 + "\", " + begin + ", " + end + ", null)");
+			SQLOperation.Operation.runUpdateStatement("create table bins" + name
+					+ "(imei char(50) not null, playCount int null default -1)");
+			for (int i = 0; i < Vars.uploadcfg.size(); i++) {
+				if (Vars.uploadcfg.get(i).getSelection())
+					SQLOperation.Operation.runUpdateStatement(
+							"insert into bins" + name + " values (\""
+									+ Vars.Devices.get(i).imei + "\", -1)");
+			}
+			break;
+
+		case 3:
+			SQLOperation.Operation
+					.runUpdateStatement("insert into repeats values (\""
+							+ name + "\"" + ", " + playCount
+							+ ", \"" + md5 + "\", " + begin + ", " + end + ", null)");
+			SQLOperation.Operation.runUpdateStatement("create table repeats"
+					+ name
+					+ "(imei char(50) not null, playCount int null default -1)");
+			for (int i = 0; i < Vars.uploadcfg.size(); i++) {
+				if (Vars.uploadcfg.get(i).getSelection())
+					SQLOperation.Operation.runUpdateStatement(
+							"insert into repeats" + name + " values (\""
+									+ Vars.Devices.get(i).imei + "\", -1)");
+			}
+			break;
+		}
+	}
+
+	public static void export() throws Exception {
+		if (!SQLOperation.Operation.isConnected()) {
+			try {
+				SQLOperation.Operation.init();
+			} catch (Exception e) {
+				return;
+			}
+		}
+
+		// 声明需要导出的数据库
+		String dbName = "ADmachine";
+		// 声明book
+
+		ResultSet rs = SQLOperation.Operation.GetTables();
+		// 获取所有表名 － 就是一个sheet
+		List<String> tables = new ArrayList<String>();
+		while (rs.next()) {
+			String tableName = rs.getString("TABLE_NAME");
+			tables.add(tableName);
+		}
+
+		for (String tableName : tables) {
+			HSSFWorkbook book = new HSSFWorkbook();
+			HSSFSheet sheet = book.createSheet(tableName);
+			sheet.setDefaultColumnWidth(20);
+			// 声明sql
+			String sql = "select * from " + dbName + "." + tableName;
+			// 查询数据
+			rs = SQLOperation.Operation.runQueryStatement(sql);
+			// 根据查询的结果，分析结果集的元数据
+			ResultSetMetaData rsmd = rs.getMetaData();
+			// 获取这个查询有多少行
+			int cols = rsmd.getColumnCount();
+			// 获取所有列名
+			// 创建第一行
+			HSSFRow row = sheet.createRow(0);
+			for (int i = 0; i < cols; i++) {
+				String colName = rsmd.getColumnName(i + 1);
+				// 创建一个新的列
+				HSSFCell cell = row.createCell(i);
+				// 写入列名
+				cell.setCellValue(colName);
+			}
+			// 遍历数据
+			int index = 1;
+			while (rs.next()) {
+				row = sheet.createRow(index++);
+				// 声明列
+				for (int i = 0; i < cols; i++) {
+					String val = rs.getString(i + 1);
+					// 声明列
+					HSSFCell cel = row.createCell(i);
+					// 放数据
+					cel.setCellValue(val);
+				}
+			}
+
+			File dir = new File("d:/ADmachine/");
+			if (!dir.exists()) {
+				dir.mkdir();
+			}
+			File xls = new File("d:/ADmachine/" + tableName);
+			if (xls.exists()) {
+				xls.delete();
+			}
+			book.write(
+					new FileOutputStream("d:/ADmachine/" + tableName + ".xls"));
+			book.close();
+		}
+	}
+
+	String getMd5ByFile(File file) throws FileNotFoundException {
+		String value = null;
+		FileInputStream in = new FileInputStream(file);
+		try {
+			MappedByteBuffer byteBuffer = in.getChannel()
+					.map(FileChannel.MapMode.READ_ONLY, 0, file.length());
+			MessageDigest md5 = MessageDigest.getInstance("MD5");
+			md5.update(byteBuffer);
+			BigInteger bi = new BigInteger(1, md5.digest());
+			value = bi.toString(16);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (null != in) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return value;
+	}
+
+	public static void main(String[] args) {
+		try {
+			export();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		try {
+			Main window = new Main();
+			window.open();
+			if (updating.isAlive())
+				updating.interrupt();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			export();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void open() {
+		Display display = Display.getDefault();
+		createContents();
+		init();
+		shell.open();
+		shell.layout();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
+
+	protected void createContents() {
+		shell = new Shell(SWT.NO_TRIM);
+		shell.setSize(1000, 700);
+		shell.setText("ServerCtrl");
+
+		Composite background = new Composite(shell, SWT.NONE);
+		background.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		background.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		background.setBounds(0, 0, 1000, 700);
+		background.setBackgroundImage(SWTResourceManager.getImage(Main.class,
+				"/UIImage/background.png"));
+
+		moveBar2 = new Composite(background, SWT.NONE);
+		moveBar2.setLocation(300, 0);
+		moveBar2.setSize(700, 20);
+		moveBar2.setForeground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		moveBar2.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+
+		Composite options = new Composite(background, SWT.NONE);
+		options.setBounds(0, 0, 300, 700);
+		options.setBackgroundImage(SWTResourceManager.getImage(Main.class,
+				"/UIImage/OptionsBackground.png"));
+
+		closeButton = new Button(options, SWT.CENTER);
+		closeButton.setForeground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		closeButton.setImage(
+				SWTResourceManager.getImage(Main.class, "/UIImage/close.png"));
+		closeButton.setBounds(20, 20, 20, 20);
+
+		moveBar = new Composite(options, SWT.NONE);
+		moveBar.setLocation(0, 0);
+		moveBar.setSize(300, 20);
+		moveBar.setForeground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		moveBar.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+
+		Label title1 = new Label(options, SWT.SHADOW_NONE | SWT.CENTER);
+		title1.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		title1.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		title1.setFont(SWTResourceManager.getFont("Ubuntu", 20, SWT.BOLD));
+		title1.setAlignment(SWT.CENTER);
+		title1.setBounds(10, 60, 280, 123);
+		title1.setText("Server Control System beta");
+
+		DeviceManager = new Label(options, SWT.CENTER);
+		DeviceManager.setEnabled(false);
+		DeviceManager
+				.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		DeviceManager.setTouchEnabled(true);
+		DeviceManager.setFont(SWTResourceManager.getFont("Microsoft YaHei UI",
+				26, SWT.NORMAL));
+		DeviceManager.setAlignment(SWT.CENTER);
+		DeviceManager.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		DeviceManager.setBounds(0, 250, 300, 70);
+		DeviceManager.setText("\u8BBE\u5907\u7BA1\u7406");
+
+		AdsManager = new Label(options, SWT.CENTER);
+		AdsManager.setEnabled(false);
+		AdsManager.setTouchEnabled(true);
+		AdsManager.setText("\u89C6\u9891\u5E7F\u544A");
+		AdsManager.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		AdsManager.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 26,
+				SWT.NORMAL));
+		AdsManager.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		AdsManager.setAlignment(SWT.CENTER);
+		AdsManager.setBounds(0, 326, 300, 70);
+
+		QuestionsManager = new Label(options, SWT.CENTER);
+		QuestionsManager.setEnabled(false);
+		QuestionsManager.setTouchEnabled(true);
+		QuestionsManager.setText("\u95EE\u5377\u8C03\u67E5");
+		QuestionsManager
+				.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		QuestionsManager.setFont(SWTResourceManager
+				.getFont("Microsoft YaHei UI", 26, SWT.NORMAL));
+		QuestionsManager.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		QuestionsManager.setAlignment(SWT.CENTER);
+		QuestionsManager.setBounds(0, 402, 300, 70);
+
+		Bin_CodeManager = new Label(options, SWT.CENTER);
+		Bin_CodeManager.setEnabled(false);
+		Bin_CodeManager.setTouchEnabled(true);
+		Bin_CodeManager.setText("\u4E8C\u7EF4\u7801\u7BA1\u7406");
+		Bin_CodeManager
+				.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		Bin_CodeManager.setFont(SWTResourceManager.getFont("Microsoft YaHei UI",
+				26, SWT.NORMAL));
+		Bin_CodeManager.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		Bin_CodeManager.setAlignment(SWT.CENTER);
+		Bin_CodeManager.setBounds(0, 478, 300, 70);
+
+		FileUpload = new Label(options, SWT.CENTER);
+		FileUpload.setTouchEnabled(true);
+		FileUpload.setText("\u6587\u4EF6\u4E0A\u4F20");
+		FileUpload.setForeground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		FileUpload.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 26,
+				SWT.NORMAL));
+		FileUpload.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		FileUpload.setAlignment(SWT.CENTER);
+		FileUpload.setBounds(0, 554, 300, 70);
+
+		DevicesContainer = new Composite(background, SWT.NONE);
+		DevicesContainer.setLocation(300, 0);
+		DevicesContainer.setSize(700, 700);
+		DevicesContainer.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+
+		line = new Label(DevicesContainer, SWT.NONE);
+		line.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		line.setLocation(26, 130);
+		line.setBackground(SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY));
+		line.setSize(640, 1);
+
+		Label title3 = new Label(DevicesContainer, SWT.NONE);
+		title3.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		title3.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		title3.setBounds(40, 100, 73, 25);
+		title3.setText("IMEI\u7F16\u53F7");
+
+		title4 = new Label(DevicesContainer, SWT.NONE);
+		title4.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		title4.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		title4.setBounds(300, 100, 61, 25);
+		title4.setText("\u6240\u5728\u5730");
+
+		title5 = new Label(DevicesContainer, SWT.NONE);
+		title5.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		title5.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		title5.setBounds(556, 100, 105, 25);
+		title5.setText("\u5269\u4F59\u7269\u54C1\u6570\u91CF");
+
+		DeviceItems = new Composite(DevicesContainer, SWT.NONE);
+		DeviceItems.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		DeviceItems.setBounds(26, 138, 640, 534);
+
+		AdsContainer = new Composite(background, SWT.NONE);
+		AdsContainer.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		AdsContainer.setBounds(300, 0, 700, 700);
+
+		label = new Label(AdsContainer, SWT.NONE);
+		label.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		label.setBackground(SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY));
+		label.setBounds(26, 126, 640, 1);
+
+		label_2 = new Label(AdsContainer, SWT.NONE);
+		label_2.setText("\u540D\u79F0");
+		label_2.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_2.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_2.setBounds(40, 100, 73, 25);
+
+		label_3 = new Label(AdsContainer, SWT.NONE);
+		label_3.setText("\u5355\u4EF7");
+		label_3.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_3.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_3.setBounds(300, 100, 61, 25);
+
+		label_15 = new Label(AdsContainer, SWT.NONE);
+		label_15.setText("\u64AD\u653E\u6B21\u6570");
+		label_15.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_15.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_15.setBounds(426, 100, 80, 25);
+
+		label_4 = new Label(AdsContainer, SWT.NONE);
+		label_4.setText("\u603B\u4EF7");
+		label_4.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_4.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_4.setBounds(556, 100, 105, 25);
+
+		AdsItems = new Composite(AdsContainer, SWT.NONE);
+		AdsItems.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		AdsItems.setBounds(26, 138, 640, 534);
+
+		QuesContainer = new Composite(background, SWT.NONE);
+		QuesContainer.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		QuesContainer.setBounds(300, 0, 700, 700);
+
+		label_5 = new Label(QuesContainer, SWT.NONE);
+		label_5.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		label_5.setBackground(SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY));
+		label_5.setBounds(26, 126, 640, 1);
+
+		label_7 = new Label(QuesContainer, SWT.NONE);
+		label_7.setText("\u540D\u79F0");
+		label_7.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_7.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_7.setBounds(40, 100, 73, 25);
+
+		label_8 = new Label(QuesContainer, SWT.NONE);
+		label_8.setText("\u5355\u4EF7");
+		label_8.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_8.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_8.setBounds(300, 100, 61, 25);
+
+		Label label_13 = new Label(QuesContainer, SWT.NONE);
+		label_13.setText("\u64AD\u653E\u6B21\u6570");
+		label_13.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_13.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_13.setBounds(426, 100, 80, 25);
+
+		label_9 = new Label(QuesContainer, SWT.NONE);
+		label_9.setText("\u603B\u4EF7");
+		label_9.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_9.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_9.setBounds(556, 100, 105, 25);
+
+		QuesItems = new Composite(QuesContainer, SWT.NONE);
+		QuesItems.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		QuesItems.setBounds(26, 138, 640, 534);
+
+		BinsContainer = new Composite(background, SWT.NONE);
+		BinsContainer.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		BinsContainer.setBounds(300, 0, 700, 700);
+
+		label_10 = new Label(BinsContainer, SWT.NONE);
+		label_10.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		label_10.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_DARK_GRAY));
+		label_10.setBounds(26, 126, 640, 1);
+
+		label_12 = new Label(BinsContainer, SWT.NONE);
+		label_12.setText("\u540D\u79F0");
+		label_12.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_12.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_12.setBounds(40, 100, 73, 25);
+
+		label_14 = new Label(BinsContainer, SWT.NONE);
+		label_14.setText("\u5355\u4EF7");
+		label_14.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 8,
+				SWT.NORMAL));
+		label_14.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_14.setBounds(556, 100, 105, 25);
+
+		BinsItems = new Composite(BinsContainer, SWT.NONE);
+		BinsItems.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		BinsItems.setBounds(26, 138, 640, 534);
+
+		UploadContainer = new Composite(background, SWT.NONE);
+		UploadContainer.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		UploadContainer.setBounds(300, 0, 700, 700);
+
+		composite = new Composite(UploadContainer, SWT.NONE);
+		composite.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		composite.setBounds(0, 0, 700, 700);
+
+		label_18 = new Label(composite, SWT.NONE);
+		label_18.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 11,
+				SWT.NORMAL));
+		label_18.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_18.setText("\u6587\u4EF6\u7C7B\u578B         \uFF1A");
+		label_18.setBounds(28, 33, 111, 23);
+
+		FileType = new Combo(composite, SWT.READ_ONLY);
+		FileType.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		FileType.setItems(new String[] {"\u89C6\u9891\u6587\u4EF6", "\u95EE\u5377\u8C03\u67E5", "\u4E8C\u7EF4\u7801", "\u6EDA\u52A8\u5E7F\u544A"});
+		FileType.setBounds(144, 26, 531, 23);
+		FileType.select(0);
+
+		label_16 = new Label(composite, SWT.NONE);
+		label_16.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_16.setText("\u6587\u4EF6\u7EDD\u5BF9\u8DEF\u5F84  \uFF1A");
+		label_16.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 11,
+				SWT.NORMAL));
+		label_16.setBounds(28, 78, 111, 23);
+
+		path = new Text(composite, SWT.BORDER);
+		path.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		path.setText("\u8BF7\u586B\u5199\u6587\u4EF6\u7EDD\u5BF9\u8DEF\u5F84");
+		path.setBounds(144, 78, 531, 23);
+
+		label_17 = new Label(composite, SWT.NONE);
+		label_17.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_17.setText("\u603B\u64AD\u653E\u6B21\u6570");
+		label_17.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 11,
+				SWT.NORMAL));
+		label_17.setBounds(28, 134, 111, 23);
+
+		playCount = new Text(composite, SWT.BORDER);
+		playCount.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		playCount.setText("\u8BF7\u586B\u5199\u5355\u4EF7");
+		playCount.setBounds(144, 134, 531, 23);
+
+		upload = new Button(composite, SWT.NONE);
+		upload.setText("\u4E0A\u4F20");
+		upload.setBounds(250, 650, 216, 27);
+
+		DeviceList = new ScrolledComposite(composite,
+				SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		DeviceList.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		DeviceList.setExpandVertical(true);
+		DeviceList.setExpandHorizontal(true);
+		DeviceList.setBounds(28, 226, 648, 393);
+		DeviceList.setMinSize(new Point(64, 64));
+
+		label_20 = new Label(composite, SWT.NONE);
+		label_20.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		label_20.setText(
+				"\u8B66\u544A\uFF1A\u8BF7\u4F7F\u7528\u82F1\u6587\u5B57\u7B26");
+		label_20.setAlignment(SWT.CENTER);
+		label_20.setBounds(480, 670, 216, 17);
+
+		Label lblNewLabel = new Label(composite, SWT.NONE);
+		lblNewLabel.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 11,
+				SWT.NORMAL));
+		lblNewLabel.setBackground(
+				SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
+		lblNewLabel.setBounds(28, 188, 90, 23);
+		lblNewLabel.setText("\u5B58\u50A8\u65F6\u957F:");
+
+		yearPre = new Combo(composite, SWT.READ_ONLY);
+		yearPre.setItems(new String[] { "2016", "2017", "2018", "2019", "2020",
+				"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028",
+				"2029", "2030" });
+		yearPre.setBounds(120, 188, 80, 23);
+		yearPre.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				dayPre.removeAll();
+				int x = monthPre.getSelectionIndex();
+				int y = yearPre.getSelectionIndex();
+				if (x == -1 || y == -1)
+					return;
+				if (x < 7) {
+					if (x % 2 == 0) { // 大月
+						for (int i = 1; i <= 31; i++) {
+							dayPre.add(String.valueOf(i));
+						}
+					} else {
+						if (x == 1) {// 二月
+							for (int i = 1; i < 29; i++) {
+								dayPre.add(String.valueOf(i));
+							}
+							if (Integer.valueOf(yearPre.getText()) % 4 == 0) {// 闰月
+								dayPre.add(String.valueOf(29));
+							}
+						} else { // 小月
+							for (int i = 1; i < 31; i++) {
+								dayPre.add(String.valueOf(i));
+							}
+						}
+					}
+				} else {
+					if (x % 2 == 1) { // 大月
+						for (int i = 1; i <= 31; i++) {
+							dayPre.add(String.valueOf(i));
+						}
+					} else { // 小月
+						for (int i = 1; i < 31; i++) {
+							dayPre.add(String.valueOf(i));
+						}
+					}
+				}
+			}
+
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
+		monthPre = new Combo(composite, SWT.READ_ONLY);
+		monthPre.setItems(new String[] { "1", "2", "3", "4", "5", "6", "7", "8",
+				"9", "10", "11", "12" });
+		monthPre.setBounds(210, 188, 80, 23);
+		monthPre.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				dayPre.removeAll();
+				int x = monthPre.getSelectionIndex();
+				int y = yearPre.getSelectionIndex();
+				if (x == -1 || y == -1)
+					return;
+				if (x < 7) {
+					if (x % 2 == 0) { // 大月
+						for (int i = 1; i <= 31; i++) {
+							dayPre.add(String.valueOf(i));
+						}
+					} else {
+						if (x == 1) {// 二月
+							for (int i = 1; i < 29; i++) {
+								dayPre.add(String.valueOf(i));
+							}
+							if (Integer.valueOf(yearPre.getText()) % 4 == 0) {// 闰月
+								dayPre.add(String.valueOf(29));
+							}
+						} else { // 小月
+							for (int i = 1; i < 31; i++) {
+								dayPre.add(String.valueOf(i));
+							}
+						}
+					}
+				} else {
+					if (x % 2 == 1) { // 大月
+						for (int i = 1; i <= 31; i++) {
+							dayPre.add(String.valueOf(i));
+						}
+					} else { // 小月
+						for (int i = 1; i < 31; i++) {
+							dayPre.add(String.valueOf(i));
+						}
+					}
+				}
+			}
+
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
+		dayPre = new Combo(composite, SWT.READ_ONLY);
+		dayPre.setItems(new String[] {});
+		dayPre.setBounds(300, 188, 80, 23);
+
+		Label lblNewLabel_1 = new Label(composite, SWT.NONE);
+		lblNewLabel_1.setBounds(385, 188, 20, 24);
+		lblNewLabel_1.setText("\u81F3");
+
+		yearAft = new Combo(composite, SWT.READ_ONLY);
+		yearAft.setItems(new String[] { "2016", "2017", "2018", "2019", "2020",
+				"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028",
+				"2029", "2030" });
+		yearAft.setBounds(410, 188, 80, 23);
+		yearAft.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				dayAft.removeAll();
+				int x = monthAft.getSelectionIndex();
+				int y = yearAft.getSelectionIndex();
+				if (x == -1 || y == -1)
+					return;
+				if (x < 7) {
+					if (x % 2 == 0) { // 大月
+						for (int i = 1; i <= 31; i++) {
+							dayAft.add(String.valueOf(i));
+						}
+					} else {
+						if (x == 1) {// 二月
+							for (int i = 1; i < 29; i++) {
+								dayAft.add(String.valueOf(i));
+							}
+							if (Integer.valueOf(yearAft.getText()) % 4 == 0) {// 闰月
+								dayAft.add(String.valueOf(29));
+							}
+						} else { // 小月
+							for (int i = 1; i < 31; i++) {
+								dayAft.add(String.valueOf(i));
+							}
+						}
+					}
+				} else {
+					if (x % 2 == 1) { // 大月
+						for (int i = 1; i <= 31; i++) {
+							dayAft.add(String.valueOf(i));
+						}
+					} else { // 小月
+						for (int i = 1; i < 31; i++) {
+							dayAft.add(String.valueOf(i));
+						}
+					}
+				}
+			}
+
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
+		monthAft = new Combo(composite, SWT.READ_ONLY);
+		monthAft.setItems(new String[] { "1", "2", "3", "4", "5", "6", "7", "8",
+				"9", "10", "11", "12" });
+		monthAft.setBounds(500, 188, 80, 23);
+		monthAft.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				dayAft.removeAll();
+				int x = monthAft.getSelectionIndex();
+				int y = yearAft.getSelectionIndex();
+				if (x == -1 || y == -1)
+					return;
+				if (x < 7) {
+					if (x % 2 == 0) { // 大月
+						for (int i = 1; i <= 31; i++) {
+							dayAft.add(String.valueOf(i));
+						}
+					} else {
+						if (x == 1) {// 二月
+							for (int i = 1; i < 29; i++) {
+								dayAft.add(String.valueOf(i));
+							}
+							if (Integer.valueOf(yearAft.getText()) % 4 == 0) {// 闰月
+								dayAft.add(String.valueOf(29));
+							}
+						} else { // 小月
+							for (int i = 1; i < 31; i++) {
+								dayAft.add(String.valueOf(i));
+							}
+						}
+					}
+				} else {
+					if (x % 2 == 1) { // 大月
+						for (int i = 1; i <= 31; i++) {
+							dayAft.add(String.valueOf(i));
+						}
+					} else { // 小月
+						for (int i = 1; i < 31; i++) {
+							dayAft.add(String.valueOf(i));
+						}
+					}
+				}
+			}
+
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
+		dayAft = new Combo(composite, SWT.READ_ONLY);
+		dayAft.setItems(new String[] {});
+		dayAft.setBounds(590, 188, 80, 23);
+	}
+
+	public Shell getShell() {
+		return shell;
+	}
+
+	public Composite getDeviceItems() {
+		return DeviceItems;
+	}
+
+	public Composite getMoveBar() {
+		return moveBar;
+	}
+}
